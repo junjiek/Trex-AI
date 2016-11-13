@@ -33,6 +33,21 @@ class TrexGameController(object):
 		canvas_png = base64.b64decode(canvas_base64)
 		return canvas_png
 
+	def hasStart(self):
+		return self.driver.execute_script("return tRexGameRunner.runningTime > tRexGameRunner.config.CLEAR_TIME;");
+
+	def getObstacles(self):
+		obstacle_length = self.driver.execute_script("return tRexGameRunner.horizon.obstacles.length;")
+		obstacles = []
+		for i in range(obstacle_length):
+			xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
+			sz = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].size;")
+			obstacles.append((xPos, sz))
+		return obstacles
+
+	def restart(self):
+		self.body.send_keys(Keys.SPACE)
+
 	def jump(self):
 		self.body.send_keys(Keys.SPACE)
 
@@ -43,10 +58,12 @@ def main():
 	controller = TrexGameController(game_path)
 	while 1:
 		# Jump.
-		distanceRan = controller.getDistanceRan()
-		crashed = controller.getCrashed()
-		if not crashed:
-			print distanceRan
+		if controller.hasStart():
+			distanceRan = controller.getDistanceRan()
+			crashed = controller.getCrashed()
+			if not crashed:
+				print controller.getObstacles()
+				print distanceRan
 		time.sleep(0.005)
 
 
