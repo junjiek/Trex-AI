@@ -21,40 +21,6 @@
     </template>
   </div>
   <script src="js/game.js"></script>
-  <script type="text/javascript" src="js/reimg.js"></script>
-  <script type="text/javascript">
-    function convertCanvasToBase64() {
-        var base64 = ReImg.fromCanvas(document.querySelector('canvas')).toBase64();
-        var output = document.querySelector('.output');
-        output.innerText = '';
-        output.innerText = base64;
-    }
-
-    function convertCanvasToImgElement() {
-        var imgElement = ReImg.fromCanvas(document.querySelector('canvas')).toImg();
-        var output = document.querySelector('.output');
-        output.innerText = '';
-        output.appendChild(imgElement);
-    }
-
-    function convertCanvasToPng() {
-        var img = ReImg.fromCanvas(document.querySelector('canvas')).toPng();
-        var output = document.querySelector('.output');
-        output.innerHTML = '';
-        output.appendChild(img);
-    }
-
-    function downloadCanvasAsPng() {
-        ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
-    }
-</script>
-  <div class="options">
-    <a href="#" onclick="convertCanvasToBase64()">Convert canvas to base64</a><br/>
-    <a href="#" onclick="convertCanvasToImgElement()">Convert canvas to img element</a><br/>
-    <a href="#" onclick="convertCanvasToPng()">Convert canvas to png image</a><br/>
-    <a href="#" onclick="downloadCanvasAsPng()">Download canvas PNG</a><br/>
-</div>
-<div class="output">
 </div>
 </body>
 </html>
