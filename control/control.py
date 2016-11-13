@@ -12,16 +12,17 @@ chrome_options.add_argument("--disable-web-security")
 driver = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
 
 driver.get(game_path)
-for i in range(10):
-	elem = driver.find_element_by_tag_name('body')
+while 1:
+	body = driver.find_element_by_tag_name('body')
 	# Jump.
-	elem.send_keys(Keys.SPACE)
-	time.sleep(1)
+	# body.send_keys(Keys.SPACE)
 
-	canvas = driver.find_element_by_id('game-canvas')
-	# Get the canvas as a PNG base64 string and decode.
-	canvas_base64 = driver.execute_script("return arguments[0].toDataURL().substring(22);", canvas)
-	canvas_png = base64.b64decode(canvas_base64)
-	# Save to a file.
-	with open(r"canvas" + str(i) + ".png", 'wb') as f:
-	    f.write(canvas_png)
+	distanceRan = driver.execute_script("return tRexGameRunner.distanceRan;")
+	crashed = driver.execute_script("return tRexGameRunner.crashed;")
+	if not crashed:
+		canvas = driver.find_element_by_id('game-canvas')
+		# Get the canvas as a PNG base64 string and decode.
+		canvas_base64 = driver.execute_script("return arguments[0].toDataURL().substring(22);", canvas)
+		canvas_png = base64.b64decode(canvas_base64)
+		print distanceRan
+	time.sleep(0.005)

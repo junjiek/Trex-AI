@@ -556,6 +556,9 @@ Runner.prototype = {
       this.tRex.update(deltaTime);
       this.raq();
     }
+    var outputDiv = document.getElementById('output');
+    output.innerText = '';
+    output.innerText = this.distanceRan;
   },
 
   /**
@@ -2510,6 +2513,6 @@ Horizon.prototype = {
 })();
 
 //start the game
-new Runner('.interstitial-wrapper');
+var tRexGameRunner = new Runner('.interstitial-wrapper');
 
 
