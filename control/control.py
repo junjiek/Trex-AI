@@ -6,23 +6,50 @@ import time
 
 # Path to t-rex game html page.
 game_path = 'file://' + os.path.abspath(os.path.join(os.getcwd(), '..')) + '/game/index.html'
-chrome_options = Options()
-# Disable security in Chrome to Allow-Control-Allow-Origin.
-chrome_options.add_argument("--disable-web-security")
-driver = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
 
-driver.get(game_path)
-while 1:
-	body = driver.find_element_by_tag_name('body')
-	# Jump.
-	# body.send_keys(Keys.SPACE)
+class TrexGameController(object):
+	"""
+	Controller for the T-rex Game in javascript
+	"""
+	def __init__(self, game_path):
+		self.game_path = game_path
+		self.chrome_options = Options()
+		# Disable security in Chrome to Allow-Control-Allow-Origin.
+		self.chrome_options.add_argument("--disable-web-security")
+		self.driver = webdriver.Chrome('./chromedriver', chrome_options=self.chrome_options)
+		self.driver.get(self.game_path)
+		self.body = self.driver.find_element_by_tag_name('body')
+		self.canvas = self.driver.find_element_by_id('game-canvas')
+	
+	def getDistanceRan(self):
+		return self.driver.execute_script("return tRexGameRunner.distanceRan;")
 
-	distanceRan = driver.execute_script("return tRexGameRunner.distanceRan;")
-	crashed = driver.execute_script("return tRexGameRunner.crashed;")
-	if not crashed:
-		canvas = driver.find_element_by_id('game-canvas')
+	def getCrashed(self):
+		return self.driver.execute_script("return tRexGameRunner.crashed;")
+
+	def getImage(self):
 		# Get the canvas as a PNG base64 string and decode.
-		canvas_base64 = driver.execute_script("return arguments[0].toDataURL().substring(22);", canvas)
+		canvas_base64 = self.driver.execute_script("return arguments[0].toDataURL().substring(22);", self.canvas)
 		canvas_png = base64.b64decode(canvas_base64)
-		print distanceRan
-	time.sleep(0.005)
+		return canvas_png
+
+	def jump(self):
+		self.body.send_keys(Keys.SPACE)
+
+	def duck(self):
+		self.body.send_keys(Keys.ARROW_DOWN)
+
+def main():
+	controller = TrexGameController(game_path)
+	while 1:
+		# Jump.
+		distanceRan = controller.getDistanceRan()
+		crashed = controller.getCrashed()
+		if not crashed:
+			print distanceRan
+		time.sleep(0.005)
+
+
+
+if __name__ == "__main__":
+	main()
