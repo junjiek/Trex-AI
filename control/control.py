@@ -41,9 +41,18 @@ class TrexGameController(object):
 		obstacles = []
 		for i in range(obstacle_length):
 			xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
-			sz = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].size;")
-			obstacles.append((xPos, sz))
+			width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
+			obstacles.append((xPos, width))
 		return obstacles
+
+	def getCurrentSpeed(self):
+		return self.driver.execute_script("return tRexGameRunner.currentSpeed;")
+
+	def isJumping(self):
+		return self.driver.execute_script("return tRexGameRunner.tRex.jumping;")
+
+	def getJumpVelocity(self):
+		return self.driver.execute_script("return tRexGameRunner.tRex.jumpVelocity;")
 
 	def restart(self):
 		self.body.send_keys(Keys.SPACE)
