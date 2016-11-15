@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import operator
 from matplotlib import pyplot as plt
 from enum import Enum
 
@@ -9,28 +10,35 @@ from enum import Enum
 def isNear(value, target, epsilon):
 	return abs(value - target) < epsilon
 
-class rectangle(object):
+class objectRectangle(object):
+	"""
+	The bounding box for T-Rex, Bird, Cactus.
+	The box is represented by (x, y, w, h).
+	'speed' is calculated based on the moving distance in delta time.
+	'speed' will be initialized as 0 if not calculated.
+	"""
 	def __init__(self, x, y, w, h):
 		self.x = x
 		self.y = y
 		self.w = w
 		self.h = h
+		self.speed = 0;
 
+	# For debug printing.
 	def __str__(self):
-		return "(" + str(self.x) + ", " + str(self.y) + ", " + str(self.w) + ", " + str(self.h) + ")"
+		return "(" + str(self.x) + ", " + str(self.y) + ", " + str(self.w) + \
+			   ", " + str(self.h) + "; " + str(self.speed) + ")"
 
 	def __repr__(self):
 		return self.__str__()
+
+def rectSimilar(rect1, rect2):
+	return isNear(rect1.w, rect2.w, 3) and isNear(rect1.h, rect2.h, 3)
 
 class imageProcessor(object):
 	"""
 	Extract features from game screenshots
 	"""
-	def clear(self):
-		self.tRex = None
-		self.cactus = []
-		self.bird = []
-
 	def isTRex(self, x, y, w, h):
 		if isNear(w, 85, 5) and isNear(h, 90, 5):
 			return True
@@ -46,12 +54,17 @@ class imageProcessor(object):
 	def isCactus(self, w, h):
 		return isNear(h, 70, 2) or isNear(h, 100, 2)
 
-	def findObjects(self, img):
-		self.clear()
+	def isEndGahmeLogo(self, w, h):
+		return isNear(w, 72, 2) and isNear(h, 64, 2)
+
+	def detectObjects(self, img, delta_time):
+		print "----- delta_time: ", delta_time
 		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
 		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
 		# name = ''
+		birds = []
+		cacti = []
 		for contour in contours:
 			x, y, w, h = cv2.boundingRect(contour)
 			# Ignoring things that the trex have passed.
@@ -62,19 +75,38 @@ class imageProcessor(object):
 				continue
 			roi = img[y : y + h, x : x + w]
 			if self.isTRex(x, y, w, h):
-				self.tRex = rectangle(x, y, w, h)
+				self.tRex = objectRectangle(x, y, w, h)
 				# name += 'TRex '
 			elif self.isBird(w, h):
-				self.bird.append(rectangle(x, y, w, h))
+				birds.append(objectRectangle(x, y, w, h))
 				# name += 'Bird '
 			elif self.isCactus(w, h):
-				self.cactus.append(rectangle(x, y, w, h))
+				cacti.append(objectRectangle(x, y, w, h))
 				# name += 'Cactus '
 			else:
 				# name += 'Unrecognized '
+				print "WARN: Unrecognized Object"
 				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
 			# cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
 		# cv2.imwrite(name + '.jpg', img)
+
+		# Calculates speed.
+		if delta_time > 0 and len(birds) > 0:
+			birds.sort(key=operator.attrgetter('x'))
+			for b in birds:
+				for pre_b in self.birds:
+					if rectSimilar(b, pre_b):
+						b.speed = float(pre_b.x - b.x) / delta_time
+						break
+		self.birds = birds
+
+		if delta_time > 0 and len(cacti) > 0:
+			cacti.sort(key=operator.attrgetter('x'))
+			for c in cacti:
+				for pre_c in self.cacti:
+					if rectSimilar(c, pre_c):
+						c.speed = float(pre_c.x - c.x) / delta_time
+		self.cacti = cacti
 
 def main():
 	img = cv2.imread('image.jpg', 0)

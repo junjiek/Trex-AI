@@ -55,12 +55,11 @@ class TrexGameController(object):
 			obstacles.append((xPos, width))
 		return obstacles
 
-	def findObjectsFromImage(self):
-		self.img_processor.findObjects(self.getImage())
-		print '---'
-		print 'tRex  :',  self.img_processor.tRex
-		print 'cactus:', self.img_processor.cactus
-		print 'bird  :', self.img_processor.bird
+	def getObjectInfoFromImage(self, delta_time):
+		self.img_processor.detectObjects(self.getImage(), delta_time)
+		print 'tRex :', self.img_processor.tRex
+		print 'cacti:', self.img_processor.cacti
+		print 'birds:', self.img_processor.birds
 
 	def getCurrentSpeed(self):
 		return self.driver.execute_script("return tRexGameRunner.currentSpeed;")
@@ -85,7 +84,8 @@ class TrexGameController(object):
 
 def main():
 	controller = TrexGameController(game_path)
-
+	# your code
+	start_time = None
 	while 1:
 		# Jump.
 		if controller.hasStart():
@@ -94,8 +94,13 @@ def main():
 			if not crashed:
 				# print controller.getObstacles()
 				# print distanceRan
-				controller.findObjectsFromImage()
-		time.sleep(1)
+				if start_time is not None:
+					delta_time = time.time() - start_time
+				else:
+					delta_time = 0
+				controller.getObjectInfoFromImage(delta_time)
+			start_time = time.time()
+		time.sleep(0.005)
 
 
 
