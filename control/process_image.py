@@ -91,17 +91,35 @@ class imageProcessor(object):
 		# cv2.imwrite(name + '.jpg', img)
 
 		# Calculates speed.
-		if delta_time > 0 and len(birds) > 0:
+		if delta_time > 0 and len(birds) > 0 and len(self.birds) > 0:
 			birds.sort(key=operator.attrgetter('x'))
-			for b in birds:
-				for pre_b in self.birds:
-					if rectSimilar(b, pre_b):
-						b.speed = float(pre_b.x - b.x) / delta_time
-						break
+			match_pos = 0
+			# Find the first matching bird. 
+			for match_pos in range(len(self.birds)):
+				if rectSimilar(birds[0], self.birds[match_pos]):
+					birds[0].speed = float(self.birds[match_pos].x - birds[0].x) / delta_time
+					break
+			# Match the subsequent birds in order.
+			for i in range(1, len(birds)):
+				if match_pos + i >= len(self.birds): break
+				if rectSimilar(birds[i], self.birds[match_pos + i]):
+					birds[i].speed = float(self.birds[match_pos + i].x - birds[i].x) / delta_time
+
 		self.birds = birds
 
-		if delta_time > 0 and len(cacti) > 0:
+		if delta_time > 0 and len(cacti) > 0 and len(self.cacti) > 0:
 			cacti.sort(key=operator.attrgetter('x'))
+			match_pos = 0
+			for match_pos in range(len(self.cacti)):
+				if rectSimilar(cacti[0], self.cacti[match_pos]):
+					cacti[0].speed = float(self.cacti[match_pos].x - cacti[0].x) / delta_time
+					break
+
+			for i in range(1, len(cacti)):
+				if match_pos + i >= len(self.cacti): break
+				if rectSimilar(cacti[i], self.cacti[match_pos + i]):
+					cacti[i].speed = float(self.cacti[match_pos + i].x - cacti[i].x) / delta_time
+
 			for c in cacti:
 				for pre_c in self.cacti:
 					if rectSimilar(c, pre_c):
