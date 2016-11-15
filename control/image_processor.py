@@ -170,12 +170,5 @@ class imageProcessor(object):
 						c.speed = float(pre_c.x - c.x) / delta_time
 		self.cacti = cacti
 
-def main():
-	img = cv2.imread('image.jpg', 0)
-	processor = imageProcessor()
-	processor.detectObjects(img, 0)
-	
-if __name__ == '__main__':
-	main()
 
 
