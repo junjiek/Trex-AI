@@ -57,7 +57,7 @@ class imageProcessor(object):
 		return False
 
 	def biggerThanTRex(self, rect):
-		if rect.w >= 82 and rect.h >= 80:
+		if rect.w >= 82 and rect.h >= 60:
 			return True
 		if rect.w >= 100 and rect.h > 50:
 			self.Ducking = True
@@ -92,7 +92,7 @@ class imageProcessor(object):
 			cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
 		objectRects.sort(key=operator.attrgetter('x'))
 
-		name = ''
+		# name = ''
 
 		birds = []
 		cacti = []
@@ -102,29 +102,29 @@ class imageProcessor(object):
 		self.jumping = False
 		for rect in objectRects:
 			if self.isTRex(rect):
-				name += 'TRex '
+				# name += 'TRex '
 				tRex = rect
 			elif self.isBird(rect):
-				name += 'Bird '
+				# name += 'Bird '
 				if rect.x > 40: birds.append(rect)
 			elif self.isCactus(rect):
-				name += 'Cactus '
+				# name += 'Cactus '
 				if rect.x > 40: cacti.append(rect)
 			elif tRex is None and self.biggerThanTRex(rect):
-				name += 'TRex '
-				print "WARN: Trex might run into other object"
+				# name += 'TRex '
+				# print "WARN: Trex might run into other object"
 				tRex = rect
-				x, y, w, h, s = rect.getInfo()
-				roi = img[y : y + h, x : x + w]
-				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
-				cv2.imwrite(name + '.jpg', img)
+				# x, y, w, h, s = rect.getInfo()
+				# roi = img[y : y + h, x : x + w]
+				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
+				# cv2.imwrite(name + '.jpg', img)
 			elif rect.x > 10:
-				name += 'Unrecognized '
+				# name += 'Unrecognized '
 				print "WARN: Unrecognized Object"
 				x, y, w, h, s = rect.getInfo()
 				roi = img[y : y + h, x : x + w]
 				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
-				cv2.imwrite(name + '.jpg', img)
+				# cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:

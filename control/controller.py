@@ -48,6 +48,9 @@ class TrexGameController(object):
 			obstacles.append((xPos, width))
 		return obstacles
 
+	def update(self):
+		self.driver.execute_script("cancelAnimationFrame(tRexGameRunner.raqId); tRexGameRunner.update();")
+
 	def getCurrentSpeed(self):
 		return self.driver.execute_script("return tRexGameRunner.currentSpeed;")
 

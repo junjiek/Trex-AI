@@ -8,20 +8,21 @@ game_path = 'file://' + os.path.abspath(os.path.join(os.getcwd(), '..')) + '/gam
 
 def main():
 	controller = TrexGameController(game_path)
+	img_processor = imageProcessor()
 	start_time = None
 	while 1:
 		# Jump.
 		if controller.hasStart():
+			if start_time is not None:
+				delta_time = time.time() - start_time
+			else:
+				start_time = time.time()
+				delta_time = 0
 			distanceRan = controller.getDistanceRan()
 			crashed = controller.getCrashed()
 			if not crashed:
 				# print controller.getObstacles()
 				# print distanceRan
-				if start_time is not None:
-					delta_time = time.time() - start_time
-				else:
-					delta_time = 0
-				img_processor = imageProcessor()
 				img_processor.detectObjects(controller.getImage(), delta_time)
 				birds, cacti = img_processor.getObstacles()
 				status = ''
@@ -40,9 +41,7 @@ def main():
 					print 'tRex :', img_processor.tRex, status
 					print 'brids:', img_processor.birds
 					print 'cacti:', img_processor.cacti
-
-			start_time = time.time()
-		time.sleep(0.005)
+		time.sleep(0.0005)
 
 if __name__ == "__main__":
 	main()

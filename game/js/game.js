@@ -556,9 +556,6 @@ Runner.prototype = {
       this.tRex.update(deltaTime);
       this.raq();
     }
-    var outputDiv = document.getElementById('output');
-    output.innerText = '';
-    output.innerText = this.distanceRan;
   },
 
   /**
@@ -740,7 +737,8 @@ Runner.prototype = {
   raq: function() {
     if (!this.drawPending) {
       this.drawPending = true;
-      this.raqId = requestAnimationFrame(this.update.bind(this));
+      // this.raqId = requestAnimationFrame(this.update.bind(this));
+      this.raqId = (function(callback){window.setTimeout(callback, 1000 / 60);})(this.update.bind(this));
     }
   },
 
