@@ -32,6 +32,9 @@ class objectRectangle(object):
 	def __repr__(self):
 		return self.__str__()
 
+	def getInfo(self):
+		return self.x, self.y, self.w, self.h, self.speed
+
 def rectSimilar(rect1, rect2):
 	return isNear(rect1.w, rect2.w, 3) and isNear(rect1.h, rect2.h, 3)
 
@@ -39,60 +42,103 @@ class imageProcessor(object):
 	"""
 	Extract features from game screenshots
 	"""
-	def isTRex(self, x, y, w, h):
-		if isNear(w, 85, 5) and isNear(h, 90, 5):
+	def __init__(self):
+		self.tRex = None
+		self.birds = []
+		self.cacti = []
+		self.isJumping = False
+		self.isDropping = False
+		self.isDucking = False
+
+	def isTRex(self, rect):
+		if isNear(rect.w, 85, 5) and isNear(rect.h, 90, 5):
 			return True
 		# Ducking
-		if isNear(w, 116, 5) and isNear(h, 60, 3):
+		if isNear(rect.w, 116, 5) and isNear(rect.h, 60, 3):
+			self.isDucking = True
 			return True
 		return False
 
-	def isBird(self, w, h):
+	def biggerThanTRex(self, rect):
+		if rect.w >= 82 and rect.h >= 80:
+			return True
+		if rect.w >= 100 and rect.h > 50:
+			self.Ducking = True
+			return True
+		return False
+
+	def isBird(self, rect):
 		# (w, h): (86, 54), (86, 62)
-		return isNear(w, 92, 3) and (isNear(h, 60, 3) or isNear(h, 68, 3))
+		return isNear(rect.w, 92, 3) and (isNear(rect.h, 60, 3) or isNear(rect.h, 68, 3))
 
-	def isCactus(self, w, h):
-		return isNear(h, 70, 2) or isNear(h, 100, 2)
+	def isCactus(self, rect):
+		return isNear(rect.h, 70, 2) or isNear(rect.h, 100, 2)
 
-	def isEndGahmeLogo(self, w, h):
-		return isNear(w, 72, 2) and isNear(h, 64, 2)
+	def isEndGahmeLogo(self, rect):
+		return isNear(rect.w, 72, 2) and isNear(rect.h, 64, 2)
 
 	def detectObjects(self, img, delta_time):
 		print "----- delta_time: ", delta_time
 		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
 		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
-		# name = ''
-		birds = []
-		cacti = []
+		objectRects = []
 		for contour in contours:
 			x, y, w, h = cv2.boundingRect(contour)
-			# Ignoring things that the trex have passed.
-			if x < 40:
-				continue
 			# Ignoring too small bounding boxes.
 			if w < 30 or h < 30:
 				continue
-			roi = img[y : y + h, x : x + w]
-			if self.isTRex(x, y, w, h):
-				self.tRex = objectRectangle(x, y, w, h)
-				# name += 'TRex '
-			elif self.isBird(w, h):
-				birds.append(objectRectangle(x, y, w, h))
-				# name += 'Bird '
-			elif self.isCactus(w, h):
-				cacti.append(objectRectangle(x, y, w, h))
-				# name += 'Cactus '
-			else:
-				# name += 'Unrecognized '
-				print "WARN: Unrecognized Object"
-				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
-			# cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
-		# cv2.imwrite(name + '.jpg', img)
+			objectRects.append(objectRectangle(x, y, w, h))
+			cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
+		objectRects.sort(key=operator.attrgetter('x'))
 
-		# Calculates speed.
+		name = ''
+
+		birds = []
+		cacti = []
+		tRex = None
+		self.isDucking = False
+		self.isDropping = False
+		self.isJumping = False
+		for rect in objectRects:
+			if self.isTRex(rect):
+				name += 'TRex '
+				tRex = rect
+			elif self.isBird(rect):
+				name += 'Bird '
+				if rect.x > 40: birds.append(rect)
+			elif self.isCactus(rect):
+				name += 'Cactus '
+				if rect.x > 40: cacti.append(rect)
+			elif tRex is None and self.biggerThanTRex(rect):
+				name += 'TRex '
+				print "WARN: Trex might run into other object"
+				tRex = rect
+				x, y, w, h, s = rect.getInfo()
+				roi = img[y : y + h, x : x + w]
+				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
+				cv2.imwrite(name + '.jpg', img)
+			elif rect.x > 10:
+				name += 'Unrecognized '
+				print "WARN: Unrecognized Object"
+				x, y, w, h, s = rect.getInfo()
+				roi = img[y : y + h, x : x + w]
+				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
+				cv2.imwrite(name + '.jpg', img)
+
+		# T-rex jumping or dropping.
+		if self.tRex is not None and tRex is not None:
+			y_delta = (self.tRex.y + self.tRex.h) - (tRex.y + tRex.h)
+			if y_delta >= 1:
+				self.isJumping = True
+			elif y_delta <= -1:
+				self.isDropping = True
+			if delta_time > 0:
+				tRex.speed = float(y_delta) / delta_time
+		self.tRex = tRex
+
+		# Calculates speed for obstacles.
 		if delta_time > 0 and len(birds) > 0 and len(self.birds) > 0:
-			birds.sort(key=operator.attrgetter('x'))
 			match_pos = 0
 			# Find the first matching bird. 
 			for match_pos in range(len(self.birds)):
@@ -104,11 +150,9 @@ class imageProcessor(object):
 				if match_pos + i >= len(self.birds): break
 				if rectSimilar(birds[i], self.birds[match_pos + i]):
 					birds[i].speed = float(self.birds[match_pos + i].x - birds[i].x) / delta_time
-
 		self.birds = birds
 
 		if delta_time > 0 and len(cacti) > 0 and len(self.cacti) > 0:
-			cacti.sort(key=operator.attrgetter('x'))
 			match_pos = 0
 			for match_pos in range(len(self.cacti)):
 				if rectSimilar(cacti[0], self.cacti[match_pos]):
@@ -129,7 +173,7 @@ class imageProcessor(object):
 def main():
 	img = cv2.imread('image.jpg', 0)
 	processor = imageProcessor()
-	processor.findObstacles(img)
+	processor.detectObjects(img, 0)
 	
 if __name__ == '__main__':
 	main()

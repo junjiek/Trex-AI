@@ -11,6 +11,7 @@ import time
 
 # Path to t-rex game html page.
 game_path = 'file://' + os.path.abspath(os.path.join(os.getcwd(), '..')) + '/game/index.html'
+get_features_from_image = True
 
 class TrexGameController(object):
 	"""
@@ -25,7 +26,9 @@ class TrexGameController(object):
 		self.driver.get(self.game_path)
 		self.body = self.driver.find_element_by_tag_name('body')
 		self.canvas = self.driver.find_element_by_id('game-canvas')
-		self.img_processor = imageProcessor()
+		self.img_processor = None
+		if get_features_from_image:
+			self.img_processor = imageProcessor()
 	
 	def getDistanceRan(self):
 		return self.driver.execute_script("return tRexGameRunner.distanceRan;")
@@ -45,33 +48,47 @@ class TrexGameController(object):
 		return self.driver.execute_script("return tRexGameRunner.runningTime > tRexGameRunner.config.CLEAR_TIME;");
 
 	def getObstacles(self):
-		obstacle_length = self.driver.execute_script("return tRexGameRunner.horizon.obstacles.length;")
-		if obstacle_length is None:
-			return []
-		obstacles = []
-		for i in range(obstacle_length):
-			xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
-			width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
-			obstacles.append((xPos, width))
-		return obstacles
+		if self.img_processor is None:
+			obstacle_length = self.driver.execute_script("return tRexGameRunner.horizon.obstacles.length;")
+			if obstacle_length is None:
+				return []
+			obstacles = []
+			for i in range(obstacle_length):
+				xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
+				width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
+				obstacles.append((xPos, width))
+			return obstacles
+		return self.img_processor.cacti, self.img_processor.birds
 
 	def getObjectInfoFromImage(self, delta_time):
 		self.img_processor.detectObjects(self.getImage(), delta_time)
-		print 'tRex :', self.img_processor.tRex
-		print 'cacti:', self.img_processor.cacti
-		print 'birds:', self.img_processor.birds
 
 	def getCurrentSpeed(self):
 		return self.driver.execute_script("return tRexGameRunner.currentSpeed;")
 
 	def isJumping(self):
-		return self.driver.execute_script("return tRexGameRunner.tRex.jumping;")
+		if self.img_processor is None:
+			return self.driver.execute_script("return tRexGameRunner.tRex.jumping;")
+		return self.img_processor.isJumping
+
+	def isDropping(self):
+		if self.img_processor is None:
+			return False
+		return self.img_processor.isDropping
+
+	def isDucking(self):
+		if self.img_processor is None:
+			return False
+		return self.img_processor.isDucking
 
 	def isHIDPI(self):
 		return self.driver.execute_script("return IS_HIDPI;")
 
 	def getJumpVelocity(self):
-		return self.driver.execute_script("return tRexGameRunner.tRex.jumpVelocity;")
+		if self.img_processor is None:
+			return self.driver.execute_script("return tRexGameRunner.tRex.jumpVelocity;")
+		else:
+			return self.img_processor.tRex.speed
 
 	def restart(self):
 		self.body.send_keys(Keys.SPACE)
@@ -99,6 +116,18 @@ def main():
 				else:
 					delta_time = 0
 				controller.getObjectInfoFromImage(delta_time)
+				birds, cacti = controller.getObstacles()
+				status = ''
+				if controller.isJumping():
+					status += 'jumping'
+				if controller.isDropping():
+					status += 'dropping'
+				if controller.isDucking():
+					status += 'ducking'
+				print 'tRex :', controller.img_processor.tRex, status
+				print 'brids:', birds
+				print 'cacti:', cacti
+
 			start_time = time.time()
 		time.sleep(0.005)
 
