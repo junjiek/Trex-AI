@@ -11,7 +11,6 @@ import time
 
 # Path to t-rex game html page.
 game_path = 'file://' + os.path.abspath(os.path.join(os.getcwd(), '..')) + '/game/index.html'
-get_features_from_image = True
 
 class TrexGameController(object):
 	"""
@@ -26,9 +25,6 @@ class TrexGameController(object):
 		self.driver.get(self.game_path)
 		self.body = self.driver.find_element_by_tag_name('body')
 		self.canvas = self.driver.find_element_by_id('game-canvas')
-		self.img_processor = None
-		if get_features_from_image:
-			self.img_processor = imageProcessor()
 	
 	def getDistanceRan(self):
 		return self.driver.execute_script("return tRexGameRunner.distanceRan;")
@@ -48,47 +44,30 @@ class TrexGameController(object):
 		return self.driver.execute_script("return tRexGameRunner.runningTime > tRexGameRunner.config.CLEAR_TIME;");
 
 	def getObstacles(self):
-		if self.img_processor is None:
-			obstacle_length = self.driver.execute_script("return tRexGameRunner.horizon.obstacles.length;")
-			if obstacle_length is None:
-				return []
-			obstacles = []
-			for i in range(obstacle_length):
-				xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
-				width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
-				obstacles.append((xPos, width))
-			return obstacles
-		return self.img_processor.cacti, self.img_processor.birds
-
-	def getObjectInfoFromImage(self, delta_time):
-		self.img_processor.detectObjects(self.getImage(), delta_time)
+		obstacle_length = self.driver.execute_script("return tRexGameRunner.horizon.obstacles.length;")
+		if obstacle_length is None:
+			return []
+		obstacles = []
+		for i in range(obstacle_length):
+			xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
+			width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
+			obstacles.append((xPos, width))
+		return obstacles
 
 	def getCurrentSpeed(self):
 		return self.driver.execute_script("return tRexGameRunner.currentSpeed;")
 
 	def isJumping(self):
-		if self.img_processor is None:
-			return self.driver.execute_script("return tRexGameRunner.tRex.jumping;")
-		return self.img_processor.isJumping
-
-	def isDropping(self):
-		if self.img_processor is None:
-			return False
-		return self.img_processor.isDropping
+		return self.driver.execute_script("return tRexGameRunner.tRex.jumping;")
 
 	def isDucking(self):
-		if self.img_processor is None:
-			return False
-		return self.img_processor.isDucking
+		return self.driver.execute_script("return tRexGameRunner.tRex.ducking;")
 
 	def isHIDPI(self):
 		return self.driver.execute_script("return IS_HIDPI;")
 
 	def getJumpVelocity(self):
-		if self.img_processor is None:
-			return self.driver.execute_script("return tRexGameRunner.tRex.jumpVelocity;")
-		else:
-			return self.img_processor.tRex.speed
+		return self.driver.execute_script("return tRexGameRunner.tRex.jumpVelocity;")
 
 	def restart(self):
 		self.body.send_keys(Keys.SPACE)
@@ -115,18 +94,25 @@ def main():
 					delta_time = time.time() - start_time
 				else:
 					delta_time = 0
-				controller.getObjectInfoFromImage(delta_time)
-				birds, cacti = controller.getObstacles()
+				img_processor = imageProcessor()
+				img_processor.detectObjects(controller.getImage(), delta_time)
+				birds, cacti = img_processor.getObstacles()
 				status = ''
-				if controller.isJumping():
+				printInfo = False
+				if img_processor.jumping and not controller.isJumping():
+					printInfo = True
 					status += 'jumping'
-				if controller.isDropping():
+				if img_processor.dropping and not controller.isJumping():
+					printInfo = True
 					status += 'dropping'
-				if controller.isDucking():
+				if img_processor.ducking and not controller.isDucking():
+					printInfo = True
 					status += 'ducking'
-				print 'tRex :', controller.img_processor.tRex, status
-				print 'brids:', birds
-				print 'cacti:', cacti
+				if printInfo:
+					print 'Wrong status: '
+					print 'tRex :', img_processor.tRex, status
+					print 'brids:', img_processor.birds
+					print 'cacti:', img_processor.cacti
 
 			start_time = time.time()
 		time.sleep(0.005)

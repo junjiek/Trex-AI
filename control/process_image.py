@@ -4,9 +4,6 @@ import operator
 from matplotlib import pyplot as plt
 from enum import Enum
 
-
-# TODO: the dinasour run into an obstacle.
-
 def isNear(value, target, epsilon):
 	return abs(value - target) < epsilon
 
@@ -46,16 +43,16 @@ class imageProcessor(object):
 		self.tRex = None
 		self.birds = []
 		self.cacti = []
-		self.isJumping = False
-		self.isDropping = False
-		self.isDucking = False
+		self.jumping = False
+		self.dropping = False
+		self.ducking = False
 
 	def isTRex(self, rect):
 		if isNear(rect.w, 85, 5) and isNear(rect.h, 90, 5):
 			return True
 		# Ducking
 		if isNear(rect.w, 116, 5) and isNear(rect.h, 60, 3):
-			self.isDucking = True
+			self.ducking = True
 			return True
 		return False
 
@@ -77,8 +74,11 @@ class imageProcessor(object):
 	def isEndGahmeLogo(self, rect):
 		return isNear(rect.w, 72, 2) and isNear(rect.h, 64, 2)
 
+	def getObstacles(self):
+		return self.cacti, self.birds
+
 	def detectObjects(self, img, delta_time):
-		print "----- delta_time: ", delta_time
+		# print "----- delta_time: ", delta_time
 		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
 		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
@@ -97,9 +97,9 @@ class imageProcessor(object):
 		birds = []
 		cacti = []
 		tRex = None
-		self.isDucking = False
-		self.isDropping = False
-		self.isJumping = False
+		self.ducking = False
+		self.dropping = False
+		self.jumping = False
 		for rect in objectRects:
 			if self.isTRex(rect):
 				name += 'TRex '
@@ -130,9 +130,9 @@ class imageProcessor(object):
 		if self.tRex is not None and tRex is not None:
 			y_delta = (self.tRex.y + self.tRex.h) - (tRex.y + tRex.h)
 			if y_delta >= 1:
-				self.isJumping = True
+				self.jumping = True
 			elif y_delta <= -1:
-				self.isDropping = True
+				self.dropping = True
 			if delta_time > 0:
 				tRex.speed = float(y_delta) / delta_time
 		self.tRex = tRex
