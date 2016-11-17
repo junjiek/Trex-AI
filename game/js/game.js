@@ -737,8 +737,8 @@ Runner.prototype = {
   raq: function() {
     if (!this.drawPending) {
       this.drawPending = true;
-      // this.raqId = requestAnimationFrame(this.update.bind(this));
-      this.raqId = (function(callback){window.setTimeout(callback, 1000 / 60);})(this.update.bind(this));
+      this.raqId = requestAnimationFrame(this.update.bind(this));
+      // this.raqId = (function(callback){window.setTimeout(callback, 1000 / 60);})(this.update.bind(this));
     }
   },
 
@@ -1434,7 +1434,7 @@ Obstacle.types = [
     yPos: [ 100, 75, 50 ], // Variable height.
     yPosMobile: [ 100, 50 ], // Variable height mobile.
     multipleSpeed: 999,
-    minSpeed: 0,
+    minSpeed: 8.5,
     minGap: 150,
     collisionBoxes: [
       new CollisionBox(15, 15, 16, 5),

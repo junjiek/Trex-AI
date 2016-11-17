@@ -81,7 +81,7 @@ class imageProcessor(object):
 		# print "----- delta_time: ", delta_time
 		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
 		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
-		cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
+		# cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
 		objectRects = []
 		for contour in contours:
 			x, y, w, h = cv2.boundingRect(contour)
@@ -89,7 +89,7 @@ class imageProcessor(object):
 			if w < 30 or h < 30:
 				continue
 			objectRects.append(objectRectangle(x, y, w, h))
-			cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
+			# cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
 		objectRects.sort(key=operator.attrgetter('x'))
 
 		# name = ''
@@ -121,10 +121,10 @@ class imageProcessor(object):
 			elif rect.x > 10:
 				# name += 'Unrecognized '
 				print "WARN: Unrecognized Object"
-				x, y, w, h, s = rect.getInfo()
-				roi = img[y : y + h, x : x + w]
-				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
-				# cv2.imwrite(name + '.jpg', img)
+				# x, y, w, h, s = rect.getInfo()
+				# roi = img[y : y + h, x : x + w]
+				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
+			# cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:
@@ -158,16 +158,10 @@ class imageProcessor(object):
 				if rectSimilar(cacti[0], self.cacti[match_pos]):
 					cacti[0].speed = float(self.cacti[match_pos].x - cacti[0].x) / delta_time
 					break
-
 			for i in range(1, len(cacti)):
 				if match_pos + i >= len(self.cacti): break
 				if rectSimilar(cacti[i], self.cacti[match_pos + i]):
 					cacti[i].speed = float(self.cacti[match_pos + i].x - cacti[i].x) / delta_time
-
-			for c in cacti:
-				for pre_c in self.cacti:
-					if rectSimilar(c, pre_c):
-						c.speed = float(pre_c.x - c.x) / delta_time
 		self.cacti = cacti
 
 
