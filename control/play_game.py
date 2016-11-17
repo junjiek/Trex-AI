@@ -16,8 +16,8 @@ def main():
 			if start_time is not None:
 				delta_time = time.time() - start_time
 			else:
-				start_time = time.time()
 				delta_time = 0
+			start_time = time.time()
 			distanceRan = controller.getDistanceRan()
 			crashed = controller.getCrashed()
 			if not crashed:
