@@ -24,11 +24,7 @@ class NewGame(object):
                 if self.controller.getCrashed():
                     print 'Num of Jump', self.NumJump
                     deltaFactor = (self.LastParams[0] * 0.1)
-                    #print trex
-                    #print img_processor
-                    if (self.controller.isJumping or self.controller.getJumpVelocity() > 0):
-                        #self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
-                        #perceptron.propagate(learningRate, [0, 1]) #you should remain on ground
+                    if (self.controller.isJumping and self.controller.getJumpVelocity() > 0):
 
                         self.LastParams[0] = self.LastParams[0] + deltaFactor;
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
@@ -38,10 +34,8 @@ class NewGame(object):
                         print 'hit face ------------------stay'
                         #perceptron.propagate(learningRate, [1, 0])#you should have jumped
 
-                    elif (self.controller.getJumpVelocity() < 0):
-                        #perceptron.activate(self.LastParams)
-                        #umm, we hit it on face :ouch: :ouch:
-                        #try to jump from a distance
+                    elif (self.controller.isJumping and self.controller.getJumpVelocity() < 0):
+
                         self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                         print 'hit feet ------------------ stay'
                         self.LastParams[0] = self.LastParams[0] - deltaFactor
@@ -55,19 +49,17 @@ class NewGame(object):
                     self.NumJump = 0
 
                 else:
-                    self.img_processor.detectObjects(self.controller.getImage(), delta_time)
-
                     NearestObstacle = obstacle_list[0]
                     params = []
                     if NearestObstacle == None:
                         return
-                    params.append(NearestObstacle[0][0])#position
-                    params.append(NearestObstacle[0][1])#weight
-                    params.append(NearestObstacle[0][2])#height
+                    params.append(NearestObstacle[0])#position
+                    params.append(NearestObstacle[1])#weight
+                    params.append(NearestObstacle[2])#height
                     params.append(round(self.controller.getCurrentSpeed()))#speed with multiply bias
                     category, confidence = self.nn.TestModel(array([params]))
                     #confidence = output[0] - output[1] - 0.01 #weight bias
-                    #category = [0]
+                    category = [0]
                     if (category[0] == 0):#jump if network is really confident
                         #Jump jump jump :D !
                         if (self.controller.getJumpVelocity() == 0):
@@ -79,12 +71,9 @@ class NewGame(object):
                             self.LastParams = params
 
                     else:
-                        if (self.img_processor.jumping):
+                        if (self.controller.isJumping()):
                             self.controller.duck()
                             self.LastParams = params#last move activation
-                    #self.LastRealParams = params#last frame activation
-                #well well, our human mind can retain image upto 25ms i.e. 40fps
-                #obviously no brain is ideal so :p 20ms :D !
             else:
                 time.sleep(0.1)
 
