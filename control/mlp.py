@@ -10,7 +10,7 @@ class MLP(object):
 
     def BuildModel(self):
         model = Sequential()
-        model.add(Dense(output_dim=4, input_dim=4))
+        model.add(Dense(output_dim=4, input_dim=8))
         model.add(Activation("relu"))
         model.add(Dense(2, init='normal'))
         model.add(Activation("softmax"))

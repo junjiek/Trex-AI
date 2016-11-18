@@ -9,7 +9,7 @@ class NewGame(object):
         self.controller = controller
         self.img_processor = img_processor
         self.start_time = start_time
-        self.LastParams = [1,1,1,1]
+        self.LastParams = [1 for i in range(8)]
         #self.LastRealParams = [1,1,1]
         self.nn = nn
         self.WaitonCrash = False
@@ -22,29 +22,29 @@ class NewGame(object):
                 if len(obstacle_list) == 0:
                     return
                 if self.controller.getCrashed():
-                    print 'Num of Jump', self.NumJump
+                    #print 'Num of Jump', self.NumJump
                     deltaFactor = (self.LastParams[0] * 0.1)
                     if (self.controller.isJumping and self.controller.getJumpVelocity() > 0):
 
                         self.LastParams[0] = self.LastParams[0] + deltaFactor;
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
-                        print 'hit face ------------------jump'
+                        #print 'hit face ------------------jump'
                         self.LastParams[0] = self.LastParams[0] + deltaFactor;
                         self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
-                        print 'hit face ------------------stay'
+                        #print 'hit face ------------------stay'
                         #perceptron.propagate(learningRate, [1, 0])#you should have jumped
 
                     elif (self.controller.isJumping and self.controller.getJumpVelocity() < 0):
 
                         self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
-                        print 'hit feet ------------------ stay'
+                        #print 'hit feet ------------------ stay'
                         self.LastParams[0] = self.LastParams[0] - deltaFactor
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
-                        print 'hit feet ------------------- jump'
+                        #print 'hit feet ------------------- jump'
                         #perceptron.propagate(learningRate, [1, 0])
                     else:
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
-                        print 'hit when not jump'
+                        #print 'hit when not jump'
                     self.controller.restart()
                     self.NumJump = 0
 
@@ -57,16 +57,25 @@ class NewGame(object):
                     params.append(NearestObstacle[1])#weight
                     params.append(NearestObstacle[2])#height
                     params.append(round(self.controller.getCurrentSpeed()))#speed with multiply bias
+
+                    if len(obstacle_list) <= 1:
+                        params += [1,1,1,1]
+                    else:
+                        params += [obstacle_list[1][i] for i in range(3)]
+                        params += [round(self.controller.getCurrentSpeed())]
                     category, confidence = self.nn.TestModel(array([params]))
                     #confidence = output[0] - output[1] - 0.01 #weight bias
-                    category = [0]
+                    #category = [0]
                     if (category[0] == 0):#jump if network is really confident
                         #Jump jump jump :D !
+                        print params[0]/params[3]
+                        if params[0]/params[3] > 30:
+                            return
                         if (self.controller.getJumpVelocity() == 0):
                             if self.LastParams != [1,1,1]:
                                 self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                                 self.NumJump += 1
-                                print 'previous jump succeed'
+                                #print 'previous jump succeed'
                             self.controller.jump()
                             self.LastParams = params
 
