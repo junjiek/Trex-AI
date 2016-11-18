@@ -3,13 +3,13 @@ from image_processor import imageProcessor
 from controller import TrexGameController
 import time
 from mlp import *
-
+NumObstacle = 3
 class NewGame(object):
     def __init__(self, controller, img_processor, start_time, nn):
         self.controller = controller
         self.img_processor = img_processor
         self.start_time = start_time
-        self.LastParams = [1 for i in range(8)]
+        self.LastParams = [1 for i in range(NumObstacle*4)]
         #self.LastRealParams = [1,1,1]
         self.nn = nn
         self.WaitonCrash = False
@@ -49,27 +49,27 @@ class NewGame(object):
                     self.NumJump = 0
 
                 else:
-                    NearestObstacle = obstacle_list[0]
                     params = []
-                    if NearestObstacle == None:
+                    if obstacle_list[0] == None:
                         return
-                    params.append(NearestObstacle[0])#position
+                    '''params.append(NearestObstacle[0])#position
                     params.append(NearestObstacle[1])#weight
                     params.append(NearestObstacle[2])#height
-                    params.append(round(self.controller.getCurrentSpeed()))#speed with multiply bias
+                    params.append(round(self.controller.getCurrentSpeed()))#speed with multiply bias'''
 
-                    if len(obstacle_list) <= 1:
-                        params += [1,1,1,1]
-                    else:
-                        params += [obstacle_list[1][i] for i in range(3)]
-                        params += [round(self.controller.getCurrentSpeed())]
+                    for _ in range(NumObstacle):
+                        if len(obstacle_list) < 1+_:
+                            params += [1,1,1,1]
+                        else:
+                            params += [obstacle_list[_][i] for i in range(3)]
+                            params += [round(self.controller.getCurrentSpeed())]
                     category, confidence = self.nn.TestModel(array([params]))
                     #confidence = output[0] - output[1] - 0.01 #weight bias
                     #category = [0]
                     if (category[0] == 0):#jump if network is really confident
                         #Jump jump jump :D !
                         print params[0]/params[3]
-                        if params[0]/params[3] > 30:
+                        if params[0]/params[3] > 27:
                             return
                         if (self.controller.getJumpVelocity() == 0):
                             if self.LastParams != [1,1,1]:
