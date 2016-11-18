@@ -32,19 +32,23 @@ class NewGame(object):
                     self.nn.TrainModel(array([self.LastRealParams]), array([[1,0]]))
                     #perceptron.propagate(learningRate, [1, 0])#you should have jumped
 
-                else:
+                elif (self.img_processor.dropping):
                     #perceptron.activate(self.LastParams)
                     #umm, we hit it on face :ouch: :ouch:
                     #try to jump from a distance
-                    self.LastParams[0] = self.LastParams[0] + deltaFactor
+                    self.LastParams[0] = self.LastParams[0] - deltaFactor
                     self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                     #perceptron.propagate(learningRate, [1, 0])
+                else:
+                    self.LastParams[0] = self.LastParams[0] + deltaFactor
+                    self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                 self.controller.restart()
 
             else:
                 self.img_processor.detectObjects(self.controller.getImage(), delta_time)
                 tmp = [each for each in (birds, cacti) if len(each) != 0]
                 if tmp == []:
+                    self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                     return
                 NearestObstacle = min(tmp)
                 params = []
