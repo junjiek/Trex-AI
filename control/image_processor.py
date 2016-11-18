@@ -121,9 +121,9 @@ class imageProcessor(object):
 			elif rect.x > 10:
 				# name += 'Unrecognized '
 				print "WARN: Unrecognized Object"
-				# x, y, w, h, s = rect.getInfo()
-				# roi = img[y : y + h, x : x + w]
-				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
+				x, y, w, h, s = rect.getInfo()
+				roi = img[y : y + h, x : x + w]
+				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
 			# cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
