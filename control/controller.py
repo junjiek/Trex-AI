@@ -45,7 +45,8 @@ class TrexGameController(object):
 		for i in range(obstacle_length):
 			xPos = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].xPos;")
 			width = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].width;")
-			obstacles.append((xPos, width))
+			height = self.driver.execute_script("return tRexGameRunner.horizon.obstacles[" + str(i) + "].height;")
+			obstacles.append((xPos, width, height))
 		return obstacles
 
 	def update(self):
