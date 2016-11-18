@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/brain.py" afterPath="$PROJECT_DIR$/control/brain.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/data/my_model_weights_un.h5" afterPath="$PROJECT_DIR$/control/data/my_model_weights_un.h5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/image_processor.py" afterPath="$PROJECT_DIR$/control/image_processor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/mlp.py" afterPath="$PROJECT_DIR$/control/mlp.py" />
     </list>
     <ignored path="Trex-AI.iws" />
@@ -22,7 +21,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Trex-AI$play_game.coverage" NAME="play_game Coverage Results" MODIFIED="1479420942184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$controller.coverage" NAME="controller Coverage Results" MODIFIED="1479415396170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
-    <SUITE FILE_PATH="coverage/Trex-AI$brain.coverage" NAME="brain Coverage Results" MODIFIED="1479438899297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
+    <SUITE FILE_PATH="coverage/Trex-AI$brain.coverage" NAME="brain Coverage Results" MODIFIED="1479442543335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$mlp.coverage" NAME="mlp Coverage Results" MODIFIED="1479432619001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -38,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/control/controller.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -61,8 +60,8 @@
       <file leaf-file-name="brain.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/control/brain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.983871">
-              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.08064516">
+              <caret line="85" column="73" selection-start-line="85" selection-start-column="73" selection-end-line="85" selection-end-column="73" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -86,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/control/mlp.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -125,9 +124,10 @@
         <option value="$PROJECT_DIR$/brain.js" />
         <option value="$PROJECT_DIR$/control/play_game.py" />
         <option value="$PROJECT_DIR$/control/backend_brain.py" />
-        <option value="$PROJECT_DIR$/control/mlp.py" />
-        <option value="$PROJECT_DIR$/control/brain.py" />
         <option value="$PROJECT_DIR$/control/image_processor.py" />
+        <option value="$PROJECT_DIR$/control/mlp.py" />
+        <option value="$PROJECT_DIR$/control/controller.py" />
+        <option value="$PROJECT_DIR$/control/brain.py" />
       </list>
     </option>
   </component>
@@ -537,41 +537,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/play_game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/mlp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -585,10 +555,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/control/mlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/control/brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.983871">
-          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.08064516">
+          <caret line="85" column="73" selection-start-line="85" selection-start-column="73" selection-end-line="85" selection-end-column="73" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

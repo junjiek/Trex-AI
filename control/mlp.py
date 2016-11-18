@@ -27,7 +27,7 @@ class MLP(object):
     def TrainModel(self, X_train, Y_train):
         #model.fit(X_train, Y_train, nb_epoch=5, batch_size=32)
         #self.model.train_on_batch(X_train, Y_train)
-        print X_train, Y_train
+        #print X_train, Y_train
         self.model.fit(X_train, Y_train,nb_epoch=5,verbose=0)
 
     def TestModel(self,X_test):
