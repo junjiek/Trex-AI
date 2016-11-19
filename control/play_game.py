@@ -47,6 +47,8 @@ def main():
 						controller.jump()
 					if ((firstObstcale.x + firstObstcale.w) - img_processor.tRex.x) / firstObstcale.speed < 0.4:
 						controller.jump()
+			else:
+				controller.restart()
 
 		
 
