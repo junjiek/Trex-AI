@@ -4,6 +4,7 @@ from controller import TrexGameController
 import time
 from mlp import *
 NumObstacle = 3
+MinNearTime = 27
 class NewGame(object):
     def __init__(self, controller, img_processor, start_time, nn):
         self.controller = controller
@@ -17,28 +18,33 @@ class NewGame(object):
     def StartGame(self):
         def Update():
             if self.controller.hasStart():
-                time.sleep(0.1)
+                #time.sleep(0.1)
                 obstacle_list = self.controller.getObstacles()
                 if len(obstacle_list) == 0:
                     return
                 if self.controller.getCrashed():
                     #print 'Num of Jump', self.NumJump
-                    deltaFactor = (self.LastParams[0] * 0.1)
+
                     if (self.controller.isJumping and self.controller.getJumpVelocity() > 0):
 
-                        self.LastParams[0] = self.LastParams[0] + deltaFactor;
+                        deltaFactor = (self.LastParams[1] / self.controller.getJumpVelocity() * self.controller.getCurrentSpeed())
+                        for i in range(len(self.LastParams)/4):
+                            self.LastParams[4*i] += deltaFactor
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                         #print 'hit face ------------------jump'
-                        self.LastParams[0] = self.LastParams[0] + deltaFactor;
+                        for i in range(len(self.LastParams)/4):
+                            self.LastParams[4*i] += deltaFactor
                         self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                         #print 'hit face ------------------stay'
                         #perceptron.propagate(learningRate, [1, 0])#you should have jumped
 
                     elif (self.controller.isJumping and self.controller.getJumpVelocity() < 0):
 
+                        deltaFactor = self.LastParams[1]
                         self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                         #print 'hit feet ------------------ stay'
-                        self.LastParams[0] = self.LastParams[0] - deltaFactor
+                        for i in range(len(self.LastParams)/4):
+                            self.LastParams[4*i] -= deltaFactor;
                         self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                         #print 'hit feet ------------------- jump'
                         #perceptron.propagate(learningRate, [1, 0])
@@ -69,10 +75,10 @@ class NewGame(object):
                     if (category[0] == 0):#jump if network is really confident
                         #Jump jump jump :D !
                         print params[0]/params[3]
-                        if params[0]/params[3] > 27:
+                        if params[0]/params[3] > MinNearTime:
                             return
                         if (self.controller.getJumpVelocity() == 0):
-                            if self.LastParams != [1,1,1]:
+                            if self.LastParams != [1 for i in range(NumObstacle*4)]:
                                 self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
                                 self.NumJump += 1
                                 #print 'previous jump succeed'
@@ -83,8 +89,8 @@ class NewGame(object):
                         if (self.controller.isJumping()):
                             self.controller.duck()
                             self.LastParams = params#last move activation
-            else:
-                time.sleep(0.1)
+            #else:
+                #time.sleep(0.1)
 
         while True:
             if self.controller.hasStart():
