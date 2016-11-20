@@ -1,7 +1,7 @@
 from keras.models import Sequential
 from keras.optimizers import SGD
 from keras.models import model_from_json
-from keras.layers import Dense, Activation, Reshape
+from keras.layers import Dense, Activation, Flatten
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 from numpy import *
