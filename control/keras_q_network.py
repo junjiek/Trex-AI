@@ -26,5 +26,23 @@ class DeepQNN(object):
         model.add(MaxPooling2D(pool_size=(2, 2),border_mode='valid'))
         # reshape
         model.add(Flatten())
+        # ReLU
         model.add(Activation('relu'))
+        # fc
         model.add(Dense(2, input_dim=256))
+
+        sgd = SGD(lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
+        model.compile(loss='ninary_crossentropy', optimizer=sgd, class_mode='categorical')
+        self.model = model
+        return self.model
+
+    def TrainModel(self, X_train, Y_train):
+        self.model.fit(X_train, Y_train, nb_epoch=5, verbose=0)
+
+    def TestModel(self, X_test):
+        classes = self.model.predict_classes(X_test, verbose=0)
+        proba = self.model.predict_proba(X_test, verbose=0)
+
+if __name__=='__main__':
+    deep_q_nn = DeepQNN()
+    deep_q_nn.BuildModel()
