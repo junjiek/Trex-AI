@@ -1,6 +1,10 @@
 import pygame
 import sys
 def load():
+    IMAGES_PATH = (
+        'assets/offline-sprite-1x.png',
+        'assets/offline-sprite-2x.png',
+    )
     # path of player with different states
     PLAYER_PATH = (
         'assets/sprites/trex1.png',
@@ -43,7 +47,10 @@ def load():
     )
 
     IMAGES, SOUNDS, HITMASKS = {}, {}, {}
-
+    IMAGES['all'] = (
+        pygame.image.load(IMAGES_PATH[0]).convert_alpha(),
+        pygame.image.load(IMAGES_PATH[1]).convert_alpha(),
+    )
     # numbers sprites for score display
     IMAGES['numbers'] = (
         pygame.image.load('assets/sprites/0.png').convert_alpha(),

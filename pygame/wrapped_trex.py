@@ -7,14 +7,15 @@ import pygame.surfarray as surfarray
 import math
 from pygame.locals import *
 from itertools import cycle
+from copy import deepcopy
 
 FPS = 60
-SCREENWIDTH  = 1200
-SCREENHEIGHT = 300
+SCREENWIDTH  = 600
+SCREENHEIGHT = 150
 
 pygame.init()
 FPSCLOCK = pygame.time.Clock()
-SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
+SCREEN = pygame.display.set_mode((SCREENWIDTH * 2, SCREENHEIGHT * 2))
 pygame.display.set_caption('Trex')
 
 IMAGES, SOUNDS, HITMASKS = trex_utils.load()
@@ -27,6 +28,9 @@ LARGE_CACTUS_WIDTH = IMAGES['large_cactci'][0].get_width()
 LARGE_CACTUS_HEIGHT = IMAGES['large_cactci'][0].get_height()
 SMALL_CACTUS_WIDTH = IMAGES['small_cactci'][0].get_width()
 SMALL_CACTUS_HEIGHT = IMAGES['small_cactci'][0].get_height()
+IS_HIDPI = True
+
+IMAGE_SPRITE = IMAGES['all'][1]
 
 def getRandomNum(min, max):
     return int(math.floor(random.random() * (max - min + 1))) + min
@@ -41,14 +45,36 @@ class GameState:
         'GAMEOVER_CLEAR_TIME': 750,
         'GAP_COEFFICIENT': 0.6,
         'GRAVITY': 0.6,
-        'INITIAL_JUMP_VELOCITY': 12,
+        'INITIAL_JUMP_VELOCITY': 10,
         'MAX_CLOUDS': 6,
         'MAX_OBSTACLE_LENGTH': 3,
         'MAX_OBSTACLE_DUPLICATION': 2,
         'MAX_SPEED': 13,
-        'MIN_JUMP_HEIGHT': 35 * 2,
+        'MIN_JUMP_HEIGHT': 35,
         'SPEED': 6,
         'SPEED_DROP_COEFFICIENT': 3
+    }
+    spriteDefinition = {
+        'LDPI': {
+            'CACTUS_LARGE': {'x': 332, 'y': 2},
+            'CACTUS_SMALL': {'x': 228, 'y': 2},
+            'CLOUD': {'x': 86, 'y': 2},
+            'HORIZON': {'x': 2, 'y': 54},
+            'PTERODACTYL': {'x': 134, 'y': 2},
+            'RESTART': {'x': 2, 'y': 2},
+            'TEXT_SPRITE': {'x': 484, 'y': 2},
+            'TREX': {'x': 677, 'y': 2}
+        },
+        'HDPI': {
+            'CACTUS_LARGE': {'x': 652, 'y': 2},
+            'CACTUS_SMALL': {'x': 446, 'y': 2},
+            'CLOUD': {'x': 166, 'y': 2},
+            'HORIZON': {'x': 2, 'y': 104},
+            'PTERODACTYL': {'x': 260, 'y': 2},
+            'RESTART': {'x': 2, 'y': 2},
+            'TEXT_SPRITE': {'x': 954, 'y': 2},
+            'TREX': {'x': 1338, 'y': 2}
+        }
     }
     def __init__(self):
         self.obstacles = []
@@ -58,6 +84,7 @@ class GameState:
             'WIDTH': SCREENWIDTH,
             'HEIGHT': SCREENHEIGHT,
         }
+        self.spriteDef = GameState.spriteDefinition['HDPI']
         self.msPerFrame = 1000 / FPS
         self.currentSpeed = GameState.config['SPEED']
         self.highestScore = 0
@@ -66,10 +93,11 @@ class GameState:
         self.crashed = False
         self.paused = False
         self.playCount = 0
-        self.horizon = Horizon(self.dimensions, GameState.config['GAP_COEFFICIENT'])
-        self.tRex = Trex()
+        self.horizon = Horizon(self.spriteDef, self.dimensions, GameState.config['GAP_COEFFICIENT'])
+        self.tRex = Trex(self.spriteDef['TREX'])
         # Distance meter
-        self.distanceMeter = DistanceMeter(self.dimensions['WIDTH'])
+        self.distanceMeter = DistanceMeter(self.spriteDef['TEXT_SPRITE'], self.dimensions['WIDTH'])
+        self.gameOverPanel = None
         self.adjustDimensions()
 
     def playIntro(self):
@@ -86,7 +114,6 @@ class GameState:
         self.playingIntro = False
         self.tRex.playingIntro = False
         self.playCount += 1
-
 
     def frame_step(self, input_actions):
         pygame.event.pump()
@@ -126,8 +153,7 @@ class GameState:
             # self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
 
             # Check for collisions.
-            # collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
-            collision = False
+            collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
             if not collision:
                 self.distanceRan += self.currentSpeed * deltaTime / self.msPerFrame
                 if (self.currentSpeed < GameState.config['MAX_SPEED']):
@@ -163,7 +189,7 @@ class GameState:
             self.distanceMeter.update(0, math.ceil(self.distanceRan))
             self.stop()
         else:
-            self.tRex.draw()
+            self.tRex.draw(0, 0)
 
         # Game over panel.
         if (self.crashed and self.gameOverPanel):
@@ -178,7 +204,7 @@ class GameState:
         self.tRex.update(100, 'CRASHED')
         # Game over panel.
         if self.gameOverPanel is None:
-            self.gameOverPanel = GameOverPanel(self.spriteDef.TEXT_SPRITE, self.spriteDef.RESTART, self.dimensions)
+            self.gameOverPanel = GameOverPanel(self.spriteDef['TEXT_SPRITE'], self.spriteDef['RESTART'], self.dimensions)
         else:
             self.gameOverPanel.draw()
 
@@ -209,6 +235,13 @@ class GameState:
         self.horizon.reset()
         self.tRex.reset()
 
+class CollisionBox:
+    """docstring for CollisionBox"""
+    def __init__(self, x, y, w, h):
+        self.x = x
+        self.y = y
+        self.width = w
+        self.height = h
 
 class Trex:
     config = {
@@ -216,7 +249,7 @@ class Trex:
         'GRAVITY': 0.6,
         'HEIGHT': 47,
         'HEIGHT_DUCK': 25,
-        'INITIAL_JUMP_VELOCITY': -12,
+        'INITIAL_JUMP_VELOCITY': -10,
         'INTRO_DURATION': 1500,
         'MAX_JUMP_HEIGHT': 30,
         'MIN_JUMP_HEIGHT': 30,
@@ -225,7 +258,13 @@ class Trex:
         'WIDTH': 44,
         'WIDTH_DUCK': 59
     }
-    def __init__(self):
+    collisionBoxes = {
+        'DUCKING': [CollisionBox(1, 18, 55, 25)],
+        'RUNNING':[ CollisionBox(22, 0, 17, 16), CollisionBox(1, 18, 30, 9), CollisionBox(10, 35, 14, 8), CollisionBox(1, 24, 29, 5), CollisionBox(5, 30, 21, 4), CollisionBox(9, 34, 15, 4)]
+    }
+    BLINK_TIMING = 7000
+    def __init__(self, spritePos):
+        self.spritePos = spritePos
         self.xPos = Trex.config['START_X_POS']
         self.yPos = 0
         # Current status.
@@ -239,7 +278,8 @@ class Trex:
         self.timer = 0
 
         # Position when on the ground.
-        self.groundYPos = 180
+        # self.groundYPos = 180
+        self.groundYPos = SCREENHEIGHT - Trex.config['HEIGHT'] - GameState.config['BOTTOM_PAD'];
         self.yPos = self.groundYPos
         self.minJumpHeight = self.groundYPos - Trex.config['MIN_JUMP_HEIGHT']
         self.msPerFrame = 1000 / 3
@@ -255,20 +295,21 @@ class Trex:
             self.status = status
             if self.status == 'WAITING':
                 self.msPerFrame = 1000 / 3
-                self.currentAnimFrames = [0, 1]
+                self.currentAnimFrames = [44, 0]
             elif self.status == 'RUNNING':
                 self.msPerFrame = 1000 / 12
-                self.currentAnimFrames = [2, 3]
+                self.currentAnimFrames = [88, 132]
             elif self.status == 'CRASHED':
                 self.msPerFrame = 1000 / 60
-                self.currentAnimFrames = [4, 5]
+                self.currentAnimFrames = [220]
             elif self.status == 'JUMPING':
                 self.msPerFrame = 1000 / 60
                 self.currentAnimFrames = [0]
             elif self.status == 'DUCKING':
                 self.msPerFrame = 1000 / 8
-                self.currentAnimFrames = [6, 7]
+                self.currentAnimFrames = [262, 321]
 
+        self.draw(self.currentAnimFrames[self.currentFrame], 0)
         # Update the frame position.
         if self.timer >= self.msPerFrame:
             if self.currentFrame >= len(self.currentAnimFrames) - 1:
@@ -279,18 +320,37 @@ class Trex:
         if self.speedDrop and self.yPos == self.groundYPos:
             self.speedDrop = False
             self.setDuck(True)
-        self.draw()
 
-    def draw(self):
+    def draw(self, x, y):
         # Ducking.
+        sourceX = x
+        sourceY = y
+        if self.ducking and self.status != 'CRASHED':
+            sourceWidth = self.config['WIDTH_DUCK']
+        else:
+            sourceWidth = self.config['WIDTH']
+        sourceHeight = self.config['HEIGHT']
+
+        if (IS_HIDPI):
+            sourceX *= 2
+            sourceY *= 2
+            sourceWidth *= 2
+            sourceHeight *= 2
+        sourceX += self.spritePos['x']
+        sourceY += self.spritePos['y']
         if (self.ducking and self.status != 'CRASHED'):
-            SCREEN.blit(IMAGES['player'][self.currentAnimFrames[self.currentFrame]], (self.xPos, self.yPos))
+            SCREEN.blit(IMAGE_SPRITE, \
+                (self.xPos * 2, self.yPos * 2, self.config['WIDTH_DUCK'], self.config['HEIGHT']), \
+                (sourceX, sourceY, sourceWidth, sourceHeight))
         else:
             # Crashed whilst ducking. Trex is standing up so needs adjustment.
             if (self.ducking and self.status == 'CRASHED'):
                 self.xPos+=1
             # Standing / running
-        SCREEN.blit(IMAGES['player'][self.currentAnimFrames[self.currentFrame]], (self.xPos, self.yPos))
+
+            SCREEN.blit(IMAGE_SPRITE, \
+                (self.xPos * 2, self.yPos * 2 , self.config['WIDTH'], self.config['HEIGHT']), \
+                (sourceX, sourceY, sourceWidth, sourceHeight))
 
     # def setBlinkDelay(self):
     #     self.blinkDelay = math.ceil(random.random() * Trex.config['BLINK_TIMING'])
@@ -373,41 +433,44 @@ class Trex:
 
 class Obstacle:
     types = [{
-        'name': 'small_cactci',
-        'width': 17 * 2,
-        'height': 35 * 2,
+        'type': 'CACTUS_SMALL',
+        'width': 17,
+        'height': 35,
         'spriteNum': 6,
-        'yPos': 105 * 2,
+        'yPos': 105,
         'multipleSpeed': 4,
         'minGap': 120,
         'minSpeed': 0,
+        'collisionBoxes': [CollisionBox(0, 7, 5, 27), CollisionBox(4, 0, 6, 34), CollisionBox(10, 4, 7, 14)],
     },{
-        'name': 'large_cactci',
-        'width': 25 * 2,
-        'height': 50 * 2,
+        'type': 'CACTUS_LARGE',
+        'width': 25,
+        'height': 50,
         'spriteNum': 6,
-        'yPos': 90 * 2,
+        'yPos': 90,
         'multipleSpeed': 7,
         'minGap': 120,
         'minSpeed': 0,
+        'collisionBoxes': [CollisionBox(0, 12, 7, 38), CollisionBox(8, 0, 7, 49), CollisionBox(13, 10, 10, 38)],
     },{
-        'name': 'birds',
-        'width': 46 * 2,
-        'height': 40 * 2,
+        'type': 'PTERODACTYL',
+        'width': 46,
+        'height': 40,
         'spriteNum': 1,
-        'yPos': [ 100 * 2, 75 * 2, 50 * 2 ],
+        'yPos': [ 100, 75, 50 ],
         'multipleSpeed': 999,
         'minSpeed': 0,
         'minGap': 150,
         'numFrames': 2,
         'frameRate': 1000/6,
-        'speedOffset': .8
+        'speedOffset': .8,
+        'collisionBoxes': [CollisionBox(15, 15, 16, 5), CollisionBox(18, 21, 24, 6), CollisionBox(2, 14, 4, 3), CollisionBox(6, 10, 4, 7), CollisionBox(10, 8, 6, 9)],
     }]
     MAX_GAP_COEFFICIENT = 1.5
     MAX_OBSTACLE_LENGTH = 3
-    def __init__(self, typeIdx, spritePos, dimensions, gapCoefficient, speed):
+    def __init__(self, typeIdx, spriteImgPos, dimensions, gapCoefficient, speed):
         self.typeConfig = Obstacle.types[typeIdx]
-        self.spritePos = spritePos
+        self.spritePos = spriteImgPos
         self.gapCoefficient = gapCoefficient
         self.size = getRandomNum(1, Obstacle.MAX_OBSTACLE_LENGTH)
         self.dimensions = dimensions
@@ -418,6 +481,7 @@ class Obstacle:
         self.height = 0
         self.gap = 0
         self.speedOffset = 0
+        self.collisionBoxes = []
         self.followingObstacleCreated = False
         # For animated obstacles.
         self.currentFrame = 0
@@ -427,6 +491,7 @@ class Obstacle:
     # Initialise the DOM for the obstacle.
     # @param {number} speed
     def init(self, speed):
+        self.collisionBoxes = deepcopy(self.typeConfig['collisionBoxes'])
         # Only allow sizing if we're at the right speed.
         if (self.size > 1 and self.typeConfig['multipleSpeed'] > speed):
           self.size = 1
@@ -444,6 +509,19 @@ class Obstacle:
 
         self.draw()
 
+        # Make collision box adjustments,
+        # Central box is adjusted to the size as one box.
+        #      ____        ______        ________
+        #    _|   |-|    _|     |-|    _|       |-|
+        #   | |<->| |   | |<--->| |   | |<----->| |
+        #   | | 1 | |   | |  2  | |   | |   3   | |
+        #   |_|___|_|   |_|_____|_|   |_|_______|_|
+        #
+        if (self.size > 1):
+            self.collisionBoxes[1].width = self.width - self.collisionBoxes[0].width -\
+                                           self.collisionBoxes[2].width
+            self.collisionBoxes[2].x = self.width - self.collisionBoxes[2].width
+
         # For obstacles that go at a different speed from the horizon.
         if 'speedOffset' in self.typeConfig:
             if random.random() > 0.5:
@@ -455,7 +533,23 @@ class Obstacle:
 
     # Draw and crop based on size.
     def draw(self):
-        SCREEN.blit(IMAGES[self.typeConfig['name']][self.spritePos + self.currentFrame], (self.xPos, self.yPos))
+        sourceWidth = self.typeConfig['width']
+        sourceHeight = self.typeConfig['height']
+
+        if (IS_HIDPI):
+            sourceWidth = sourceWidth * 2
+            sourceHeight = sourceHeight * 2
+
+        # X position in sprite.
+        sourceX = (sourceWidth * self.size) * (0.5 * (self.size - 1)) + self.spritePos['x']
+
+        # Animation frames.
+        if (self.currentFrame > 0):
+            sourceX += sourceWidth * self.currentFrame
+
+        SCREEN.blit(IMAGE_SPRITE, 
+            (self.xPos * 2, self.yPos * 2, self.typeConfig['width'] * self.size, self.typeConfig['height']),\
+            (sourceX, self.spritePos['y'], sourceWidth * self.size, sourceHeight))
 
     # Obstacle frame update.
     # @param {number} deltaTime
@@ -464,7 +558,7 @@ class Obstacle:
         if self.remove: return
         if 'speedOffset' in self.typeConfig:
             speed += self.speedOffset
-        self.xPos -= math.floor((speed * FPS / 1000) * deltaTime)
+        self.xPos -= math.floor((speed * FPS / 1000) * deltaTime) / 2
 
         # Update frame
         if 'numFrames' in self.typeConfig:
@@ -493,6 +587,7 @@ class Obstacle:
     # @return {boolean} Whether the obstacle is in the game area.
     def isVisible(self):
         return self.xPos + self.width > 0
+
 
 class GameOverPanel:
     dimensions = {
@@ -528,30 +623,38 @@ class GameOverPanel:
         textSourceWidth = dimensions['TEXT_WIDTH']
         textSourceHeight = dimensions['TEXT_HEIGHT']
 
-        textTargetX = Math.round(centerX - (dimensions.TEXT_WIDTH / 2))
-        textTargetY = Math.round((self.canvasDimensions.HEIGHT - 25) / 3)
-        textTargetWidth = dimensions.TEXT_WIDTH
-        textTargetHeight = dimensions.TEXT_HEIGHT
+        textTargetX = int(round(centerX - (dimensions['TEXT_WIDTH'] / 2)))
+        textTargetY = int(round((self.canvasDimensions['HEIGHT'] - 25) / 3))
+        textTargetWidth = dimensions['TEXT_WIDTH']
+        textTargetHeight = dimensions['TEXT_HEIGHT']
 
-        restartSourceWidth = dimensions.RESTART_WIDTH
-        restartSourceHeight = dimensions.RESTART_HEIGHT
-        restartTargetX = centerX - (dimensions.RESTART_WIDTH / 2)
-        restartTargetY = self.canvasDimensions.HEIGHT / 2
+        restartSourceWidth = dimensions['RESTART_WIDTH']
+        restartSourceHeight = dimensions['RESTART_HEIGHT']
+        restartTargetX = centerX - (dimensions['RESTART_WIDTH'] / 2)
+        restartTargetY = self.canvasDimensions['HEIGHT'] / 2
 
-        textSourceY *= 2
-        textSourceX *= 2
-        textSourceWidth *= 2
-        textSourceHeight *= 2
-        restartSourceWidth *= 2
-        restartSourceHeight *= 2
+        if IS_HIDPI:
+            textSourceY *= 2
+            textSourceX *= 2
+            textSourceWidth *= 2
+            textSourceHeight *= 2
+            restartSourceWidth *= 2
+            restartSourceHeight *= 2
 
-        textSourceX += self.textImgPos.x
-        textSourceY += self.textImgPos.y
+        textSourceX += self.textImgPos['x']
+        textSourceY += self.textImgPos['y']
 
         # Game over text from sprite.
-        SCREEN.blit(IMAGES['game_over'][0], (textTargetX, textTargetY))
+        SCREEN.blit(IMAGE_SPRITE,\
+            (textTargetX * 2, textTargetY * 2, textTargetWidth, textTargetHeight),\
+            (textSourceX, textSourceY, textSourceWidth, textSourceHeight))
         # Restart button.
-        SCREEN.blit(IMAGES['game_over'][1], (restartTargetX, restartTargetY))
+        SCREEN.blit(IMAGE_SPRITE,\
+            (restartTargetX * 2, restartTargetY * 2, dimensions['RESTART_WIDTH'], dimensions['RESTART_HEIGHT']),\
+            (self.restartImgPos['x'], self.restartImgPos['y'],
+            restartSourceWidth, restartSourceHeight))
+
+        
 
 class DistanceMeter:
     config = {
@@ -567,12 +670,12 @@ class DistanceMeter:
         'FLASH_ITERATIONS': 3
     }
     dimensions = {
-        'WIDTH': 10 * 2,
-        'HEIGHT': 13 * 2,
-        'DEST_WIDTH': 11 * 2
+        'WIDTH': 10,
+        'HEIGHT': 13,
+        'DEST_WIDTH': 11,
     }
     yPos = [0, 13, 27, 40, 53, 67, 80, 93, 107, 120]
-    def __init__(self, canvasWidth):
+    def __init__(self, spritePos, canvasWidth):
         self.x = 0
         self.y = 5
 
@@ -584,7 +687,7 @@ class DistanceMeter:
         self.defaultString = ''
         self.flashTimer = 0
         self.flashIterations = 0
-
+        self.spritePos = spritePos
         self.config = DistanceMeter.config
         self.maxScoreUnits = self.config['MAX_DISTANCE_UNITS']
         self.init(canvasWidth)
@@ -616,6 +719,8 @@ class DistanceMeter:
     def draw(self, digitPos, value, opt_highScore):
         sourceWidth = DistanceMeter.dimensions['WIDTH']
         sourceHeight = DistanceMeter.dimensions['HEIGHT']
+        sourceX = DistanceMeter.dimensions['WIDTH'] * value
+        sourceY = 0
 
         targetX = digitPos * DistanceMeter.dimensions['DEST_WIDTH']
         targetY = self.y
@@ -623,28 +728,25 @@ class DistanceMeter:
         targetHeight = DistanceMeter.dimensions['HEIGHT']
 
         # For high DPI we 2x source values.
-        sourceWidth *= 2
-        sourceHeight *= 2
+        if IS_HIDPI:
+            sourceWidth *= 2
+            sourceHeight *= 2
+            sourceX *= 2
+        sourceX += self.spritePos['x']
+        sourceY += self.spritePos['y']
+
         if (opt_highScore):
             # Left of the current score.
             highScoreX = self.x - (self.maxScoreUnits * 2) * DistanceMeter.dimensions['WIDTH']
-            SCREEN.blit(IMAGES['numbers'][value], (targetX + highScoreX, targetY + self.y))
+            targetX += highScoreX
+            targetY += self.y
         else:
-            SCREEN.blit(IMAGES['numbers'][value], (targetX + self.x, targetY + self.y))
+            targetX += self.x
+            targetY += self.y
 
-    def showScore(score):
-        """displays score in center of screen"""
-        scoreDigits = [int(x) for x in list(str(score))]
-        totalWidth = 0 # total width of all numbers to be printed
-
-        for digit in scoreDigits:
-            totalWidth += IMAGES['numbers'][digit].get_width()
-
-        Xoffset = (SCREENWIDTH - totalWidth) / 2
-
-        for digit in scoreDigits:
-            SCREEN.blit(IMAGES['numbers'][digit], (Xoffset, SCREENHEIGHT * 0.1))
-            Xoffset += IMAGES['numbers'][digit].get_width()
+        SCREEN.blit(IMAGE_SPRITE,\
+            (targetX * 2, targetY * 2, targetWidth, targetHeight),\
+            (sourceX, sourceY, sourceWidth, sourceHeight))
 
     # Covert pixel distance to a 'real' distance.
     # @param {number} distance Pixel distance ran.
@@ -729,20 +831,40 @@ class DistanceMeter:
 
 class HorizonLine(object):
     """docstring for HorizonLine"""
-    def __init__(self):
-        self.dimensions = {
-            'WIDTH': SCREENWIDTH,
-            'HEIGHT': 12 * 2,
-            'YPOS': 127
-        }
+    dimensions = {
+        'WIDTH': 600,
+        'HEIGHT': 12,
+        'YPOS': 127
+    }
+    def __init__(self, spritePos):
+        self.spritePos = spritePos
+        self.dimensions = HorizonLine.dimensions
         self.bumpThreshold = 0.5
-        self.xPos = [0, self.dimensions['WIDTH']]
-        self.yPos = 127 * 2
+        self.sourceXPos = [self.spritePos['x'], self.spritePos['x'] + self.dimensions['WIDTH']]
+        self.xPos = []
+        self.yPos = 0
+        self.sourceDimensions = {}
+        self.setSourceDimensions()
         self.draw()
 
+    def setSourceDimensions(self):
+        for dimension in HorizonLine.dimensions:
+            if (IS_HIDPI):
+                if (dimension != 'YPOS'):
+                    self.sourceDimensions[dimension] = HorizonLine.dimensions[dimension] * 2
+            else:
+                self.sourceDimensions[dimension] = HorizonLine.dimensions[dimension]
+
+        self.xPos = [0, HorizonLine.dimensions['WIDTH']]
+        self.yPos = HorizonLine.dimensions['YPOS']
+
     def draw(self):
-        SCREEN.blit(IMAGES['horizons'][0], (self.xPos[0], self.yPos))
-        SCREEN.blit(IMAGES['horizons'][1], (self.xPos[1], self.yPos))
+        SCREEN.blit(IMAGE_SPRITE,\
+            (self.xPos[0] * 2, self.yPos * 2, self.dimensions['WIDTH'], self.dimensions['HEIGHT']),\
+            (self.sourceXPos[0], self.spritePos['y'], self.sourceDimensions['WIDTH'], self.sourceDimensions['HEIGHT']))
+        SCREEN.blit(IMAGE_SPRITE,\
+            (self.xPos[1] * 2, self.yPos * 2, self.dimensions['WIDTH'], self.dimensions['HEIGHT']),\
+            (self.sourceXPos[1], self.spritePos['y'], self.sourceDimensions['WIDTH'], self.sourceDimensions['HEIGHT']))
 
     # Return the crop x position of a type.
     def getRandomType(self):
@@ -762,10 +884,10 @@ class HorizonLine(object):
         self.xPos[line1] -= increment
         self.xPos[line2] = self.xPos[line1] + self.dimensions['WIDTH']
 
-        # if (self.xPos[line1] <= -self.dimensions['WIDTH']):
-        #     self.xPos[line1] += self.dimensions['WIDTH'] * 2
-        #     self.xPos[line2] = self.xPos[line1] - self.dimensions['WIDTH']
-        #     self.sourceXPos[line1] = self.getRandomType() + self.spritePos.x
+        if (self.xPos[line1] <= -self.dimensions['WIDTH']):
+            self.xPos[line1] += self.dimensions['WIDTH'] * 2
+            self.xPos[line2] = self.xPos[line1] - self.dimensions['WIDTH']
+            self.sourceXPos[line1] = self.getRandomType() + self.spritePos['x']
 
     # Update the horizon line.
     # @param {number} deltaTime
@@ -792,9 +914,10 @@ class Cloud:
       'MIN_SKY_LEVEL': 71,
       'WIDTH': 46
     }
-    def __init__(self, containerWidth):
+    def __init__(self, spritePos, containerWidth):
         self.containerWidth = containerWidth
         self.xPos = containerWidth
+        self.spritePos = spritePos
         self.yPos = 0
         self.remove = False
         self.cloudGap = getRandomNum(Cloud.config['MIN_CLOUD_GAP'], Cloud.config['MAX_CLOUD_GAP'])
@@ -806,7 +929,14 @@ class Cloud:
 
     # Draw the cloud.
     def draw(self):
-        SCREEN.blit(IMAGES['cloud'], (self.xPos, self.yPos))
+        sourceWidth = Cloud.config['WIDTH']
+        sourceHeight = Cloud.config['HEIGHT']
+        if (IS_HIDPI):
+            sourceWidth = sourceWidth * 2
+            sourceHeight = sourceHeight * 2
+        SCREEN.blit(IMAGE_SPRITE,\
+            (self.xPos * 2, self.yPos * 2, Cloud.config['WIDTH'], Cloud.config['HEIGHT']),\
+            (self.spritePos['x'], self.spritePos['y'], sourceWidth, sourceHeight))
 
     # Update the cloud position.
     # @param {number} speed
@@ -833,7 +963,7 @@ class Horizon:
         'HORIZON_HEIGHT': 16,
         'MAX_CLOUDS': 6
     }
-    def __init__(self, dimensions, gapCoefficient):
+    def __init__(self, spritePos, dimensions, gapCoefficient):
         self.dimensions = dimensions
         self.gapCoefficient = gapCoefficient
         self.obstacles = []
@@ -841,6 +971,7 @@ class Horizon:
         self.horizonOffsets = [0, 0]
         self.cloudFrequency = Horizon.config['CLOUD_FREQUENCY']
         self.runningTime = 0
+        self.spritePos = spritePos
         # Cloud
         self.clouds = []
         self.cloudSpeed = Horizon.config['BG_CLOUD_SPEED']
@@ -852,7 +983,7 @@ class Horizon:
     # Initialise the horizon. Just add the line and a cloud. No obstacles.
     def init(self):
         self.addCloud()
-        self.horizonLine = HorizonLine()
+        self.horizonLine = HorizonLine(self.spritePos['HORIZON'])
 
     # @param {number} deltaTime
     # @param {number} currentSpeed
@@ -919,21 +1050,20 @@ class Horizon:
     # Add a new obstacle.
     # @param {number} currentSpeed
     def addNewObstacle(self, currentSpeed):
-        print 'addNewObstacle'
         obstacleTypeIndex = getRandomNum(0, len(Obstacle.types) - 1)
         obstacleType = Obstacle.types[obstacleTypeIndex]
 
         # Check for multiples of the same type of obstacle.
         # Also check obstacle is available at current speed.
-        if (self.duplicateObstacleCheck(obstacleType['name']) or \
+        if (self.duplicateObstacleCheck(obstacleType['type']) or \
             currentSpeed < obstacleType['minSpeed']):
             self.addNewObstacle(currentSpeed)
         else:
-            obstacleSpritePos = random.randint(0, obstacleType['spriteNum'] - 1)
+            obstacleSpritePos = self.spritePos[obstacleType['type']]
             self.obstacles.append(Obstacle(obstacleTypeIndex, \
                 obstacleSpritePos, self.dimensions, self.gapCoefficient, currentSpeed))
 
-            self.obstacleHistory.append(obstacleType['name'])
+            self.obstacleHistory.append(obstacleType['type'])
             if len(self.obstacleHistory) > GameState.config['MAX_OBSTACLE_DUPLICATION']:
                 self.obstacleHistory = self.obstacleHistory[-GameState.config['MAX_OBSTACLE_DUPLICATION']:]
 
@@ -966,23 +1096,7 @@ class Horizon:
 
     # Add a new cloud to the horizon.
     def addCloud(self):
-        self.clouds.append(Cloud(SCREENWIDTH))
-
-
-def showScore(score):
-    """displays score in center of screen"""
-    scoreDigits = [int(x) for x in list(str(score))]
-    totalWidth = 0 # total width of all numbers to be printed
-
-    for digit in scoreDigits:
-        totalWidth += IMAGES['numbers'][digit].get_width()
-
-    Xoffset = (SCREENWIDTH - totalWidth) / 2
-
-    for digit in scoreDigits:
-        SCREEN.blit(IMAGES['numbers'][digit], (Xoffset, SCREENHEIGHT * 0.1))
-        Xoffset += IMAGES['numbers'][digit].get_width()
-
+        self.clouds.append(Cloud(self.spritePos['CLOUD'], SCREENWIDTH))
 
 def checkCrash(player, obstacles, lowerPipes):
     """returns True if player collders with base or pipes."""
@@ -1033,6 +1147,65 @@ def pixelCollision(rect1, rect2, hitmask1, hitmask2):
                 return True
     return False
 
+def createAdjustedCollisionBox(box, adjustment):
+  return CollisionBox(box.x + adjustment.x, box.y + adjustment.y,
+                      box.width, box.height)
+
+def boxCompare(tRexBox, obstacleBox):
+    crashed = False;
+    tRexBoxX = tRexBox.x;
+    tRexBoxY = tRexBox.y;
+    obstacleBoxX = obstacleBox.x;
+    obstacleBoxY = obstacleBox.y;
+
+    # Axis-Aligned Bounding Box method.
+    if (tRexBox.x < obstacleBoxX + obstacleBox.width and\
+        tRexBox.x + tRexBox.width > obstacleBoxX and\
+        tRexBox.y < obstacleBox.y + obstacleBox.height and\
+        tRexBox.height + tRexBox.y > obstacleBox.y):
+        crashed = True;
+    return crashed;
+
+
+def checkForCollision(obstacle, tRex):
+    obstacleBoxXPos = SCREENWIDTH + obstacle.xPos;
+
+    # Adjustments are made to the bounding box as there is a 1 pixel white
+    # border around the t-rex and obstacles.
+    tRexBox = CollisionBox(tRex.xPos + 1, tRex.yPos + 1,\
+                    tRex.config['WIDTH'] - 2, tRex.config['HEIGHT'] - 2);
+
+    obstacleBox = CollisionBox(obstacle.xPos + 1, obstacle.yPos + 1,\
+                    obstacle.typeConfig['width'] * obstacle.size - 2, obstacle.typeConfig['height'] - 2);
+
+    # Debug outer box
+    # if (opt_canvasCtx):
+    #     drawCollisionBoxes(opt_canvasCtx, tRexBox, obstacleBox);
+
+    # Simple outer bounds check.
+    if (boxCompare(tRexBox, obstacleBox)):
+        collisionBoxes = obstacle.collisionBoxes;
+        if tRex.ducking:
+            tRexCollisionBoxes = Trex.collisionBoxes['DUCKING']
+        else:
+            tRexCollisionBoxes = Trex.collisionBoxes['RUNNING'];
+
+        # Detailed axis aligned box check.
+        for t in range(len(tRexCollisionBoxes)):
+            for i in range(len(collisionBoxes)):
+                # Adjust the box to actual positions.
+                adjTrexBox = createAdjustedCollisionBox(tRexCollisionBoxes[t], tRexBox);
+                adjObstacleBox = createAdjustedCollisionBox(collisionBoxes[i], obstacleBox);
+                crashed = boxCompare(adjTrexBox, adjObstacleBox);
+
+                # Draw boxes for debug.
+                # if (opt_canvasCtx):
+                #     drawCollisionBoxes(opt_canvasCtx, adjTrexBox, adjObstacleBox);
+
+                if (crashed):
+                  return [adjTrexBox, adjObstacleBox];
+    return False;
+
 def main():
     game = GameState()
     firstStart = False
@@ -1047,8 +1220,8 @@ def main():
                     game.restart()
                 input_actions[0] = 0
                 input_actions[1] = 1
-
-        game.frame_step(input_actions)
+        if not game.crashed:
+            game.frame_step(input_actions)
 
 if __name__ == '__main__':
     main()
