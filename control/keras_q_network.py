@@ -13,17 +13,17 @@ class DeepQNN(object):
     def BuildModel(self):
         model = Sequential()
         # conv1
-        model.add(Convolution2D(32,8,8,subsample=(4,4),border_mode='same', input_shape=(4, 80, 80), bias=True))
+        model.add(Convolution2D(32,8,8,subsample=(4,4),border_mode='same', input_shape=(4, 80, 80), bias=True, dim_ordering='th'))
         # maxpool1
         model.add(MaxPooling2D(pool_size=(2, 2)))
         # conv2
-        model.add(Convolution2D(64,4,4,subsample=(2,2),border_mode='same', input_shape=(32, 10, 10), bias=True))
+        model.add(Convolution2D(64,4,4,subsample=(2,2),border_mode='same', input_shape=(32, 10, 10), bias=True,dim_ordering='th'))
         # maxpool2
         model.add(MaxPooling2D(pool_size=(2, 2),border_mode='valid'))
         # conv3
-        model.add(Convolution2D(64,3,3,border_mode='same', input_shape=(64, 3, 3), bias=True))
+        model.add(Convolution2D(64,3,3,border_mode='same', input_shape=(64, 3, 3), bias=True, dim_ordering='th'))
         # maxpool3
-        model.add(MaxPooling2D(pool_size=(2, 2),border_mode='valid'))
+        model.add(MaxPooling2D(pool_size=(2, 2),border_mode='same'))
         # reshape
         model.add(Flatten())
         # ReLU
