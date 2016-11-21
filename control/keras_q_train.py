@@ -79,7 +79,7 @@ def trainNetwork(q_network):
         # game.update()
         # choose an action epsilon greedily
         #readout_t = readout.eval(feed_dict={s : [s_t]})[0]
-        action_result, Q = q_network.TestModel(array([s_t]))
+        action_result, Q = q_network.TestModel(np.array([s_t]))
         action_index = action_result[0]
         a_t = np.zeros([ACTIONS])
         if t % FRAME_PER_ACTION == 0:
