@@ -31,8 +31,6 @@ class DeepQNN(object):
         model.add(Activation('relu'))
         # fc
         model.add(Dense(2, input_dim=256))
-        # Softmax
-        model.add(Activation('softmax'))
 
         sgd = SGD(lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
         model.compile(loss='binary_crossentropy', optimizer=sgd, class_mode='categorical')

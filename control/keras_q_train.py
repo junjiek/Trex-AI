@@ -58,7 +58,7 @@ def trainNetwork(q_network):
     x_t, r_0, terminal = getGameInfo(game, do_nothing)
     x_t = cv2.resize(x_t, (80, 80))
     ret, x_t = cv2.threshold(x_t, 230, 255, cv2.THRESH_BINARY)
-    s_t = np.stack((x_t, x_t, x_t, x_t), axis=2)
+    s_t = np.stack((x_t, x_t, x_t, x_t), axis=0)
 
     # saving and loading networks
     '''
@@ -78,16 +78,16 @@ def trainNetwork(q_network):
     while True:
         # game.update()
         # choose an action epsilon greedily
-        readout_t = readout.eval(feed_dict={s : [s_t]})[0]
+        #readout_t = readout.eval(feed_dict={s : [s_t]})[0]
+        action_result, proba = q_network.TestModel(array([s_t]))
+        action_index = action_result[0]
         a_t = np.zeros([ACTIONS])
-        action_index = 0
         if t % FRAME_PER_ACTION == 0:
             if random.random() <= epsilon:
                 print("----------Random Action----------")
                 action_index = random.randrange(ACTIONS)
-                a_t[random.randrange(ACTIONS)] = 1
+                a_t[action_index] = 1
             else:
-                action_index = np.argmax(readout_t)
                 a_t[action_index] = 1
         else:
             a_t[0] = 1 # do nothing
@@ -100,9 +100,9 @@ def trainNetwork(q_network):
         x_t1, r_t, terminal = getGameInfo(game, a_t)
         x_t1 = cv2.resize(x_t1, (80, 80))
         ret, x_t1 = cv2.threshold(x_t, 230, 255, cv2.THRESH_BINARY)
-        x_t1 = np.reshape(x_t1, (80, 80, 1))
+        #x_t1 = np.reshape(x_t1, (80, 80, 1))
         #s_t1 = np.append(x_t1, s_t[:,:,1:], axis = 2)
-        s_t1 = np.append(x_t1, s_t[:, :, :3], axis=2)
+        s_t1 = np.append(x_t1, s_t[:3, :, :], axis=0)
 
         # store the transition in D
         D.append((s_t, a_t, r_t, s_t1, terminal))
@@ -115,13 +115,13 @@ def trainNetwork(q_network):
             minibatch = random.sample(D, BATCH)
 
             # get the batch variables
-            s_j_batch = [d[0] for d in minibatch]
-            a_batch = [d[1] for d in minibatch]
-            r_batch = [d[2] for d in minibatch]
-            s_j1_batch = [d[3] for d in minibatch]
+            s_j_batch = array([d[0] for d in minibatch])
+            a_batch = array([d[1] for d in minibatch])
+            r_batch = array([d[2] for d in minibatch])
+            s_j1_batch = array([d[3] for d in minibatch])
 
             y_batch = []
-            readout_j1_batch = readout.eval(feed_dict = {s : s_j1_batch})
+            readout_j1_batch = q_network.TestModel(s_j1_batch)
             for i in range(0, len(minibatch)):
                 terminal = minibatch[i][4]
                 # if terminal, only equals reward
