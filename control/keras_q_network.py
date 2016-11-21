@@ -12,17 +12,18 @@ class DeepQNN(object):
 
     def BuildModel(self):
         model = Sequential()
-        # conv1
+
         model.add(Convolution2D(32,8,8,subsample=(4,4),border_mode='same', input_shape=(4, 80, 80), bias=True, dim_ordering='th'))
-        # maxpool1
+        model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
-        # conv2
+
+
         model.add(Convolution2D(64,4,4,subsample=(2,2),border_mode='same', input_shape=(32, 10, 10), bias=True,dim_ordering='th'))
-        # maxpool2
-        model.add(MaxPooling2D(pool_size=(2, 2),border_mode='valid'))
-        # conv3
-        model.add(Convolution2D(64,3,3,border_mode='same', input_shape=(64, 3, 3), bias=True, dim_ordering='th'))
-        # maxpool3
+        model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2),border_mode='same'))
+
+        model.add(Convolution2D(64,3,3,subsample=(1,1), border_mode='same', input_shape=(64, 3, 3), bias=True, dim_ordering='th'))
+        model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2),border_mode='same'))
         # reshape
         model.add(Flatten())
@@ -32,7 +33,7 @@ class DeepQNN(object):
         model.add(Dense(2, input_dim=256))
 
         sgd = SGD(lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
-        model.compile(loss='ninary_crossentropy', optimizer=sgd, class_mode='categorical')
+        model.compile(loss='binary_crossentropy', optimizer=sgd, class_mode='categorical')
         self.model = model
         return self.model
 
