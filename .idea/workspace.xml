@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a89eaa-ef72-4c81-b782-c56cfc2da95b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/keras_q_network.py" afterPath="$PROJECT_DIR$/control/keras_q_network.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/deep_q_network.py" afterPath="$PROJECT_DIR$/control/deep_q_network.py" />
     </list>
     <ignored path="Trex-AI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,6 +20,7 @@
     <SUITE FILE_PATH="coverage/Trex-AI$keras_q_network.coverage" NAME="keras_q_network Coverage Results" MODIFIED="1479689836398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$backend_brain.coverage" NAME="backend_brain Coverage Results" MODIFIED="1479580927678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$controller.coverage" NAME="controller Coverage Results" MODIFIED="1479415396170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
+    <SUITE FILE_PATH="coverage/Trex-AI$deep_q_network.coverage" NAME="deep_q_network Coverage Results" MODIFIED="1479692276259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$brain.coverage" NAME="brain Coverage Results" MODIFIED="1479578814750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$mlp.coverage" NAME="mlp Coverage Results" MODIFIED="1479432619001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
   </component>
@@ -47,8 +48,8 @@
       <file leaf-file-name="deep_q_network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29032257">
-              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+            <state vertical-scroll-proportion="4.9301076">
+              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -157,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/control/deep_q_network.py" />
         <option value="$PROJECT_DIR$/control/brain.js.py" />
         <option value="$PROJECT_DIR$/brain.js" />
         <option value="$PROJECT_DIR$/control/play_game.py" />
@@ -169,6 +169,7 @@
         <option value="$PROJECT_DIR$/game/js/game.js" />
         <option value="$PROJECT_DIR$/control/backend_brain.py" />
         <option value="$PROJECT_DIR$/control/keras_q_network.py" />
+        <option value="$PROJECT_DIR$/control/deep_q_network.py" />
       </list>
     </option>
   </component>
@@ -281,25 +282,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Python.keras_q_network">
-    <configuration default="false" name="play_game" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/control" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Trex-AI" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/control/play_game.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.deep_q_network">
     <configuration default="false" name="mlp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -368,6 +351,24 @@
       <module name="Trex-AI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/control/keras_q_network.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="deep_q_network" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/control" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Trex-AI" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/control/deep_q_network.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -566,19 +567,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.play_game" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mlp" />
-      <item index="2" class="java.lang.String" itemvalue="Python.brain" />
-      <item index="3" class="java.lang.String" itemvalue="Python.backend_brain" />
-      <item index="4" class="java.lang.String" itemvalue="Python.keras_q_network" />
+      <item index="0" class="java.lang.String" itemvalue="Python.mlp" />
+      <item index="1" class="java.lang.String" itemvalue="Python.brain" />
+      <item index="2" class="java.lang.String" itemvalue="Python.backend_brain" />
+      <item index="3" class="java.lang.String" itemvalue="Python.keras_q_network" />
+      <item index="4" class="java.lang.String" itemvalue="Python.deep_q_network" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.keras_q_network" />
-        <item index="1" class="java.lang.String" itemvalue="Python.backend_brain" />
-        <item index="2" class="java.lang.String" itemvalue="Python.brain" />
-        <item index="3" class="java.lang.String" itemvalue="Python.mlp" />
-        <item index="4" class="java.lang.String" itemvalue="Python.play_game" />
+        <item index="0" class="java.lang.String" itemvalue="Python.deep_q_network" />
+        <item index="1" class="java.lang.String" itemvalue="Python.keras_q_network" />
+        <item index="2" class="java.lang.String" itemvalue="Python.backend_brain" />
+        <item index="3" class="java.lang.String" itemvalue="Python.brain" />
+        <item index="4" class="java.lang.String" itemvalue="Python.mlp" />
       </list>
     </recent_temporary>
   </component>
@@ -755,8 +756,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29032257">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+        <state vertical-scroll-proportion="4.9301076">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
           <folding>
             <element signature="e#22#31#0" expanded="true" />
           </folding>
