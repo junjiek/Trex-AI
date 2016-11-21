@@ -9,7 +9,7 @@ from pygame.locals import *
 from itertools import cycle
 from copy import deepcopy
 
-FPS = 60
+FPS = 50.0
 SCREENWIDTH  = 600
 SCREENHEIGHT = 150
 
@@ -85,7 +85,7 @@ class GameState:
             'HEIGHT': SCREENHEIGHT,
         }
         self.spriteDef = GameState.spriteDefinition['HDPI']
-        self.msPerFrame = 1000 / FPS
+        self.msPerFrame = 1000.0 / FPS
         self.currentSpeed = GameState.config['SPEED']
         self.highestScore = 0
         self.started = False
@@ -132,6 +132,7 @@ class GameState:
         if input_actions[1] == 1:
             if not self.tRex.jumping and not self.tRex.ducking:
                 self.tRex.startJump(self.currentSpeed)
+
 
         deltaTime = FPSCLOCK.get_time()
         if self.activated:
@@ -249,7 +250,7 @@ class Trex:
         'GRAVITY': 0.6,
         'HEIGHT': 47,
         'HEIGHT_DUCK': 25,
-        'INITIAL_JUMP_VELOCITY': -10,
+        'INITIAL_JUMP_VELOCITY': -12,
         'INTRO_DURATION': 1500,
         'MAX_JUMP_HEIGHT': 30,
         'MIN_JUMP_HEIGHT': 30,
@@ -282,7 +283,7 @@ class Trex:
         self.groundYPos = SCREENHEIGHT - Trex.config['HEIGHT'] - GameState.config['BOTTOM_PAD'];
         self.yPos = self.groundYPos
         self.minJumpHeight = self.groundYPos - Trex.config['MIN_JUMP_HEIGHT']
-        self.msPerFrame = 1000 / 3
+        self.msPerFrame = 1000.0 / 3
         self.currentFrame = 0
         self.currentAnimFrames = [0, 1]
         self.status = 'WAITING'
@@ -294,19 +295,19 @@ class Trex:
             self.currentFrame = 0
             self.status = status
             if self.status == 'WAITING':
-                self.msPerFrame = 1000 / 3
+                self.msPerFrame = 1000.0 / 3
                 self.currentAnimFrames = [44, 0]
             elif self.status == 'RUNNING':
-                self.msPerFrame = 1000 / 12
+                self.msPerFrame = 1000.0 / 12
                 self.currentAnimFrames = [88, 132]
             elif self.status == 'CRASHED':
-                self.msPerFrame = 1000 / 60
+                self.msPerFrame = 1000.0 / 60
                 self.currentAnimFrames = [220]
             elif self.status == 'JUMPING':
-                self.msPerFrame = 1000 / 60
+                self.msPerFrame = 1000.0 / 60
                 self.currentAnimFrames = [0]
             elif self.status == 'DUCKING':
-                self.msPerFrame = 1000 / 8
+                self.msPerFrame = 1000.0 / 8
                 self.currentAnimFrames = [262, 321]
 
         self.draw(self.currentAnimFrames[self.currentFrame], 0)
@@ -368,7 +369,7 @@ class Trex:
         if not self.jumping:
             self.update(0, 'JUMPING')
             # Tweak the jump velocity based on the speed.
-            self.jumpVelocity = Trex.config['INITIAL_JUMP_VELOCITY'] - (speed / 10)
+            self.jumpVelocity = Trex.config['INITIAL_JUMP_VELOCITY'] - (speed / 10.0)
             self.jumping = True
             self.reachedMinHeight = False
             self.speedDrop = False
@@ -462,7 +463,7 @@ class Obstacle:
         'minSpeed': 0,
         'minGap': 150,
         'numFrames': 2,
-        'frameRate': 1000/6,
+        'frameRate': 1000.0/6,
         'speedOffset': .8,
         'collisionBoxes': [CollisionBox(15, 15, 16, 5), CollisionBox(18, 21, 24, 6), CollisionBox(2, 14, 4, 3), CollisionBox(6, 10, 4, 7), CollisionBox(10, 8, 6, 9)],
     }]
@@ -489,7 +490,7 @@ class Obstacle:
         self.init(speed)
   
     # Initialise the DOM for the obstacle.
-    # @param {number} speed
+    # @param {number} speeds
     def init(self, speed):
         self.collisionBoxes = deepcopy(self.typeConfig['collisionBoxes'])
         # Only allow sizing if we're at the right speed.
@@ -558,7 +559,7 @@ class Obstacle:
         if self.remove: return
         if 'speedOffset' in self.typeConfig:
             speed += self.speedOffset
-        self.xPos -= math.floor((speed * FPS / 1000) * deltaTime) / 2
+        self.xPos -= math.floor((speed * FPS / 1000.0) * deltaTime)
 
         # Update frame
         if 'numFrames' in self.typeConfig:
@@ -893,7 +894,7 @@ class HorizonLine(object):
     # @param {number} deltaTime
     # @param {number} speed
     def update(self, deltaTime, speed):
-        increment = math.floor(speed * (FPS / 1000) * deltaTime)
+        increment = math.floor(speed * (FPS / 1000.0) * deltaTime)
         if (self.xPos[0] <= 0):
             self.updateXPos(0, increment)
         else:
@@ -1002,7 +1003,7 @@ class Horizon:
     # @param {number} deltaTime
     # @param {number} currentSpeed
     def updateClouds(self, deltaTime, speed):
-        cloudSpeed = self.cloudSpeed / 1000 * deltaTime * speed
+        cloudSpeed = self.cloudSpeed / 1000.0 * deltaTime * speed
         numClouds = len(self.clouds)
 
         if numClouds <= 0: return
@@ -1210,7 +1211,7 @@ def main():
     game = GameState()
     firstStart = False
     while True:
-        input_actions = [1, 0]
+        input_actions = [1, 0, 0]
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
@@ -1220,6 +1221,10 @@ def main():
                     game.restart()
                 input_actions[0] = 0
                 input_actions[1] = 1
+            if event.type == KEYDOWN and (event.key == K_DOWN):
+                input_actions[0] = 0
+                input_actions[1] = 0
+                input_actions[2] = 1
         if not game.crashed:
             game.frame_step(input_actions)
 
