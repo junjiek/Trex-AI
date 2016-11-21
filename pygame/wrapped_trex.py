@@ -29,7 +29,7 @@ SMALL_CACTUS_WIDTH = IMAGES['small_cactci'][0].get_width()
 SMALL_CACTUS_HEIGHT = IMAGES['small_cactci'][0].get_height()
 
 def getRandomNum(min, max):
-    return math.floor(random.random() * (max - min + 1)) + min
+    return int(math.floor(random.random() * (max - min + 1))) + min
 
 class GameState:
     config = {
@@ -51,11 +51,8 @@ class GameState:
         'SPEED_DROP_COEFFICIENT': 3
     }
     def __init__(self):
-        self.score = self.playerIndex = self.loopIter = 0
         self.obstacles = []
         self.runningTime = 0
-        self.activated = True
-        self.crashed = False
         self.distanceRan = 0
         self.dimensions = {
             'WIDTH': SCREENWIDTH,
@@ -63,12 +60,33 @@ class GameState:
         }
         self.msPerFrame = 1000 / FPS
         self.currentSpeed = GameState.config['SPEED']
+        self.highestScore = 0
         self.started = False
+        self.activated = False
+        self.crashed = False
+        self.paused = False
+        self.playCount = 0
         self.horizon = Horizon(self.dimensions, GameState.config['GAP_COEFFICIENT'])
         self.tRex = Trex()
         # Distance meter
-        self.distanceMeter = DistanceMeter(self.dimensions['WIDTH']);
+        self.distanceMeter = DistanceMeter(self.dimensions['WIDTH'])
         self.adjustDimensions()
+
+    def playIntro(self):
+        if (not self.started and not self.crashed):
+            self.playingIntro = True
+            self.tRex.playingIntro = True
+            self.activated = True
+            self.started = True
+        elif (self.crashed):
+            self.restart()
+
+    def startGame(self):
+        self.runningTime = 0
+        self.playingIntro = False
+        self.tRex.playingIntro = False
+        self.playCount += 1
+
 
     def frame_step(self, input_actions):
         pygame.event.pump()
@@ -88,35 +106,36 @@ class GameState:
             if not self.tRex.jumping and not self.tRex.ducking:
                 self.tRex.startJump(self.currentSpeed)
 
-        # # playerIndex basex change
-        # if (self.loopIter + 1) % 3 == 0:
-        #     self.tRex.playerIndex = next(PLAYER_INDEX_GEN)
-        # self.loopIter = (self.loopIter + 1) % 30
-        # self.basex = -((-self.basex + 100) % self.baseShift)
-
-        deltaTime = 0
-        # if self.started:
         deltaTime = FPSCLOCK.get_time()
-        if (self.tRex.jumping):
-            self.tRex.updateJump(deltaTime)
+        if self.activated:
+            if (self.tRex.jumping):
+                self.tRex.updateJump(deltaTime)
 
-        self.runningTime += deltaTime
-        hasObstacles = self.runningTime > GameState.config['CLEAR_TIME']
-        # The horizon doesn't move until the intro is over.
+            self.runningTime += deltaTime
+            hasObstacles = self.runningTime > GameState.config['CLEAR_TIME']
+            # First jump triggers the intro.
+            # if (self.tRex.jumpCount == 1 and not self.playingIntro):
+            #     self.playIntro()
+            # The horizon doesn't move until the intro is over.
+            # The horizon doesn't move until the intro is over.
+            # if (self.playingIntro):
+            #     self.horizon.update(0, self.currentSpeed, hasObstacles)
+            # else:
+                # deltaTime = !self.started ? 0 : deltaTime
+            self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
+            # self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
 
-        self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
+            # Check for collisions.
+            # collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
+            collision = False
+            if not collision:
+                self.distanceRan += self.currentSpeed * deltaTime / self.msPerFrame
+                if (self.currentSpeed < GameState.config['MAX_SPEED']):
+                    self.currentSpeed += GameState.config['ACCELERATION']
+            else:
+                self.gameOver()
 
-        # Check for collisions.
-        # collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
-        collision = False
-        if not collision:
-            self.distanceRan += self.currentSpeed * deltaTime / self.msPerFrame
-            if (self.currentSpeed < GameState.config['MAX_SPEED']):
-                self.currentSpeed += GameState.config['ACCELERATION']
-        else:
-            self.gameOver()
-
-        self.distanceMeter.update(deltaTime, math.ceil(self.distanceRan));
+            self.distanceMeter.update(deltaTime, math.ceil(self.distanceRan))
 
         if not self.crashed:
             self.tRex.update(deltaTime, self.tRex.status)
@@ -144,7 +163,7 @@ class GameState:
             self.distanceMeter.update(0, math.ceil(self.distanceRan))
             self.stop()
         else:
-            self.tRex.draw(0, 0)
+            self.tRex.draw()
 
         # Game over panel.
         if (self.crashed and self.gameOverPanel):
@@ -178,7 +197,6 @@ class GameState:
             self.paused = False
             self.tRex.update(0, Trex.status.RUNNING)
             self.time = getTimeStamp()
-            self.update()
 
     def restart(self):
         self.playCount += 1
@@ -186,11 +204,10 @@ class GameState:
         self.activated = True
         self.crashed = False
         self.distanceRan = 0
-        self.setSpeed(self.config.SPEED)
+        self.currentSpeed = GameState.config['SPEED']
         self.distanceMeter.reset(self.highestScore)
         self.horizon.reset()
         self.tRex.reset()
-        self.update()
 
 
 class Trex:
@@ -357,41 +374,51 @@ class Trex:
 class Obstacle:
     types = [{
         'name': 'small_cactci',
-        'yPos': 105,
+        'width': 17 * 2,
+        'height': 35 * 2,
+        'spriteNum': 6,
+        'yPos': 105 * 2,
         'multipleSpeed': 4,
         'minGap': 120,
         'minSpeed': 0,
     },{
         'name': 'large_cactci',
-        'yPos': 90,
+        'width': 25 * 2,
+        'height': 50 * 2,
+        'spriteNum': 6,
+        'yPos': 90 * 2,
         'multipleSpeed': 7,
         'minGap': 120,
         'minSpeed': 0,
     },{
         'name': 'birds',
-        'yPos': [ 100, 75, 50 ],
+        'width': 46 * 2,
+        'height': 40 * 2,
+        'spriteNum': 1,
+        'yPos': [ 100 * 2, 75 * 2, 50 * 2 ],
         'multipleSpeed': 999,
-        'minSpeed': 8.5,
+        'minSpeed': 0,
         'minGap': 150,
         'numFrames': 2,
         'frameRate': 1000/6,
         'speedOffset': .8
     }]
+    MAX_GAP_COEFFICIENT = 1.5
+    MAX_OBSTACLE_LENGTH = 3
     def __init__(self, typeIdx, spritePos, dimensions, gapCoefficient, speed):
-        self.MAX_GAP_COEFFICIENT = 1.5
-        self.MAX_OBSTACLE_LENGTH = 3
         self.typeConfig = Obstacle.types[typeIdx]
         self.spritePos = spritePos
         self.gapCoefficient = gapCoefficient
-        self.size = getRandomNum(1, self.MAX_OBSTACLE_LENGTH)
+        self.size = getRandomNum(1, Obstacle.MAX_OBSTACLE_LENGTH)
         self.dimensions = dimensions
         self.remove = False
         self.xPos = 0
         self.yPos = 0
         self.width = 0
+        self.height = 0
         self.gap = 0
         self.speedOffset = 0
-
+        self.followingObstacleCreated = False
         # For animated obstacles.
         self.currentFrame = 0
         self.timer = 0
@@ -405,14 +432,15 @@ class Obstacle:
           self.size = 1
 
         self.width = self.typeConfig['width'] * self.size
-        self.xPos = self.dimensions.WIDTH - self.width
+        self.height = self.typeConfig['height']
+        self.xPos = self.dimensions['WIDTH'] - self.width
 
         # Check if obstacle can be positioned at various heights.
-        if (Array.isArray(self.typeConfig['yPos'])):
-          yPosConfig = self.typeConfig['yPos']
-          self.yPos = yPosConfig[getRandomNum(0, len(yPosConfig) - 1)]
+        if type(self.typeConfig['yPos']) is list:
+            yPosConfig = self.typeConfig['yPos']
+            self.yPos = yPosConfig[getRandomNum(0, len(yPosConfig) - 1)]
         else:
-          self.yPos = self.typeConfig['yPos']
+            self.yPos = self.typeConfig['yPos']
 
         self.draw()
 
@@ -427,23 +455,23 @@ class Obstacle:
 
     # Draw and crop based on size.
     def draw(self):
-        SCREEN.blit(IMAGES[self.typeConfig['name']][self.spritePos], (self.xPos, self.yPos))
+        SCREEN.blit(IMAGES[self.typeConfig['name']][self.spritePos + self.currentFrame], (self.xPos, self.yPos))
 
     # Obstacle frame update.
     # @param {number} deltaTime
     # @param {number} speed
     def update(self, deltaTime, speed):
         if self.remove: return
-        if (self.typeConfig['speedOffset']):
+        if 'speedOffset' in self.typeConfig:
             speed += self.speedOffset
         self.xPos -= math.floor((speed * FPS / 1000) * deltaTime)
 
         # Update frame
-        if (self.typeConfig['numFrames']):
+        if 'numFrames' in self.typeConfig:
             self.timer += deltaTime
             if self.timer >= self.typeConfig['frameRate']:
                 if self.currentFrame == self.typeConfig['numFrames'] - 1:
-                    self.currentFrame =0
+                    self.currentFrame = 0
                 else:
                     self.currentFrame += 1
                 self.timer = 0
@@ -457,9 +485,8 @@ class Obstacle:
     # @param {number} speed
     # @return {number} The gap size.
     def getGap(self, gapCoefficient, speed):
-        minGap = round(self.width * speed +
-              self.typeConfig.minGap * gapCoefficient)
-        maxGap = round(minGap * Obstacle.MAX_GAP_COEFFICIENT)
+        minGap = int(round(self.width * speed + self.typeConfig['minGap'] * gapCoefficient))
+        maxGap = int(round(minGap * Obstacle.MAX_GAP_COEFFICIENT))
         return getRandomNum(minGap, maxGap)
 
     # Check if obstacle is visible.
@@ -691,11 +718,12 @@ class DistanceMeter:
         distance = self.getActualDistance(distance)
         highScoreStr = (self.defaultString + str(distance))[-self.maxScoreUnits:]
 
-        self.highScore = ['10', '11', ''].concat(highScoreStr.split(''))
+        self.highScore = ['10', '11'] + [d for d in highScoreStr]
 
     # Reset the distance meter back to '00000'.
-    def reset(self):
-        self.update(0)
+    def reset(self, highestScore):
+        self.update(0, 0)
+        self.setHighScore(highestScore)
         self.acheivement = False
 
 
@@ -868,14 +896,13 @@ class Horizon:
     # @param {number} currentSpeed
     def updateObstacles(self, deltaTime, currentSpeed):
         # Obstacles, move to Horizon layer.
-        updatedObstacles = self.obstacles
-
-        for  i in range(len(self.obstacles)):
-            obstacle = self.obstacles[i]
-            obstacle.update(deltaTime, currentSpeed)
+        # print 'updatedObstacles', self.obstacles
+        updatedObstacles = []
+        for o in self.obstacles:
+            o.update(deltaTime, currentSpeed)
             # Clean up existing obstacles.
-            if (obstacle.remove):
-                updatedObstacles.shift()
+            if not o.remove:
+                updatedObstacles.append(o)
         self.obstacles = updatedObstacles
 
         if len(self.obstacles) > 0:
@@ -885,9 +912,9 @@ class Horizon:
                 (lastObstacle.xPos + lastObstacle.width + lastObstacle.gap) < SCREENWIDTH):
                 self.addNewObstacle(currentSpeed)
                 lastObstacle.followingObstacleCreated = True
-            else:
-                # Create new obstacles.
-                self.addNewObstacle(currentSpeed)
+        else:
+            # Create new obstacles.
+            self.addNewObstacle(currentSpeed)
   
     # Add a new obstacle.
     # @param {number} currentSpeed
@@ -898,18 +925,17 @@ class Horizon:
 
         # Check for multiples of the same type of obstacle.
         # Also check obstacle is available at current speed.
-        if (self.duplicateObstacleCheck(obstacleType.type) or \
-            currentSpeed < obstacleType.minSpeed):
+        if (self.duplicateObstacleCheck(obstacleType['name']) or \
+            currentSpeed < obstacleType['minSpeed']):
             self.addNewObstacle(currentSpeed)
         else:
-            obstacleSpritePos = self.spritePos[obstacleType.type]
-            self.obstacles.append(Obstacle(obstacleType,\
+            obstacleSpritePos = random.randint(0, obstacleType['spriteNum'] - 1)
+            self.obstacles.append(Obstacle(obstacleTypeIndex, \
                 obstacleSpritePos, self.dimensions, self.gapCoefficient, currentSpeed))
 
-            self.obstacleHistory.unshift(obstacleType.type)
-
-            if len(self.obstacleHistory) > 1:
-                self.obstacleHistory.splice(GameState.GameState.config['MAX_OBSTACLE_DUPLICATION'])
+            self.obstacleHistory.append(obstacleType['name'])
+            if len(self.obstacleHistory) > GameState.config['MAX_OBSTACLE_DUPLICATION']:
+                self.obstacleHistory = self.obstacleHistory[-GameState.config['MAX_OBSTACLE_DUPLICATION']:]
 
   
     # Returns whether the previous two obstacles are the same as the next one.
@@ -922,7 +948,7 @@ class Horizon:
                 duplicateCount += 1
             else:
                 duplicateCount = 0
-        return duplicateCount >= GameState.GameState.config['MAX_OBSTACLE_DUPLICATION']
+        return duplicateCount >= GameState.config['MAX_OBSTACLE_DUPLICATION']
 
   
     # Reset the horizon layer.
@@ -972,9 +998,9 @@ def checkCrash(player, obstacles, lowerPipes):
         playerRect = pygame.Rect(player['x'], player['y'],
                       player['w'], player['h'])
 
-        for uPipe, lPipe in zip(obstacles, lowerPipes):
+        for obstacle in obstacles:
             # upper and lower pipe rects
-            uPipeRect = pygame.Rect(uPipe['x'], uPipe['y'], PIPE_WIDTH, PIPE_HEIGHT)
+            uPipeRect = pygame.Rect(obstacle.xPos, obstacle.yPos, obstacle, PIPE_HEIGHT)
             lPipeRect = pygame.Rect(lPipe['x'], lPipe['y'], PIPE_WIDTH, PIPE_HEIGHT)
 
             # player and upper/lower pipe hitmasks
@@ -1009,6 +1035,7 @@ def pixelCollision(rect1, rect2, hitmask1, hitmask2):
 
 def main():
     game = GameState()
+    firstStart = False
     while True:
         input_actions = [1, 0]
         for event in pygame.event.get():
@@ -1016,7 +1043,8 @@ def main():
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
-                # game.started = True
+                if not game.activated or game.crashed:
+                    game.restart()
                 input_actions[0] = 0
                 input_actions[1] = 1
 
