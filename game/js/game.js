@@ -1427,7 +1427,7 @@ Obstacle.types = [
       new CollisionBox(13, 10, 10, 38)
     ]
   },
-  {
+  /*{
     type: 'PTERODACTYL',
     width: 46,
     height: 40,
@@ -1446,7 +1446,7 @@ Obstacle.types = [
     numFrames: 2,
     frameRate: 1000/6,
     speedOffset: .8
-  }
+  }*/
 ];
 
 

@@ -10,7 +10,7 @@ from controller import TrexGameController
 GAME = 'trex' # the name of the game being played for log files
 ACTIONS = 2 # number of valid actions
 GAMMA = 0.99 # decay rate of past observations
-OBSERVE = 10000. # timesteps to observe before training
+OBSERVE = 100. # timesteps to observe before training
 EXPLORE = 3000000. # frames over which to anneal epsilon
 FINAL_EPSILON = 0.0001 # final value of epsilon
 INITIAL_EPSILON = 0.1 # starting value of epsilon
@@ -108,8 +108,8 @@ def trainNetwork(s, readout, h_fc1, sess):
     D = deque()
 
     # printing
-    a_file = open("./logs/readout.txt", 'w')
-    h_file = open("./logs/hidden.txt", 'w')
+    #a_file = open("./logs/readout.txt", 'w')
+    #h_file = open("./logs/hidden.txt", 'w')
 
     # get the first state by doing nothing and preprocess the image to 80x80x4
     do_nothing = np.zeros(ACTIONS)
@@ -200,7 +200,7 @@ def trainNetwork(s, readout, h_fc1, sess):
         t += 1
 
         # save progress every 10000 iterations
-        if t % 10000 == 0:
+        if t % OBSERVE == 0:
             saver.save(sess, 'saved_networks/' + GAME + '-dqn', global_step = t)
 
         # print info
