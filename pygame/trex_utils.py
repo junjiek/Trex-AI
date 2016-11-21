@@ -56,9 +56,6 @@ def load():
         pygame.image.load('assets/sprites/7.png').convert_alpha(),
         pygame.image.load('assets/sprites/8.png').convert_alpha(),
         pygame.image.load('assets/sprites/9.png').convert_alpha(),
-    )
-
-    IMAGES['HI'] = (
         pygame.image.load('assets/sprites/H.png').convert_alpha(),
         pygame.image.load('assets/sprites/I.png').convert_alpha(),
     )
