@@ -79,7 +79,7 @@ def trainNetwork(q_network):
         # game.update()
         # choose an action epsilon greedily
         #readout_t = readout.eval(feed_dict={s : [s_t]})[0]
-        action_result, proba = q_network.TestModel(array([s_t]))
+        action_result, Q = q_network.TestModel(array([s_t]))
         action_index = action_result[0]
         a_t = np.zeros([ACTIONS])
         if t % FRAME_PER_ACTION == 0:
@@ -121,7 +121,7 @@ def trainNetwork(q_network):
             s_j1_batch = array([d[3] for d in minibatch])
 
             y_batch = []
-            readout_j1_batch = q_network.TestModel(s_j1_batch)
+            actionResult, readout_j1_batch = q_network.TestModel(s_j1_batch)
             for i in range(0, len(minibatch)):
                 terminal = minibatch[i][4]
                 # if terminal, only equals reward

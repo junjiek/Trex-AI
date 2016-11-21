@@ -33,7 +33,7 @@ class DeepQNN(object):
         model.add(Dense(2, input_dim=256))
 
         sgd = SGD(lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
-        model.compile(loss='binary_crossentropy', optimizer=sgd, class_mode='categorical')
+        model.compile(loss='mean_squared_error', optimizer=sgd, class_mode='categorical')
         json_string = model.to_json()
         open('data/my_model_architecture_q_cnn.json','w').write(json_string)
         model.save_weights('data.my_model_weights_q_cnn.h5',overwrite=True)
@@ -45,8 +45,8 @@ class DeepQNN(object):
 
     def TestModel(self, X_test):
         classes = self.model.predict_classes(X_test, verbose=0)
-        proba = self.model.predict_proba(X_test, verbose=0)
-        return classes, proba
+        Q = self.model.predict_proba(X_test, verbose=0)
+        return classes, Q
 
 if __name__=='__main__':
     deep_q_nn = DeepQNN()
