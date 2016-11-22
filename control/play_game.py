@@ -40,6 +40,9 @@ def main():
 				if firstObstcale is None:
 					controller.jump()
 					continue
+				if img_processor.tRex is None:
+					controller.jump()
+					continue
 				if ((firstObstcale.x + firstObstcale.w) - img_processor.tRex.x) < 200:
 					controller.jump()
 				elif firstObstcale.speed > 0:
