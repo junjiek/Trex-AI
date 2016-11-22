@@ -18,8 +18,8 @@ SCREEN = pygame.display.set_mode((SCREENWIDTH * 2, SCREENHEIGHT * 2))
 pygame.display.set_caption('Trex')
 
 IMAGES_PATH = (
-    'assets/offline-sprite-1x.png',
-    'assets/offline-sprite-2x.png',
+    './offline-sprite-1x.png',
+    './offline-sprite-2x.png',
 )
 
 IS_HIDPI = True
