@@ -2,7 +2,6 @@ import numpy as np
 import sys
 import random
 import pygame
-import trex_utils
 import pygame.surfarray as surfarray
 import math
 from pygame.locals import *
@@ -18,19 +17,14 @@ FPSCLOCK = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((SCREENWIDTH * 2, SCREENHEIGHT * 2))
 pygame.display.set_caption('Trex')
 
-IMAGES, SOUNDS, HITMASKS = trex_utils.load()
-PIPEGAPSIZE = 100 # gap between upper and lower part of pipe
-HORIZONY = 254
+IMAGES_PATH = (
+    'assets/offline-sprite-1x.png',
+    'assets/offline-sprite-2x.png',
+)
 
-PLAYER_WIDTH = IMAGES['player'][0].get_width()
-PLAYER_HEIGHT = IMAGES['player'][0].get_height()
-LARGE_CACTUS_WIDTH = IMAGES['large_cactci'][0].get_width()
-LARGE_CACTUS_HEIGHT = IMAGES['large_cactci'][0].get_height()
-SMALL_CACTUS_WIDTH = IMAGES['small_cactci'][0].get_width()
-SMALL_CACTUS_HEIGHT = IMAGES['small_cactci'][0].get_height()
 IS_HIDPI = True
 
-IMAGE_SPRITE = IMAGES['all'][1]
+IMAGE_SPRITE = pygame.image.load(IMAGES_PATH[1]).convert_alpha()
 
 def getRandomNum(min, max):
     return int(math.floor(random.random() * (max - min + 1))) + min
@@ -132,6 +126,14 @@ class GameState:
         if input_actions[1] == 1:
             if not self.tRex.jumping and not self.tRex.ducking:
                 self.tRex.startJump(self.currentSpeed)
+            self.tRex.setDuck(False)
+        elif input_actions[2] == 1:
+            if (self.tRex.jumping):
+                # Speed drop, activated only when jump key is not pressed.
+                self.tRex.setSpeedDrop();
+            elif not self.tRex.jumping and not self.tRex.ducking:
+                # Duck.
+                self.tRex.setDuck(True);
 
 
         deltaTime = FPSCLOCK.get_time()
@@ -408,7 +410,7 @@ class Trex:
         self.update(deltaTime, self.status)
 
     # Set the speed drop. Immediately cancels the current jump.
-    def setSpeedDrop(self, ):
+    def setSpeedDrop(self):
         self.speedDrop = True
         self.jumpVelocity = 1
 
@@ -1221,10 +1223,13 @@ def main():
                     game.restart()
                 input_actions[0] = 0
                 input_actions[1] = 1
-            if event.type == KEYDOWN and (event.key == K_DOWN):
+            if event.type == KEYDOWN and event.key == K_DOWN:
                 input_actions[0] = 0
                 input_actions[1] = 0
                 input_actions[2] = 1
+            if event.type == KEYUP and event.key == K_DOWN:
+                game.tRex.speedDrop = False;
+                game.tRex.setDuck(False)
         if not game.crashed:
             game.frame_step(input_actions)
 
