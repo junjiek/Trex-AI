@@ -18,8 +18,8 @@ SCREEN = pygame.display.set_mode((SCREENWIDTH * 2, SCREENHEIGHT * 2))
 pygame.display.set_caption('Trex')
 
 IMAGES_PATH = (
-    './offline-sprite-1x.png',
-    './offline-sprite-2x.png',
+    '../pygame/offline-sprite-1x.png',
+    '../pygame/offline-sprite-2x.png',
 )
 
 IS_HIDPI = True
@@ -93,6 +93,7 @@ class GameState:
         self.distanceMeter = DistanceMeter(self.spriteDef['TEXT_SPRITE'], self.dimensions['WIDTH'])
         self.gameOverPanel = None
         self.adjustDimensions()
+        self.restart()
 
     def playIntro(self):
         if (not self.started and not self.crashed):
@@ -127,13 +128,13 @@ class GameState:
             if not self.tRex.jumping and not self.tRex.ducking:
                 self.tRex.startJump(self.currentSpeed)
             self.tRex.setDuck(False)
-        elif input_actions[2] == 1:
-            if (self.tRex.jumping):
-                # Speed drop, activated only when jump key is not pressed.
-                self.tRex.setSpeedDrop();
-            elif not self.tRex.jumping and not self.tRex.ducking:
-                # Duck.
-                self.tRex.setDuck(True);
+        # elif input_actions[2] == 1:
+        #     if (self.tRex.jumping):
+        #         # Speed drop, activated only when jump key is not pressed.
+        #         self.tRex.setSpeedDrop();
+        #     elif not self.tRex.jumping and not self.tRex.ducking:
+        #         # Duck.
+        #         self.tRex.setDuck(True);
 
 
         deltaTime = FPSCLOCK.get_time()
@@ -168,17 +169,14 @@ class GameState:
 
         if not self.crashed:
             self.tRex.update(deltaTime, self.tRex.status)
-
-        # draw sprites
-        
-        # print score so player overlaps the score
-        # showScore(self.score)
-        
+        else:
+            terminal = True
+            reward = -1
+            self.restart()
 
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())
         pygame.display.update()
         FPSCLOCK.tick(FPS)
-        #print self.obstacles[0]['y'] + PIPE_HEIGHT - int(HORIZONY * 0.2)
         return image_data, reward, terminal
 
     def adjustDimensions(self):
@@ -204,12 +202,12 @@ class GameState:
         self.stop()
         self.crashed = True
         self.distanceMeter.acheivement = False
-        self.tRex.update(100, 'CRASHED')
+        # self.tRex.update(100, 'CRASHED')
         # Game over panel.
-        if self.gameOverPanel is None:
-            self.gameOverPanel = GameOverPanel(self.spriteDef['TEXT_SPRITE'], self.spriteDef['RESTART'], self.dimensions)
-        else:
-            self.gameOverPanel.draw()
+        # if self.gameOverPanel is None:
+        #     self.gameOverPanel = GameOverPanel(self.spriteDef['TEXT_SPRITE'], self.spriteDef['RESTART'], self.dimensions)
+        # else:
+        #     self.gameOverPanel.draw()
 
         # Update the high score.
         if (self.distanceRan > self.highestScore):
