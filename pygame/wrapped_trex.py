@@ -8,7 +8,7 @@ from pygame.locals import *
 from itertools import cycle
 from copy import deepcopy
 
-FPS = 50.0
+FPS = 60.0
 SCREENWIDTH  = 600
 SCREENHEIGHT = 150
 
@@ -39,7 +39,7 @@ class GameState:
         'GAMEOVER_CLEAR_TIME': 750,
         'GAP_COEFFICIENT': 0.6,
         'GRAVITY': 0.6,
-        'INITIAL_JUMP_VELOCITY': 10,
+        'INITIAL_JUMP_VELOCITY': 12,
         'MAX_CLOUDS': 6,
         'MAX_OBSTACLE_LENGTH': 3,
         'MAX_OBSTACLE_DUPLICATION': 2,
@@ -283,7 +283,7 @@ class Trex:
         self.groundYPos = SCREENHEIGHT - Trex.config['HEIGHT'] - GameState.config['BOTTOM_PAD'];
         self.yPos = self.groundYPos
         self.minJumpHeight = self.groundYPos - Trex.config['MIN_JUMP_HEIGHT']
-        self.msPerFrame = 1000.0 / 3
+        self.msPerFrame = 1000.0 * 20 / FPS
         self.currentFrame = 0
         self.currentAnimFrames = [0, 1]
         self.status = 'WAITING'
@@ -295,19 +295,19 @@ class Trex:
             self.currentFrame = 0
             self.status = status
             if self.status == 'WAITING':
-                self.msPerFrame = 1000.0 / 3
+                self.msPerFrame = 1000.0 * 20 / FPS
                 self.currentAnimFrames = [44, 0]
             elif self.status == 'RUNNING':
-                self.msPerFrame = 1000.0 / 12
+                self.msPerFrame = 1000.0 * 5 / FPS
                 self.currentAnimFrames = [88, 132]
             elif self.status == 'CRASHED':
-                self.msPerFrame = 1000.0 / 60
+                self.msPerFrame = 1000.0 / FPS
                 self.currentAnimFrames = [220]
             elif self.status == 'JUMPING':
-                self.msPerFrame = 1000.0 / 60
+                self.msPerFrame = 1000.0 / FPS
                 self.currentAnimFrames = [0]
             elif self.status == 'DUCKING':
-                self.msPerFrame = 1000.0 / 8
+                self.msPerFrame = 1000.0 * 7.5 / FPS
                 self.currentAnimFrames = [262, 321]
 
         self.draw(self.currentAnimFrames[self.currentFrame], 0)
