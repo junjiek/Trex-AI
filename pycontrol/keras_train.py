@@ -12,7 +12,7 @@ import wrapped_trex as game
 GAME = 'trex' # the name of the game being played for log files
 ACTIONS = 2 # number of valid actions
 GAMMA = 0.99 # decay rate of past observations
-OBSERVE = 1000. # timesteps to observe before training
+OBSERVE = 30000. # timesteps to observe before training
 EXPLORE = 3000000. # frames over which to anneal epsilon
 FINAL_EPSILON = 0.0001 # final value of epsilon
 INITIAL_EPSILON = 0.1 # starting value of epsilon
@@ -63,8 +63,10 @@ def trainNetwork(q_network):
         if t % FRAME_PER_ACTION == 0:
             if random.random() <= epsilon:
                 print("----------Random Action----------")
+                print action_index
                 action_index = random.randrange(ACTIONS)
                 a_t[action_index] = 1
+                print Q
             else:
                 a_t[action_index] = 1
         else:
@@ -79,6 +81,9 @@ def trainNetwork(q_network):
         x_t1 = cv2.cvtColor(cv2.resize(x_t1_c, (80, 80)), cv2.COLOR_BGR2GRAY)
         #x_t1 = np.reshape(x_t1, (80, 80, 1))
         #s_t1 = np.append(x_t1, s_t[:,:,1:], axis = 2)
+        if terminal:
+            print 'terminal!'
+            print 'r_t: ' + str(r_t)
         s_t1 = np.append(np.array([x_t1]), s_t[1:, :, :], axis=0)
 
         # store the transition in D
@@ -121,7 +126,7 @@ def trainNetwork(q_network):
         # save progress every 10000 iterations
         if t % 10000 == 0:
             q_network.model.save('keras_model.h5')
-        if t%1000 < 50:
+        if t%10000 < 50:
             cv2.imwrite("/Users/yiweizhao/Desktop/SHOW/" + str(t) + ".png", x_t1)
 
 def playGame():

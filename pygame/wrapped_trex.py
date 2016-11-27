@@ -110,6 +110,9 @@ class GameState:
         self.playingIntro = False
         self.tRex.playingIntro = False
         self.playCount += 1
+    
+    def jump_or_not(self):
+        return self.tRex.jumping 
 
     def frame_step(self, input_actions):
         pygame.event.pump()
