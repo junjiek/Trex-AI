@@ -50,7 +50,9 @@ class imageProcessor(object):
 	def isTRex(self, rect):
 		if rect.y < 10:
 			return True
-		if isNear(rect.w, 85, 5) and isNear(rect.h, 90, 5):
+		if rect.x == 104:
+			return True
+		if isNear(rect.w, 80, 5) and isNear(rect.h, 86, 5):
 			return True
 		# Ducking
 		if isNear(rect.w, 116, 5) and isNear(rect.h, 60, 3):
@@ -128,22 +130,23 @@ class imageProcessor(object):
 				# roi = img[y : y + h, x : x + w]
 				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
 				# cv2.imwrite(name + '.jpg', img)
-			elif rect.x > 10:
+			elif rect.x > 40:
+				cacti.append(rect)
 				name += 'Unrecognized '
-				print "WARN: Unrecognized Object"
+				print "WARN: Unrecognized Object, append as Cactus"
 				x, y, w, h, s = rect.getInfo()
 				roi = img[y : y + h, x : x + w]
 				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
 			if tRex is None and self.biggerThanTRex(rect):
 				name += 'TRex '
-				print "WARN: Trex might run into other object"
+				# print "WARN: Trex might run into other object"
 				tRex = rect
-				x, y, w, h, s = rect.getInfo()
-				roi = img[y : y + h, x : x + w]
-				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
-				cv2.imwrite(name + '.jpg', img)
+				# x, y, w, h, s = rect.getInfo()
+				# roi = img[y : y + h, x : x + w]
+				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
 		if tRex is None:
 			print "WARN: tRex is None"
+			cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:
