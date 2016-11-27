@@ -59,7 +59,7 @@ class imageProcessor(object):
 		return False
 
 	def biggerThanTRex(self, rect):
-		if rect.w >= 86 and rect.h >= 80:
+		if rect.w >= 80 and rect.h >= 86:
 			return True
 		if rect.w >= 100 and rect.h > 50:
 			self.Ducking = True
@@ -67,10 +67,16 @@ class imageProcessor(object):
 		return False
 
 	def isBird(self, rect):
-		return isNear(rect.w, 84, 3) and (isNear(rect.h, 52, 3) or isNear(rect.h, 60, 3))
+		return isNear(rect.w, 84, 3) or isNear(rect.h, 52, 3) or isNear(rect.h, 60, 3)
 
 	def isCactus(self, rect):
-		return isNear(rect.h, 66, 2) or isNear(rect.h, 92, 2) or isNear(rect.h, 96, 2)
+		if isNear(rect.h, 66, 2) or isNear(rect.h, 92, 2):
+			return True
+		if isNear(rect.h, 96, 2) or isNear(rect.h, 56, 2):
+			return True
+		if isNear(rect.h, 72, 2):
+			return True
+		return False
 
 	def isEndGahmeLogo(self, rect):
 		return isNear(rect.w, 72, 2) and isNear(rect.h, 64, 2)
@@ -96,7 +102,7 @@ class imageProcessor(object):
 		# cv2.destroyAllWindows()
 		objectRects.sort(key=operator.attrgetter('x'))
 
-		# name = ''
+		name = ''
 
 		birds = []
 		cacti = []
@@ -106,16 +112,17 @@ class imageProcessor(object):
 		self.jumping = False
 		for rect in objectRects:
 			if self.isTRex(rect):
-				# name += 'TRex '
+				name += 'TRex '
 				tRex = rect
 			elif self.isBird(rect):
-				# name += 'Bird '
+				name += 'Bird '
+				rect.w = 84
 				if rect.x > 40: birds.append(rect)
 			elif self.isCactus(rect):
-				# name += 'Cactus '
+				name += 'Cactus '
 				if rect.x > 40: cacti.append(rect)
 			elif tRex is None and self.biggerThanTRex(rect):
-				# name += 'TRex '
+				name += 'TRex '
 				# print "WARN: Trex might run into other object"
 				tRex = rect
 				# x, y, w, h, s = rect.getInfo()
@@ -123,19 +130,21 @@ class imageProcessor(object):
 				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
 				# cv2.imwrite(name + '.jpg', img)
 			elif rect.x > 10:
-				# name += 'Unrecognized '
+				name += 'Unrecognized '
 				print "WARN: Unrecognized Object"
 				x, y, w, h, s = rect.getInfo()
 				roi = img[y : y + h, x : x + w]
 				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
-		# cv2.imwrite(name + '.jpg', img)
+		if tRex is None:
+			print "WARN: tRex is None"
+			cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:
 			y_delta = (self.tRex.y + self.tRex.h) - (tRex.y + tRex.h)
 			if y_delta >= 1:
 				self.jumping = True
-			elif y_delta <= -1:
+			elif y_delta <= -10:
 				self.dropping = True
 			if delta_time > 0:
 				tRex.speed = float(y_delta) / delta_time

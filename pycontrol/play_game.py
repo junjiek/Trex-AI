@@ -26,10 +26,7 @@ def main():
 		x_t, r_0, terminal = game_state.frame_step(action)
 		action[0] = 1
 		action[1] = 0
-		if not game_state.crashed:
-			# print controller.getObstacles()
-			# print distanceRan
-			# pygame.transform.rotate(x_t,90)
+		if not terminal:
 			img_processor.detectObjects(x_t, delta_time)
 			if img_processor.jumping or img_processor.dropping: continue
 			birds, cacti = img_processor.getObstacles()
