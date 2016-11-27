@@ -79,7 +79,6 @@ class imageProcessor(object):
 
 	def detectObjects(self, img, delta_time):
 		# print "----- delta_time: ", delta_time
-		img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
 		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		# cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
