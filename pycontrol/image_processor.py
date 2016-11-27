@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 from enum import Enum
 
 def isNear(value, target, epsilon):
-	return abs(value - target) < epsilon
+	return abs(value - target) <= epsilon
 
 class objectRectangle(object):
 	"""
@@ -48,7 +48,9 @@ class imageProcessor(object):
 		self.ducking = False
 
 	def isTRex(self, rect):
-		if isNear(rect.w, 85, 5) and isNear(rect.h, 90, 5):
+		if rect.y < 10:
+			return True
+		if isNear(rect.w, 80, 5) and isNear(rect.h, 86, 5):
 			return True
 		# Ducking
 		if isNear(rect.w, 116, 5) and isNear(rect.h, 60, 3):
@@ -57,7 +59,7 @@ class imageProcessor(object):
 		return False
 
 	def biggerThanTRex(self, rect):
-		if rect.w >= 82 and rect.h >= 60:
+		if rect.w >= 86 and rect.h >= 80:
 			return True
 		if rect.w >= 100 and rect.h > 50:
 			self.Ducking = True
@@ -65,11 +67,10 @@ class imageProcessor(object):
 		return False
 
 	def isBird(self, rect):
-		# (w, h): (86, 54), (86, 62)
-		return isNear(rect.w, 92, 3) and (isNear(rect.h, 60, 3) or isNear(rect.h, 68, 3))
+		return isNear(rect.w, 84, 3) and (isNear(rect.h, 52, 3) or isNear(rect.h, 60, 3))
 
 	def isCactus(self, rect):
-		return isNear(rect.h, 70, 2) or isNear(rect.h, 100, 2)
+		return isNear(rect.h, 66, 2) or isNear(rect.h, 92, 2) or isNear(rect.h, 96, 2)
 
 	def isEndGahmeLogo(self, rect):
 		return isNear(rect.w, 72, 2) and isNear(rect.h, 64, 2)
@@ -78,10 +79,9 @@ class imageProcessor(object):
 		return self.cacti, self.birds
 
 	def detectObjects(self, img, delta_time):
-		# print "----- delta_time: ", delta_time
-		img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-		ret, binary = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY)
-		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
+		img = cv2.cvtColor(cv2.resize(img.transpose(1,0,2), (1200, 300)), cv2.COLOR_RGB2GRAY)
+		ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+		contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		# cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
 		objectRects = []
 		for contour in contours:
@@ -91,6 +91,9 @@ class imageProcessor(object):
 				continue
 			objectRects.append(objectRectangle(x, y, w, h))
 			# cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
+		# cv2.imshow('image',img)
+		# cv2.waitKey(0)
+		# cv2.destroyAllWindows()
 		objectRects.sort(key=operator.attrgetter('x'))
 
 		# name = ''
@@ -121,11 +124,11 @@ class imageProcessor(object):
 				# cv2.imwrite(name + '.jpg', img)
 			elif rect.x > 10:
 				# name += 'Unrecognized '
-				print "WARN: Unrecognized Object"
+				# print "WARN: Unrecognized Object"
 				x, y, w, h, s = rect.getInfo()
 				roi = img[y : y + h, x : x + w]
 				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
-			# cv2.imwrite(name + '.jpg', img)
+		# cv2.imwrite(name + '.jpg', img)
 
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:
