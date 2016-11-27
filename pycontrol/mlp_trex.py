@@ -23,6 +23,7 @@ class NewGame(object):
         do_nothing[0] = 1
         x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
         self.image = x_t
+        self.terminal = terminal
         self.LastParams = [1 for i in range(NumObstacle*NumElement)]
         self.WaitonCrash = False
         self.NumJump = 0
@@ -35,8 +36,9 @@ class NewGame(object):
                 do_nothing[0] = 1
                 x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
                 self.image = x_t
+                self.terminal = terminal
                 return
-            if self.game_state.crashed:
+            if self.terminal:
                 print 'fuckkckckkckckckckckckckckkckckckck'
                 #print 'Num of Jump', self.NumJump
                 if self.LastParams[4] != 0:
@@ -97,23 +99,25 @@ class NewGame(object):
                     '''if params[5] == 0:
                         print params
                         return'''
-                    print params[0]/params[5]
+                    #print params[0]/params[5]
                     if params[0]/params[5] > MinNearTime:
                         return
                     if not self.img_processor.jumping:
                         if self.LastParams != [1 for i in range(NumObstacle*NumElement)]:
-                            self.nn.TrainModel(array([self.LastParams]), array([[1,0]]))
+                            self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                             self.NumJump += 1
                             #print 'previous jump succeed'
                         jump = zeros(ACTIONS)
                         jump[1] = 1
                         x_t, r_0, terminal = self.game_state.frame_step(jump)
                         self.image = x_t
+                        self.terminal = terminal
                         self.LastParams = params
                 else:
                     do_nothing = zeros(ACTIONS)
                     do_nothing[0] = 1
                     x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
+                    self.terminal = terminal
                     self.image = x_t
                 '''else:
                     if (self.controller.isJumping()):
