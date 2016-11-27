@@ -5,12 +5,14 @@ from keras.layers import Dense, Activation
 from numpy import *
 
 class MLP(object):
-    def __int__(self):
+    def __init__(self):
         self.model = None
+        self.NumPos = 0
+        self.NumNeg = 0
 
     def BuildModel(self):
         model = Sequential()
-        model.add(Dense(output_dim=6, input_dim=18))
+        model.add(Dense(output_dim=4, input_dim=6))
         model.add(Activation("relu"))
         model.add(Dense(2, init='normal'))
         model.add(Activation("softmax"))
@@ -29,6 +31,10 @@ class MLP(object):
         #model.fit(X_train, Y_train, nb_epoch=5, batch_size=32)
         #self.model.train_on_batch(X_train, Y_train)
         #print X_train, Y_train
+        if Y_train[0][0] == 1:
+            self.NumNeg += 1
+        else:
+            self.NumPos += 1
         self.model.fit(X_train, Y_train,nb_epoch=5,verbose=0)
 
     def TestModel(self,X_test):
@@ -40,8 +46,11 @@ class MLP(object):
 if __name__ == '__main__':
     mlp = MLP()
     mlp.BuildModel()
-    mlp.TrainModel(array([[1 for i in range(18)]]), array([[0,1]]))
-    print mlp.TestModel(array([[1 for i in range(18)]]))
-    '''mlp.TrainModel(array([[1,1,0]]), array([[1,0]]))
-    print mlp.TestModel(array([[1,1,0]]))
-    print mlp.TestModel(array([[0,0,1]]))'''
+    for _ in range(100):
+        mlp.TrainModel(array([[1 for i in range(6)]]), array([[0,1]]))
+    print mlp.TestModel(array([[1 for i in range(6)]]))
+    for _ in range(100):
+        mlp.TrainModel(array([[0 for i in range(6)]]), array([[1,0]]))
+    print mlp.TestModel(array([[0 for i in range(6)]]))
+    print mlp.TestModel(array([[1 for i in range(6)]]))
+    print mlp.NumPos, mlp.NumNeg

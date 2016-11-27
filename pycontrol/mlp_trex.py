@@ -8,9 +8,10 @@ sys.path.append('../control/')
 import wrapped_trex as game
 from controller import TrexGameController
 from numpy import *
+import copy
 
-NumObstacle = 3
-MinNearTime = 0.3
+NumObstacle = 1
+MinNearTime = 0.4
 ACTIONS = 2
 NumElement = 6
 class NewGame(object):
@@ -20,27 +21,57 @@ class NewGame(object):
         self.nn = nn
         self.game_state = game_state
         do_nothing = zeros(ACTIONS)
-        do_nothing[0] = 1
-        x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
-        self.image = x_t
-        self.terminal = terminal
+        do_nothing[1] = 1
+        self.action = do_nothing
+        self.image = None
         self.LastParams = [1 for i in range(NumObstacle*NumElement)]
-        self.WaitonCrash = False
-        self.NumJump = 0
+        self.NumCrash = 0
+        self.previousValidJump = False
     def StartGame(self):
         def Update(delta_time):
+            x_t, r_0, terminal = self.game_state.frame_step(self.action)
+            self.image = x_t
             self.img_processor.detectObjects(self.image, delta_time)
-            cacti_list, birds_list = self.img_processor.getObstacles()
+            cl, bl = self.img_processor.getObstacles()
+            cl += bl
+            cacti_list = sorted(cl,key=lambda a:a.x)
             if len(cacti_list) == 0 or cacti_list[0].speed == 0:
                 do_nothing = zeros(ACTIONS)
                 do_nothing[0] = 1
-                x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
-                self.image = x_t
-                self.terminal = terminal
+                self.action = do_nothing
                 return
-            if self.terminal:
+
+
+
+            params = []
+            for _ in range(NumObstacle):
+                if len(cacti_list) < 1+_ :
+                    params += [1 for i in range(NumElement)]
+                else:
+                    tmp = []
+                    tmp.append(cacti_list[_].x)#- self.img_processor.tRex.x - self.img_processor.tRex.w)
+                    tmp.append(cacti_list[_].y)#- self.img_processor.tRex.y)
+                    tmp.append(cacti_list[_].w)
+                    tmp.append(cacti_list[_].h)
+                    if self.img_processor.tRex == None:
+                        tmp.append(1)
+                    else:
+                        tmp.append(abs(self.img_processor.tRex.speed))
+                    tmp.append(abs(cacti_list[_].speed))
+                    params += tmp
+
+            print terminal
+            if terminal:
+
                 print 'fuckkckckkckckckckckckckckkckckckck'
-                #print 'Num of Jump', self.NumJump
+                self.NumCrash += 1
+                if self.NumCrash % 10 == 0:
+                    model = self.nn.model
+                    json_string = model.to_json()
+                    open('../control/data/my_model_architecture_un.json', 'w').write(json_string)
+                    model.save_weights('../control/data/my_model_weights_un.h5', overwrite=True)
+                print self.NumCrash
+                print 'neg and pos', self.nn.NumNeg, self.nn.NumPos
                 if self.LastParams[4] != 0:
                     deltaFactor = (self.LastParams[1] / self.LastParams[4] * self.LastParams[5])
                 else:
@@ -68,57 +99,58 @@ class NewGame(object):
                     #print 'hit feet ------------------- jump'
                     #perceptron.propagate(learningRate, [1, 0])
                 else:
-                    self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
+                    tmp = copy.deepcopy(params)
+                    for i in range(len(tmp)/NumElement):
+                        tmp[NumElement*i] += tmp[2]
+                    self.nn.TrainModel(array([tmp]), array([[0,1]]))
+                    print tmp
                     print 'hit when not jump'
                     #pass
-                self.NumJump = 0
+                self.LastParams = [1 for i in range(NumObstacle*NumElement)]
 
             else:
-                params = []
-                for _ in range(NumObstacle):
-                    if len(cacti_list) < 1+_ or cacti_list[_] == None:
-                        params += [1,1,1,1,1,1]
-                    else:
-                        tmp = []
-                        tmp.append(cacti_list[_].x)#- self.img_processor.tRex.x - self.img_processor.tRex.w)
-                        tmp.append(cacti_list[_].y)#- self.img_processor.tRex.y)
-                        tmp.append(cacti_list[_].w)
-                        tmp.append(cacti_list[_].h)
-                        if self.img_processor.tRex == None:
-                            tmp.append(1)
-                        else:
-                            tmp.append(self.img_processor.tRex.speed)
-                        tmp.append(cacti_list[_].speed)
-                        params += tmp
                 category, confidence = self.nn.TestModel(array([params]))
                 #category = [0]
                 #print params
                 #print 'category', category
+                #print params[0], category[0]
                 if (category[0] == 1):#jump if network is really confident
                     #Jump jump jump :D !
                     '''if params[5] == 0:
                         print params
                         return'''
                     #print params[0]/params[5]
-                    if params[0]/params[5] > MinNearTime:
+                    '''if params[0]/params[5] > MinNearTime:
+                        return'''
+                    if params[0] > 400:
+                        if self.previousValidJump:
+                            self.nn.TrainModel(array([params]), array([[1,0]]))
+                            self.previousValidJump = False
                         return
                     if not self.img_processor.jumping:
                         if self.LastParams != [1 for i in range(NumObstacle*NumElement)]:
                             self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
-                            self.NumJump += 1
-                            #print 'previous jump succeed'
+                            self.previousValidJump = True
+                            tmp = self.LastParams
+                            delta_tmp = tmp[2]
+                            for i in range(len(tmp)/NumElement):
+                                tmp[NumElement*i] += delta_tmp
+                            self.nn.TrainModel(array([tmp]), array([[1,0]]))
                         jump = zeros(ACTIONS)
                         jump[1] = 1
-                        x_t, r_0, terminal = self.game_state.frame_step(jump)
+                        self.LastParams = params
+                        self.action = jump
+                        '''x_t, r_0, terminal = self.game_state.frame_step(jump)
                         self.image = x_t
                         self.terminal = terminal
-                        self.LastParams = params
+                        '''
                 else:
                     do_nothing = zeros(ACTIONS)
                     do_nothing[0] = 1
-                    x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
+                    self.action = do_nothing
+                    '''x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
                     self.terminal = terminal
-                    self.image = x_t
+                    self.image = x_t'''
                 '''else:
                     if (self.controller.isJumping()):
                         self.controller.duck()
