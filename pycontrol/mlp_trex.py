@@ -10,7 +10,7 @@ from controller import TrexGameController
 from numpy import *
 import copy
 
-NumObstacle = 1
+NumObstacle = 2
 MinNearTime = 0.4
 ACTIONS = 2
 NumElement = 6
@@ -21,7 +21,7 @@ class NewGame(object):
         self.nn = nn
         self.game_state = game_state
         do_nothing = zeros(ACTIONS)
-        do_nothing[0] = 1
+        do_nothing[1] = 1
         self.action = do_nothing
         self.image = None
         self.LastParams = [1 for i in range(NumObstacle*NumElement)]
@@ -31,18 +31,10 @@ class NewGame(object):
     def StartGame(self):
         def Update(delta_time):
             x_t, r_0, terminal = self.game_state.frame_step(self.action)
-            self.image = x_t
-            self.img_processor.detectObjects(self.image, delta_time)
+            self.img_processor.detectObjects(x_t, delta_time)
             cl, bl = self.img_processor.getObstacles()
             cl += bl
             cacti_list = sorted(cl,key=lambda a:a.x)
-            if len(cacti_list) == 0 or cacti_list[0].speed == 0:
-                do_nothing = zeros(ACTIONS)
-                do_nothing[0] = 1
-                self.action = do_nothing
-                return
-
-
 
             params = []
             for _ in range(NumObstacle):
@@ -61,10 +53,9 @@ class NewGame(object):
                     tmp.append(abs(cacti_list[_].speed))
                     params += tmp
 
-            print terminal
             if terminal:
+                #print 'fuckfuckfuckfucku'
 
-                print 'fuckkckckkckckckckckckckckkckckckck'
                 self.NumCrash += 1
                 if self.NumCrash % 10 == 0:
                     model = self.nn.model
@@ -76,7 +67,7 @@ class NewGame(object):
                 if self.LastParams[4] != 0:
                     deltaFactor = (self.LastParams[1] / self.LastParams[4] * self.LastParams[5])
                 else:
-                    deltaFactor = self.LastParams[2]
+                    deltaFactor = 0.5 * self.LastParams[2]
                 if (self.img_processor.jumping):
                     print 'when jump'
                     for i in range(len(self.LastParams)/NumElement):
@@ -102,7 +93,7 @@ class NewGame(object):
                 else:
                     tmp = copy.deepcopy(params)
                     for i in range(len(tmp)/NumElement):
-                        tmp[NumElement*i] += tmp[2]
+                        tmp[NumElement*i] += 0.5*tmp[2]
                     self.nn.TrainModel(array([tmp]), array([[0,1]]))
                     print tmp
                     print 'hit when not jump'
@@ -110,6 +101,13 @@ class NewGame(object):
                 self.LastParams = [1 for i in range(NumObstacle*NumElement)]
 
             else:
+
+                if len(cacti_list) == 0 or cacti_list[0].speed == 0:
+                    do_nothing = zeros(ACTIONS)
+                    do_nothing[0] = 1
+                    self.action = do_nothing
+                    return
+
                 category, confidence = self.nn.TestModel(array([params]))
                 #category = [0]
                 #print params
