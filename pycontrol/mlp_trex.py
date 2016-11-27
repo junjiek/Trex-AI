@@ -21,12 +21,13 @@ class NewGame(object):
         self.nn = nn
         self.game_state = game_state
         do_nothing = zeros(ACTIONS)
-        do_nothing[1] = 1
+        do_nothing[0] = 1
         self.action = do_nothing
         self.image = None
         self.LastParams = [1 for i in range(NumObstacle*NumElement)]
         self.NumCrash = 0
         self.previousValidJump = False
+
     def StartGame(self):
         def Update(delta_time):
             x_t, r_0, terminal = self.game_state.frame_step(self.action)
@@ -115,20 +116,19 @@ class NewGame(object):
                 #print 'category', category
                 #print params[0], category[0]
                 if (category[0] == 1):#jump if network is really confident
-                    #Jump jump jump :D !
-                    '''if params[5] == 0:
-                        print params
-                        return'''
-                    #print params[0]/params[5]
                     '''if params[0]/params[5] > MinNearTime:
                         return'''
                     if params[0] > 400:
                         if self.previousValidJump:
                             self.nn.TrainModel(array([params]), array([[1,0]]))
                             self.previousValidJump = False
+                        do_nothing = zeros(ACTIONS)
+                        do_nothing[0] = 1
+                        self.action = do_nothing
                         return
                     if not self.img_processor.jumping:
-                        if self.LastParams != [1 for i in range(NumObstacle*NumElement)]:
+                        #if self.LastParams != [1 for i in range(NumObstacle*NumElement)]:
+                        if True:
                             self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                             self.previousValidJump = True
                             tmp = self.LastParams
@@ -140,21 +140,11 @@ class NewGame(object):
                         jump[1] = 1
                         self.LastParams = params
                         self.action = jump
-                        '''x_t, r_0, terminal = self.game_state.frame_step(jump)
-                        self.image = x_t
-                        self.terminal = terminal
-                        '''
+
                 else:
                     do_nothing = zeros(ACTIONS)
                     do_nothing[0] = 1
                     self.action = do_nothing
-                    '''x_t, r_0, terminal = self.game_state.frame_step(do_nothing)
-                    self.terminal = terminal
-                    self.image = x_t'''
-                '''else:
-                    if (self.controller.isJumping()):
-                        self.controller.duck()
-                        self.LastParams = params#last move activation'''
 
 
         while True:
