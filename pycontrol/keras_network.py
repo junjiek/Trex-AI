@@ -34,9 +34,9 @@ class DeepQNN(object):
 
         adam = Adam(lr=0.1, decay=1e-6)
         model.compile(loss='mse', optimizer=adam)
-        json_string = model.to_json()
-        open('data/my_model_architecture_q_cnn.json','w').write(json_string)
-        model.save_weights('data.my_model_weights_q_cnn.h5',overwrite=True)
+        #json_string = model.to_json()
+        #open('data/my_model_architecture_q_cnn.json','w').write(json_string)
+        #model.save_weights('data.my_model_weights_q_cnn.h5',overwrite=True)
         self.model = model
         return self.model
 
