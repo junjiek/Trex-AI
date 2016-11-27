@@ -14,6 +14,7 @@ NumObstacle = 2
 MinNearTime = 0.4
 ACTIONS = 2
 NumElement = 6
+SMAPLE_FPS = 30.0
 class NewGame(object):
     def __init__(self, img_processor, start_time, nn, game_state):
         self.img_processor = img_processor
@@ -29,9 +30,9 @@ class NewGame(object):
         self.previousValidJump = False
 
     def StartGame(self):
-        def Update(delta_time):
+        def Update(SMAPLE_FPS):
             x_t, r_0, terminal = self.game_state.frame_step(self.action)
-            self.img_processor.detectObjects(x_t, delta_time)
+            self.img_processor.detectObjects(x_t, SMAPLE_FPS)
             cl, bl = self.img_processor.getObstacles()
             cl += bl
             cacti_list = sorted(cl,key=lambda a:a.x)
