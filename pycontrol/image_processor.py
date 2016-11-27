@@ -142,7 +142,7 @@ class imageProcessor(object):
 		# T-rex jumping or dropping.
 		if self.tRex is not None and tRex is not None:
 			y_delta = (self.tRex.y + self.tRex.h) - (tRex.y + tRex.h)
-			if y_delta >= 1:
+			if y_delta >= 10:
 				self.jumping = True
 			elif y_delta <= -10:
 				self.dropping = True
