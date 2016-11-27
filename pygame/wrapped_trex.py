@@ -141,25 +141,17 @@ class GameState:
         #         self.tRex.setDuck(True);
 
 
-        # deltaTime = 1000 / FPS
         deltaTime = 1000 / SAMPLE_FPS
+        speed = self.currentSpeed
         if self.activated:
             if (self.tRex.jumping):
                 self.tRex.updateJump(deltaTime)
 
             self.runningTime += deltaTime
-            hasObstacles = self.runningTime > GameState.config['CLEAR_TIME']
-            # First jump triggers the intro.
-            # if (self.tRex.jumpCount == 1 and not self.playingIntro):
-            #     self.playIntro()
-            # The horizon doesn't move until the intro is over.
-            # The horizon doesn't move until the intro is over.
-            # if (self.playingIntro):
-            #     self.horizon.update(0, self.currentSpeed, hasObstacles)
-            # else:
-                # deltaTime = !self.started ? 0 : deltaTime
-            self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
-            # self.horizon.update(deltaTime, self.currentSpeed, hasObstacles)
+            # hasObstacles = self.runningTime > GameState.config['CLEAR_TIME']
+            hasObstacles = True
+            if hasObstacles:
+                self.horizon.updateObstacles(deltaTime, speed)
 
             # Check for collisions.
             collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
@@ -169,7 +161,6 @@ class GameState:
                     self.currentSpeed += GameState.config['ACCELERATION']
             else:
                 self.gameOver()
-
             self.distanceMeter.update(deltaTime, math.ceil(self.distanceRan))
 
         if not self.crashed:
@@ -180,6 +171,12 @@ class GameState:
             self.restart()
 
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())
+
+        if self.activated:
+            self.horizon.updateClouds(deltaTime, speed)
+            self.horizon.updateHorizonLine(deltaTime, speed)
+
+
         pygame.display.update()
         # FPSCLOCK.tick(60)
         return image_data, reward, terminal
@@ -320,8 +317,8 @@ class Trex:
                 self.msPerFrame = 1000.0 * 7.5 / FPS
                 self.msPerFrame = 1000.0 / 8
                 self.currentAnimFrames = [262, 321]
-
-        self.draw(self.currentAnimFrames[self.currentFrame], 0)
+        if deltaTime > 0:
+            self.draw(self.currentAnimFrames[self.currentFrame], 0)
         # Update the frame position.
         if self.timer >= self.msPerFrame:
             if self.currentFrame >= len(self.currentAnimFrames) - 1:
@@ -416,7 +413,7 @@ class Trex:
             self.reset()
             self.jumpCount+=1
 
-        self.update(deltaTime, self.status)
+        # self.update(deltaTime, self.status)
 
     # Set the speed drop. Immediately cancels the current jump.
     def setSpeedDrop(self):
@@ -1009,7 +1006,9 @@ class Horizon:
         if (updateObstacles):
             self.updateObstacles(deltaTime, currentSpeed)
 
-  
+    def updateHorizonLine(self, deltaTime, currentSpeed):
+        self.horizonLine.update(deltaTime, currentSpeed)
+
     # Update the cloud positions.
     # @param {number} deltaTime
     # @param {number} currentSpeed

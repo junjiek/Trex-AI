@@ -50,6 +50,8 @@ class imageProcessor(object):
 	def isTRex(self, rect):
 		if rect.y < 10:
 			return True
+		if rect.x == 104:
+			return True
 		if isNear(rect.w, 80, 5) and isNear(rect.h, 86, 5):
 			return True
 		# Ducking
@@ -67,7 +69,7 @@ class imageProcessor(object):
 		return False
 
 	def isBird(self, rect):
-		return isNear(rect.w, 84, 3) or isNear(rect.h, 52, 3) or isNear(rect.h, 60, 3)
+		return isNear(rect.w, 84, 3) and (isNear(rect.h, 52, 3) or isNear(rect.h, 60, 3))
 
 	def isCactus(self, rect):
 		if isNear(rect.h, 66, 2) or isNear(rect.h, 92, 2):
@@ -84,11 +86,15 @@ class imageProcessor(object):
 	def getObstacles(self):
 		return self.cacti, self.birds
 
-	def detectObjects(self, img, delta_time):
+	def detectObjects(self, img, SMAPLE_FPS):
+		if SMAPLE_FPS == 0:
+			delta_time = 0
+		else:
+			delta_time = 1000.0 / SMAPLE_FPS
 		img = cv2.cvtColor(cv2.resize(img.transpose(1,0,2), (1200, 300)), cv2.COLOR_RGB2GRAY)
-		ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-		contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
-		cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
+		ret, binary = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
+		# cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
 		objectRects = []
 		for contour in contours:
 			x, y, w, h = cv2.boundingRect(contour)
@@ -96,7 +102,7 @@ class imageProcessor(object):
 			if w < 30 or h < 30:
 				continue
 			objectRects.append(objectRectangle(x, y, w, h))
-			# cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
+			cv2.rectangle(img, (x, y), (x + w, y + h), (200, 0, 0), 2)
 		# cv2.imshow('image',img)
 		# cv2.waitKey(0)
 		# cv2.destroyAllWindows()
@@ -116,25 +122,28 @@ class imageProcessor(object):
 				tRex = rect
 			elif self.isBird(rect):
 				name += 'Bird '
-				rect.w = 84
 				if rect.x > 40: birds.append(rect)
 			elif self.isCactus(rect):
 				name += 'Cactus '
 				if rect.x > 40: cacti.append(rect)
-			elif tRex is None and self.biggerThanTRex(rect):
+				# x, y, w, h, s = rect.getInfo()
+				# roi = img[y : y + h, x : x + w]
+				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
+				# cv2.imwrite(name + '.jpg', img)
+			elif rect.x > 40:
+				cacti.append(rect)
+				name += 'Unrecognized '
+				print "WARN: Unrecognized Object, append as Cactus"
+				x, y, w, h, s = rect.getInfo()
+				roi = img[y : y + h, x : x + w]
+				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
+			if tRex is None and self.biggerThanTRex(rect):
 				name += 'TRex '
 				# print "WARN: Trex might run into other object"
 				tRex = rect
 				# x, y, w, h, s = rect.getInfo()
 				# roi = img[y : y + h, x : x + w]
 				# cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '-trex.jpg', roi)
-				# cv2.imwrite(name + '.jpg', img)
-			elif rect.x > 10:
-				name += 'Unrecognized '
-				print "WARN: Unrecognized Object"
-				x, y, w, h, s = rect.getInfo()
-				roi = img[y : y + h, x : x + w]
-				cv2.imwrite(str(x) + '-' + str(y) + '-' + str(w) + '-' + str(h) + '.jpg', roi)
 		if tRex is None:
 			print "WARN: tRex is None"
 			cv2.imwrite(name + '.jpg', img)

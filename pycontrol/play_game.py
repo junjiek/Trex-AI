@@ -9,7 +9,7 @@ import wrapped_trex as game
 from image_processor import imageProcessor
 
 ACTIONS = 2
-
+SAMPLE_FPS = 30.0
 def main():
 	game_state = game.GameState()
 	img_processor = imageProcessor()
@@ -17,20 +17,16 @@ def main():
 	action = zeros(ACTIONS)
 	action[0] = 1
 	while 1:
-		time.sleep(0.0005)
-		if start_time is not None:
-			delta_time = time.time() - start_time
-		else:
-			delta_time = 0
-		start_time = time.time()
 		x_t, r_0, terminal = game_state.frame_step(action)
+		img_processor.detectObjects(x_t, SAMPLE_FPS)
 		action[0] = 1
 		action[1] = 0
 		if not terminal:
-			img_processor.detectObjects(x_t, delta_time)
-			if img_processor.jumping or img_processor.dropping: continue
+			if img_processor.jumping or img_processor.dropping:
+				# print img_processor.tRex
+				continue
 			birds, cacti = img_processor.getObstacles()
-			# print birds, cacti
+			# print birds, cacti, img_processor.tRex
 			if len(birds) == 0 and len(cacti) == 0: continue
 			if len(birds) == 0:
 				firstObstcale = cacti[0]
