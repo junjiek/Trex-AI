@@ -161,11 +161,9 @@ class GameState:
                     self.currentSpeed += GameState.config['ACCELERATION']
             else:
                 self.gameOver()
-            self.distanceMeter.update(deltaTime, math.ceil(self.distanceRan))
-
-        if not self.crashed:
-            self.tRex.update(deltaTime, self.tRex.status)
-        else:
+        
+        self.tRex.update(deltaTime, self.tRex.status)
+        if self.crashed:
             terminal = True
             reward = -1
             self.restart()
@@ -173,6 +171,7 @@ class GameState:
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())
 
         if self.activated:
+            self.distanceMeter.update(deltaTime, math.ceil(self.distanceRan))
             self.horizon.updateClouds(deltaTime, speed)
             self.horizon.updateHorizonLine(deltaTime, speed)
 
