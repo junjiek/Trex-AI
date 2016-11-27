@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.optimizers import SGD, Adadelta, Adagrad
+from keras.optimizers import SGD, Adadelta, Adagrad, Adam
 from keras.models import model_from_json
 from keras.layers import Dense, Activation
 from numpy import *
@@ -10,17 +10,18 @@ class MLP(object):
 
     def BuildModel(self):
         model = Sequential()
-        model.add(Dense(output_dim=4, input_dim=18))
+        model.add(Dense(output_dim=6, input_dim=18))
         model.add(Activation("relu"))
         model.add(Dense(2, init='normal'))
         model.add(Activation("softmax"))
 
 
-        sgd = SGD(l2=0.0,lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
-        model.compile(loss='binary_crossentropy', optimizer=sgd, class_mode="categorical")
+        #sgd = SGD(l2=0.0,lr=0.05, decay=1e-6, momentum=0.9, nesterov=True)
+        adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+        model.compile(loss='binary_crossentropy', optimizer=adam, class_mode="categorical")
         json_string = model.to_json()
-        open('data/my_model_architecture_un.json', 'w').write(json_string)
-        model.save_weights('data/my_model_weights_un.h5', overwrite=True)
+        open('../control/data/my_model_architecture_un.json', 'w').write(json_string)
+        model.save_weights('../control/data/my_model_weights_un.h5', overwrite=True)
         self.model = model
         return self.model
 
@@ -39,8 +40,8 @@ class MLP(object):
 if __name__ == '__main__':
     mlp = MLP()
     mlp.BuildModel()
-    mlp.TrainModel(array([[0,0,1]]), array([[0,1]]))
-    print mlp.TestModel(array([[0,0,1]]))
-    mlp.TrainModel(array([[1,1,0]]), array([[1,0]]))
+    mlp.TrainModel(array([[1 for i in range(18)]]), array([[0,1]]))
+    print mlp.TestModel(array([[1 for i in range(18)]]))
+    '''mlp.TrainModel(array([[1,1,0]]), array([[1,0]]))
     print mlp.TestModel(array([[1,1,0]]))
-    print mlp.TestModel(array([[0,0,1]]))
+    print mlp.TestModel(array([[0,0,1]]))'''
