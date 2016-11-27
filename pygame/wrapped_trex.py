@@ -9,11 +9,12 @@ from itertools import cycle
 from copy import deepcopy
 
 FPS = 60.0
+SAMPLE_FPS = 30.0
 SCREENWIDTH  = 600
 SCREENHEIGHT = 150
 
 pygame.init()
-FPSCLOCK = pygame.time.Clock()
+# FPSCLOCK = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((SCREENWIDTH * 2, SCREENHEIGHT * 2))
 pygame.display.set_caption('Trex')
 
@@ -137,7 +138,8 @@ class GameState:
         #         self.tRex.setDuck(True);
 
 
-        deltaTime = FPSCLOCK.get_time()
+        # deltaTime = 1000 / FPS
+        deltaTime = 1000 / SAMPLE_FPS
         if self.activated:
             if (self.tRex.jumping):
                 self.tRex.updateJump(deltaTime)
@@ -176,7 +178,7 @@ class GameState:
 
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())
         pygame.display.update()
-        FPSCLOCK.tick(FPS)
+        # FPSCLOCK.tick(60)
         return image_data, reward, terminal
 
     def adjustDimensions(self):
@@ -283,7 +285,8 @@ class Trex:
         self.groundYPos = SCREENHEIGHT - Trex.config['HEIGHT'] - GameState.config['BOTTOM_PAD'];
         self.yPos = self.groundYPos
         self.minJumpHeight = self.groundYPos - Trex.config['MIN_JUMP_HEIGHT']
-        self.msPerFrame = 1000.0 * 20 / FPS
+        # self.msPerFrame = 1000.0 * 20 / FPS
+        self.msPerFrame = 1000.0 / FPS
         self.currentFrame = 0
         self.currentAnimFrames = [0, 1]
         self.status = 'WAITING'
@@ -296,18 +299,23 @@ class Trex:
             self.status = status
             if self.status == 'WAITING':
                 self.msPerFrame = 1000.0 * 20 / FPS
+                self.msPerFrame = 1000.0 / 3
                 self.currentAnimFrames = [44, 0]
             elif self.status == 'RUNNING':
                 self.msPerFrame = 1000.0 * 5 / FPS
+                self.msPerFrame = 1000.0 / 12
                 self.currentAnimFrames = [88, 132]
             elif self.status == 'CRASHED':
                 self.msPerFrame = 1000.0 / FPS
+                self.msPerFrame = 1000.0 / 60
                 self.currentAnimFrames = [220]
             elif self.status == 'JUMPING':
                 self.msPerFrame = 1000.0 / FPS
+                self.msPerFrame = 1000.0 / 60
                 self.currentAnimFrames = [0]
             elif self.status == 'DUCKING':
                 self.msPerFrame = 1000.0 * 7.5 / FPS
+                self.msPerFrame = 1000.0 / 8
                 self.currentAnimFrames = [262, 321]
 
         self.draw(self.currentAnimFrames[self.currentFrame], 0)
@@ -458,7 +466,7 @@ class Obstacle:
         'width': 46,
         'height': 40,
         'spriteNum': 1,
-        'yPos': [ 100, 75, 50 ],
+        'yPos': [ 100, 75, 60 ],
         'multipleSpeed': 999,
         'minSpeed': 8.5,
         'minGap': 150,
