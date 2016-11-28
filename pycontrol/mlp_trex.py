@@ -10,10 +10,10 @@ from controller import TrexGameController
 from numpy import *
 import copy
 
-NumObstacle = 2
+NumObstacle = 1
 MinNearTime = 0.4
 ACTIONS = 2
-NumElement = 6
+NumElement = 3 # x, h, w
 SMAPLE_FPS = 30.0
 class NewGame(object):
     def __init__(self, img_processor, start_time, nn, game_state):
@@ -44,14 +44,14 @@ class NewGame(object):
                 else:
                     tmp = []
                     tmp.append(cacti_list[_].x)#- self.img_processor.tRex.x - self.img_processor.tRex.w)
-                    tmp.append(cacti_list[_].y)#- self.img_processor.tRex.y)
+                    #tmp.append(cacti_list[_].y)#- self.img_processor.tRex.y)
                     tmp.append(cacti_list[_].w)
                     tmp.append(cacti_list[_].h)
-                    if self.img_processor.tRex == None:
+                    '''if self.img_processor.tRex == None:
                         tmp.append(1)
                     else:
                         tmp.append(abs(self.img_processor.tRex.speed))
-                    tmp.append(abs(cacti_list[_].speed))
+                    tmp.append(abs(cacti_list[_].speed))'''
                     params += tmp
 
             if terminal:
@@ -65,10 +65,11 @@ class NewGame(object):
                     model.save_weights('../control/data/my_model_weights_un.h5', overwrite=True)
                 print self.NumCrash
                 print 'neg and pos', self.nn.NumNeg, self.nn.NumPos
-                if self.LastParams[4] != 0:
+                '''if self.LastParams[4] != 0:
                     deltaFactor = (self.LastParams[1] / self.LastParams[4] * self.LastParams[5])
                 else:
-                    deltaFactor = 0.5 * self.LastParams[2]
+                    deltaFactor = 0.5 * self.LastParams[2]'''
+                deltaFactor = 0.5 * self.LastParams[1]
                 if (self.img_processor.jumping):
                     print 'when jump'
                     for i in range(len(self.LastParams)/NumElement):
@@ -94,7 +95,8 @@ class NewGame(object):
                 else:
                     tmp = copy.deepcopy(params)
                     for i in range(len(tmp)/NumElement):
-                        tmp[NumElement*i] += 0.5*tmp[2]
+                        #tmp[NumElement*i] += 0.5*tmp[2]
+                        tmp[NumElement*i] += 0.5*tmp[1]
                     self.nn.TrainModel(array([tmp]), array([[0,1]]))
                     print tmp
                     print 'hit when not jump'
@@ -131,7 +133,8 @@ class NewGame(object):
                             self.nn.TrainModel(array([self.LastParams]), array([[0,1]]))
                             self.previousValidJump = True
                             tmp = self.LastParams
-                            delta_tmp = tmp[2]
+                            #delta_tmp = tmp[2]
+                            delta_tmp = tmp[1]
                             for i in range(len(tmp)/NumElement):
                                 tmp[NumElement*i] += delta_tmp
                             self.nn.TrainModel(array([tmp]), array([[1,0]]))
