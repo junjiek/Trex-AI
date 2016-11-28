@@ -165,7 +165,7 @@ class GameState:
         self.tRex.update(deltaTime, self.tRex.status)
         if self.crashed:
             terminal = True
-            reward = -1
+            reward = -100
             self.restart()
 
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())

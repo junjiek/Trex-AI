@@ -12,7 +12,7 @@ class MLP(object):
 
     def BuildModel(self):
         model = Sequential()
-        model.add(Dense(output_dim=3, input_dim=3))
+        model.add(Dense(output_dim=3, input_dim=4))
         model.add(Activation("relu"))
         model.add(Dense(2, init='normal'))
         model.add(Activation("softmax"))
@@ -31,6 +31,8 @@ class MLP(object):
         #model.fit(X_train, Y_train, nb_epoch=5, batch_size=32)
         #self.model.train_on_batch(X_train, Y_train)
         #print X_train, Y_train
+        X_train  = X_train[:,:4]
+        #print X_train.shape
         if Y_train[0][0] == 1:
             self.NumNeg += 1
         else:
@@ -38,6 +40,8 @@ class MLP(object):
         self.model.fit(X_train, Y_train,nb_epoch=5,verbose=0)
 
     def TestModel(self,X_test):
+        X_test = X_test[:,:4]
+        #print X_test.shape
         classes = self.model.predict_classes(X_test,verbose=0)
         proba = self.model.predict_proba(X_test,verbose=0)
         return classes,proba

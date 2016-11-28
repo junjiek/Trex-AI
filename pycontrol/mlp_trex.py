@@ -9,8 +9,9 @@ import wrapped_trex as game
 from controller import TrexGameController
 from numpy import *
 import copy
+import cv2
 
-NumObstacle = 1
+NumObstacle = 2
 MinNearTime = 0.4
 ACTIONS = 2
 NumElement = 3 # x, h, w
@@ -32,6 +33,8 @@ class NewGame(object):
     def StartGame(self):
         def Update(SMAPLE_FPS):
             x_t, r_0, terminal = self.game_state.frame_step(self.action)
+            ret, binary = cv2.threshold(x_t, 230, 255, cv2.THRESH_BINARY)
+            cv2.imwrite('log/'+ str(time.time()) + '.png', binary)
             self.img_processor.detectObjects(x_t, SMAPLE_FPS)
             cl, bl = self.img_processor.getObstacles()
             cl += bl
@@ -40,7 +43,7 @@ class NewGame(object):
             params = []
             for _ in range(NumObstacle):
                 if len(cacti_list) < 1+_ :
-                    params += [1 for i in range(NumElement)]
+                    params += [30000,0,0]
                 else:
                     tmp = []
                     tmp.append(cacti_list[_].x)#- self.img_processor.tRex.x - self.img_processor.tRex.w)
@@ -61,8 +64,8 @@ class NewGame(object):
                 if self.NumCrash % 10 == 0:
                     model = self.nn.model
                     json_string = model.to_json()
-                    open('../control/data/my_model_architecture_un.json', 'w').write(json_string)
-                    model.save_weights('../control/data/my_model_weights_un.h5', overwrite=True)
+                    open('../control/data/my_model_architecture_bi.json', 'w').write(json_string)
+                    model.save_weights('../control/data/my_model_weights_bi.h5', overwrite=True)
                 print self.NumCrash
                 print 'neg and pos', self.nn.NumNeg, self.nn.NumPos
                 '''if self.LastParams[4] != 0:
