@@ -12,6 +12,7 @@ GAME = 'trex' # the name of the game being played for log files
 ACTIONS = 2 # number of valid actions
 GAMMA = 0.99 # decay rate of past observations
 OBSERVE = 100000. # timesteps to observe before training
+NORANDOM = 1000000 # timesteps to get rid of random movement
 EXPLORE = 2000000. # frames over which to anneal epsilon
 FINAL_EPSILON = 0.0001 # final value of epsilon
 INITIAL_EPSILON = 0.1 # starting value of epsilon
@@ -118,7 +119,7 @@ def trainNetwork(s, readout, h_fc1, sess):
         a_t = np.zeros([ACTIONS])
         action_index = 0
         if t % FRAME_PER_ACTION == 0:
-            if random.random() <= epsilon:
+            if t <= NORANDOM and random.random() <= epsilon:
                 print("----------Random Action----------")
                 action_index = random.randrange(ACTIONS)
                 a_t[random.randrange(ACTIONS)] = 1
@@ -194,11 +195,12 @@ def trainNetwork(s, readout, h_fc1, sess):
             "/ EPSILON", epsilon, "/ ACTION", action_index, "/ REWARD", r_t, \
             "/ Q_MAX %e" % np.max(readout_t))
         # write info to files
-
+        '''
         if t % 10000 <= 100:
             #a_file.write(",".join([str(x) for x in readout_t]) + '\n')
             #h_file.write(",".join([str(x) for x in h_fc1.eval(feed_dict={s:[s_t]})[0]]) + '\n')
             cv2.imwrite("logs_tetris/frame" + str(t) + ".png", x_t1)
+        '''
 
 
 def playGame():

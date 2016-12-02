@@ -460,20 +460,21 @@ class Obstacle:
         'minGap': 120,
         'minSpeed': 0,
         'collisionBoxes': [CollisionBox(0, 12, 7, 38), CollisionBox(8, 0, 7, 49), CollisionBox(13, 10, 10, 38)],
-    },{
-        'type': 'PTERODACTYL',
-        'width': 46,
-        'height': 40,
-        'spriteNum': 1,
-        'yPos': [ 100, 75, 60 ],
-        'multipleSpeed': 999,
-        'minSpeed': 8.5,
-        'minGap': 150,
-        'numFrames': 2,
-        'frameRate': 1000.0/6,
-        'speedOffset': .8,
-        'collisionBoxes': [CollisionBox(15, 15, 16, 5), CollisionBox(18, 21, 24, 6), CollisionBox(2, 14, 4, 3), CollisionBox(6, 10, 4, 7), CollisionBox(10, 8, 6, 9)],
     }]
+    # },{
+    #     'type': 'PTERODACTYL',
+    #     'width': 46,
+    #     'height': 40,
+    #     'spriteNum': 1,
+    #     'yPos': [ 100, 75, 60 ],
+    #     'multipleSpeed': 999,
+    #     'minSpeed': 8.5,
+    #     'minGap': 150,
+    #     'numFrames': 2,
+    #     'frameRate': 1000.0/6,
+    #     'speedOffset': .8,
+    #     'collisionBoxes': [CollisionBox(15, 15, 16, 5), CollisionBox(18, 21, 24, 6), CollisionBox(2, 14, 4, 3), CollisionBox(6, 10, 4, 7), CollisionBox(10, 8, 6, 9)],
+    # }]
     MAX_GAP_COEFFICIENT = 1.5
     MAX_OBSTACLE_LENGTH = 3
     def __init__(self, typeIdx, spriteImgPos, dimensions, gapCoefficient, speed):

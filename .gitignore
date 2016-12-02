@@ -2,3 +2,4 @@ ref/*
 *.pyc
 cv*
 *.jpg
+*.png
