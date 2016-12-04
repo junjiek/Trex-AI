@@ -75,6 +75,7 @@ class GameState:
         self.obstacles = []
         self.runningTime = 0
         self.distanceRan = 0
+        self.lastScore = 0
         self.dimensions = {
             'WIDTH': SCREENWIDTH,
             'HEIGHT': SCREENHEIGHT,
@@ -113,6 +114,9 @@ class GameState:
     
     def jump_or_not(self):
         return self.tRex.jumping 
+
+    def getScore(self):
+        return self.distanceMeter.getActualDistance(self.distanceRan)
 
     def frame_step(self, input_actions):
         pygame.event.pump()
@@ -231,6 +235,7 @@ class GameState:
         self.runningTime = 0
         self.activated = True
         self.crashed = False
+        self.lastScore = self.getScore()
         self.distanceRan = 0
         self.currentSpeed = GameState.config['SPEED']
         self.distanceMeter.reset(self.highestScore)

@@ -7,6 +7,7 @@ import wrapped_trex as game
 import random
 import numpy as np
 from collections import deque
+import os
 
 GAME = 'trex' # the name of the game being played for log files
 ACTIONS = 2 # number of valid actions
@@ -101,18 +102,22 @@ def trainNetwork(s, readout, h_fc1, sess):
     s_t = np.stack((x_t, x_t, x_t, x_t), axis=2)
 
     # saving and loading networks
-    saver = tf.train.Saver()
+    saver = tf.train.Saver(max_to_keep=10000)
     sess.run(tf.initialize_all_variables())
     checkpoint = tf.train.get_checkpoint_state("saved_networks")
     if checkpoint and checkpoint.model_checkpoint_path:
         saver.restore(sess, checkpoint.model_checkpoint_path)
         print("Successfully loaded:", checkpoint.model_checkpoint_path)
+        model_name = checkpoint.model_checkpoint_path.split('/')[1]
+        model_name = model_name.split('.')[0]
     else:
         print("Could not find old network weights")
 
     # start training
-    epsilon = INITIAL_EPSILON
+    # epsilon = INITIAL_EPSILON
+    epsilon = 0
     t = 0
+    scores = []
     while True:
         # choose an action epsilon greedily
         readout_t = readout.eval(feed_dict={s : [s_t]})[0]
@@ -135,6 +140,13 @@ def trainNetwork(s, readout, h_fc1, sess):
 
         # run the selected action and observe next state and reward
         x_t1_colored, r_t, terminal = game_state.frame_step(a_t)
+        if terminal and len(scores) < 20:
+            scores.append(game_state.lastScore)
+            if len(scores) == 20:
+                score_file = open('./logs/score-' + model_name + ".txt", 'w')
+                score_file.write(', '.join(str(s) for s in scores) + '\n')
+                score_file.write(str(np.mean(scores)) + '\n')
+
         x_t1 = cv2.cvtColor(cv2.resize(x_t1_colored, (80, 80)), cv2.COLOR_BGR2GRAY)
         ret, x_t1 = cv2.threshold(x_t1, 230, 255, cv2.THRESH_BINARY)
         x_t1 = np.reshape(x_t1, (80, 80, 1))

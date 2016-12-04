@@ -16,6 +16,7 @@ def main():
 	start_time = None
 	action = zeros(ACTIONS)
 	action[0] = 1
+	game_round = 0
 	while 1:
 		x_t, r_0, terminal = game_state.frame_step(action)
 		img_processor.detectObjects(x_t, SAMPLE_FPS)
@@ -57,9 +58,10 @@ def main():
 				if ((firstObstcale.x + firstObstcale.w) - img_processor.tRex.x) / firstObstcale.speed < 0.4:
 					action[0] = 0
 					action[1] = 1
-		# else:
-			# game_state.restart()
-
+		else:
+			print "round: %d, score: %d" % (game_round, game_state.lastScore)
+			game_round += 1
+			
 		
 
 if __name__ == "__main__":
