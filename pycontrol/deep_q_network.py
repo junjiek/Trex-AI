@@ -146,6 +146,7 @@ def trainNetwork(s, readout, h_fc1, sess):
                 score_file = open('./logs/score-' + model_name + ".txt", 'w')
                 score_file.write(', '.join(str(s) for s in scores) + '\n')
                 score_file.write(str(np.mean(scores)) + '\n')
+                sys.exit(0)
 
         x_t1 = cv2.cvtColor(cv2.resize(x_t1_colored, (80, 80)), cv2.COLOR_BGR2GRAY)
         ret, x_t1 = cv2.threshold(x_t1, 230, 255, cv2.THRESH_BINARY)
@@ -191,8 +192,8 @@ def trainNetwork(s, readout, h_fc1, sess):
         t += 1
 
         # save progress every 10000 iterations
-        if t % 10000 == 0:
-            saver.save(sess, './saved_networks/' + GAME + '-dqn', global_step = t)
+        # if t % 10000 == 0:
+        #     saver.save(sess, './saved_networks/' + GAME + '-dqn', global_step = t)
 
         # print info
         state = ""
