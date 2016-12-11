@@ -2,623 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a89eaa-ef72-4c81-b782-c56cfc2da95b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-10000" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-10000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-20000" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-20000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-30000" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-30000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-40000" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-40000.meta" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-50000" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-50000.meta" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame1.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10000.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10001.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10001.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10002.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10002.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10003.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10003.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10004.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10005.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10006.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10006.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10007.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10007.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10008.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10009.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10009.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10010.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10010.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10011.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10011.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10012.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10012.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10013.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10013.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10014.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10014.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10015.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10016.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10016.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10017.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10017.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10018.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10018.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10019.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10019.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10020.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10020.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10021.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10021.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10022.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10022.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10023.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10023.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10024.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10025.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10025.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10026.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10026.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10027.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10027.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10028.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10028.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10029.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10029.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10030.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10030.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10031.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10031.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10032.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10032.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10033.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10033.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10034.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10034.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10035.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10035.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10036.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10036.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10037.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10037.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10038.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10038.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10039.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10039.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10040.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10040.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10041.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10041.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10042.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10042.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10043.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10043.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10044.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10044.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10045.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10045.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10046.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10046.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10047.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10047.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10048.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10049.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10049.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10050.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10050.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10051.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10051.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10052.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10052.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10053.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10053.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10054.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10054.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10055.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10055.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10056.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10056.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10057.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10057.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10058.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10058.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10059.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10059.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10060.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10060.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10061.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10061.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10062.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10062.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10063.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10063.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10064.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10064.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10065.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10065.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10066.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10066.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10067.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10067.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10068.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10068.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10069.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10069.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10070.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10070.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10071.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10071.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10072.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10072.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10073.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10073.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10074.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10074.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10075.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10075.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10076.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10076.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10077.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10077.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10078.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10078.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10079.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10079.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10080.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10080.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10081.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10081.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10082.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10082.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10083.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10083.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10084.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10084.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10085.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10085.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10086.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10086.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10087.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10087.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10088.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10088.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10089.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10089.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10090.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10090.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10091.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10091.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10092.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10092.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10093.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10093.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10094.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10094.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10095.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10095.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10096.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10096.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10097.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10097.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10098.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10098.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10099.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10099.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame10100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame11.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame11.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame12.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame12.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame13.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame13.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame14.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame14.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame15.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame15.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame16.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame17.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame17.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame18.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame18.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame19.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame19.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame2.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20000.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20001.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20001.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20002.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20002.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20003.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20003.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20004.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20005.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20006.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20006.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20007.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20007.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20008.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20009.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20009.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20010.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20010.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20011.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20011.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20012.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20012.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20013.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20013.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20014.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20014.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20015.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20016.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20016.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20017.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20017.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20018.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20018.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20019.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20019.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20020.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20020.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20021.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20021.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20022.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20022.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20023.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20023.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20024.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20025.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20025.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20026.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20026.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20027.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20027.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20028.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20028.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20029.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20029.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20030.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20030.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20031.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20031.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20032.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20032.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20033.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20033.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20034.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20034.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20035.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20035.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20036.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20036.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20037.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20037.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20038.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20038.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20039.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20039.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20040.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20040.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20041.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20041.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20042.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20042.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20043.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20043.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20044.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20044.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20045.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20045.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20046.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20046.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20047.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20047.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20048.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20049.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20049.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20050.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20050.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20051.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20051.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20052.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20052.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20053.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20053.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20054.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20054.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20055.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20055.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20056.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20056.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20057.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20057.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20058.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20058.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20059.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20059.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20060.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20060.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20061.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20061.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20062.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20062.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20063.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20063.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20064.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20064.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20065.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20065.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20066.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20066.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20067.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20067.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20068.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20068.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20069.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20069.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20070.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20070.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20071.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20071.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20072.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20072.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20073.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20073.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20074.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20074.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20075.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20075.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20076.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20076.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20077.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20077.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20078.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20078.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20079.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20079.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20080.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20080.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20081.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20081.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20082.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20082.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20083.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20083.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20084.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20084.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20085.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20085.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20086.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20086.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20087.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20087.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20088.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20088.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20089.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20089.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20090.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20090.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20091.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20091.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20092.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20092.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20093.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20093.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20094.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20094.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20095.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20095.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20096.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20096.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20097.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20097.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20098.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20098.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20099.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20099.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame20100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame21.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame21.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame22.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame22.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame23.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame23.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame24.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame24.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame25.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame25.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame26.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame26.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame27.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame27.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame28.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame28.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame29.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame29.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame3.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30000.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30001.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30001.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30002.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30002.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30003.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30003.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30004.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30005.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30006.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30006.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30007.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30007.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30008.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30009.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30009.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30010.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30010.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30011.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30011.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30012.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30012.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30013.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30013.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30014.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30014.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30015.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30016.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30016.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30017.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30017.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30018.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30018.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30019.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30019.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30020.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30020.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30021.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30021.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30022.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30022.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30023.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30023.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30024.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30025.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30025.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30026.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30026.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30027.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30027.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30028.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30028.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30029.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30029.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30030.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30030.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30031.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30031.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30032.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30032.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30033.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30033.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30034.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30034.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30035.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30035.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30036.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30036.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30037.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30037.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30038.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30038.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30039.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30039.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30040.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30040.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30041.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30041.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30042.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30042.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30043.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30043.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30044.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30044.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30045.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30045.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30046.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30046.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30047.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30047.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30048.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30049.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30049.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30050.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30050.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30051.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30051.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30052.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30052.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30053.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30053.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30054.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30054.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30055.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30055.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30056.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30056.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30057.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30057.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30058.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30058.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30059.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30059.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30060.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30060.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30061.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30061.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30062.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30062.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30063.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30063.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30064.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30064.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30065.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30065.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30066.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30066.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30067.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30067.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30068.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30068.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30069.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30069.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30070.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30070.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30071.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30071.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30072.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30072.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30073.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30073.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30074.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30074.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30075.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30075.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30076.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30076.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30077.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30077.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30078.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30078.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30079.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30079.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30080.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30080.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30081.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30081.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30082.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30082.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30083.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30083.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30084.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30084.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30085.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30085.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30086.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30086.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30087.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30087.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30088.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30088.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30089.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30089.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30090.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30090.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30091.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30091.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30092.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30092.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30093.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30093.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30094.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30094.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30095.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30095.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30096.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30096.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30097.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30097.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30098.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30098.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30099.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30099.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame30100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame31.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame31.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame32.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame32.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame33.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame33.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame34.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame34.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame35.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame35.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame36.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame36.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame37.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame37.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame38.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame38.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame39.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame39.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame4.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40000.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40001.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40001.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40002.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40002.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40003.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40003.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40004.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40005.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40006.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40006.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40007.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40007.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40008.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40009.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40009.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40010.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40010.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40011.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40011.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40012.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40012.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40013.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40013.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40014.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40014.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40015.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40016.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40016.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40017.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40017.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40018.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40018.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40019.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40019.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40020.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40020.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40021.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40021.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40022.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40022.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40023.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40023.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40024.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40025.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40025.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40026.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40026.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40027.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40027.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40028.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40028.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40029.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40029.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40030.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40030.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40031.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40031.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40032.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40032.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40033.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40033.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40034.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40034.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40035.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40035.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40036.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40036.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40037.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40037.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40038.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40038.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40039.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40039.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40040.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40040.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40041.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40041.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40042.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40042.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40043.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40043.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40044.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40044.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40045.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40045.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40046.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40046.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40047.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40047.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40048.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40049.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40049.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40050.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40050.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40051.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40051.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40052.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40052.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40053.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40053.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40054.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40054.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40055.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40055.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40056.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40056.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40057.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40057.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40058.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40058.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40059.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40059.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40060.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40060.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40061.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40061.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40062.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40062.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40063.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40063.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40064.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40064.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40065.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40065.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40066.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40066.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40067.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40067.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40068.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40068.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40069.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40069.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40070.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40070.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40071.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40071.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40072.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40072.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40073.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40073.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40074.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40074.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40075.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40075.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40076.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40076.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40077.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40077.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40078.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40078.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40079.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40079.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40080.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40080.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40081.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40081.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40082.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40082.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40083.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40083.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40084.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40084.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40085.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40085.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40086.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40086.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40087.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40087.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40088.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40088.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40089.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40089.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40090.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40090.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40091.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40091.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40092.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40092.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40093.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40093.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40094.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40094.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40095.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40095.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40096.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40096.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40097.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40097.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40098.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40098.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40099.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40099.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame40100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame41.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame41.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame42.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame42.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame43.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame43.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame44.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame44.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame45.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame45.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame46.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame46.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame47.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame47.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame48.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame48.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame49.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame49.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame5.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50000.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50001.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50001.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50002.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50002.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50003.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50003.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50004.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50005.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50006.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50006.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50007.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50007.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50008.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50009.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50009.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50010.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50010.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50011.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50011.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50012.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50012.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50013.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50013.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50014.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50014.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50015.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50016.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50016.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50017.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50017.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50018.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50018.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50019.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50019.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50020.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50020.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50021.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50021.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50022.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50022.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50023.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50023.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50024.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50025.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50025.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50026.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50026.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50027.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50027.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50028.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50028.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50029.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50029.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50030.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50030.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50031.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50031.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50032.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50032.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50033.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50033.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50034.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50034.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50035.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50035.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50036.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50036.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50037.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50037.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50038.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50038.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50039.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50039.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50040.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50040.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50041.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50041.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50042.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50042.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50043.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50043.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50044.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50044.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50045.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50045.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50046.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50046.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50047.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50047.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50048.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50049.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50049.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50050.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50050.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50051.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50051.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50052.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50052.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50053.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50053.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50054.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50054.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50055.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50055.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50056.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50056.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50057.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50057.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50058.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50058.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50059.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50059.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50060.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50060.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50061.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50061.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50062.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50062.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50063.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50063.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50064.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50064.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50065.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50065.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50066.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50066.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50067.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50067.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50068.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50068.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50069.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50069.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50070.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50070.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50071.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50071.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50072.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50072.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50073.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50073.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50074.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50074.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50075.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50075.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50076.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50076.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50077.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50077.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50078.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50078.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50079.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50079.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50080.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50080.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50081.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50081.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50082.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50082.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50083.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50083.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50084.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50084.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50085.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50085.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50086.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50086.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50087.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50087.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50088.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50088.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50089.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50089.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50090.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50090.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50091.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50091.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50092.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50092.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50093.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50093.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50094.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50094.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50095.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50095.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50096.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50096.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50097.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50097.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50098.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50098.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50099.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50099.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50100.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame50100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame51.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame51.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame52.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame52.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame53.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame53.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame54.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame54.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame55.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame55.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame56.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame56.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame57.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame57.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame58.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame58.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame59.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame59.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame6.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame60.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame60.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame61.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame61.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame62.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame62.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame63.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame63.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame64.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame64.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame65.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame65.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame66.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame66.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame67.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame67.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame68.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame68.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame69.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame69.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame7.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame70.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame70.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame71.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame71.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame72.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame72.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame73.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame73.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame74.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame74.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame75.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame75.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame76.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame76.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame77.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame77.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame78.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame78.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame79.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame79.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame8.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame80.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame80.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame81.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame81.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame82.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame82.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame83.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame83.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame84.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame84.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame85.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame85.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame86.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame86.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame87.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame87.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame88.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame88.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame89.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame89.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame9.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame90.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame90.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame91.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame91.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame92.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame92.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame93.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame93.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame94.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame94.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame95.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame95.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame96.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame96.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame97.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame97.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame98.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame98.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/logs_tetris/frame99.png" afterPath="$PROJECT_DIR$/pycontrol/logs_tetris/frame99.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/checkpoint" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1320000" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1320000.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1330000" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1330000.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1340000" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1340000.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1350000" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1350000.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1360000" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/trex-dqn-1360000.meta" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/saved_networks/checkpoint" afterPath="$PROJECT_DIR$/pycontrol/saved_networks/checkpoint" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control/data/my_model_weights_un.h5" afterPath="$PROJECT_DIR$/control/data/my_model_weights_un.h5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/deep_q_network.py" afterPath="$PROJECT_DIR$/pycontrol/deep_q_network.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pycontrol/mlp_trex.py" afterPath="$PROJECT_DIR$/pycontrol/mlp_trex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pygame/wrapped_trex.py" afterPath="$PROJECT_DIR$/pygame/wrapped_trex.py" />
     </list>
     <ignored path="Trex-AI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -632,14 +31,15 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Trex-AI$deep_q_network__1_.coverage" NAME="deep_q_network (1) Coverage Results" MODIFIED="1480371645787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
+    <SUITE FILE_PATH="coverage/Trex-AI$deep_q_network__1_.coverage" NAME="deep_q_network (1) Coverage Results" MODIFIED="1481428717107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
     <SUITE FILE_PATH="coverage/Trex-AI$keras_q_network.coverage" NAME="keras_q_network Coverage Results" MODIFIED="1479689836398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
-    <SUITE FILE_PATH="coverage/Trex-AI$play_game.coverage" NAME="play_game Coverage Results" MODIFIED="1480233786600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
+    <SUITE FILE_PATH="coverage/Trex-AI$play_game.coverage" NAME="play_game Coverage Results" MODIFIED="1481429114049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
     <SUITE FILE_PATH="coverage/Trex-AI$backend_brain.coverage" NAME="backend_brain Coverage Results" MODIFIED="1479580927678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
+    <SUITE FILE_PATH="coverage/Trex-AI$keras_train.coverage" NAME="keras_train Coverage Results" MODIFIED="1481430921545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
     <SUITE FILE_PATH="coverage/Trex-AI$controller.coverage" NAME="controller Coverage Results" MODIFIED="1479415396170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$deep_q_network.coverage" NAME="deep_q_network Coverage Results" MODIFIED="1479692276259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
-    <SUITE FILE_PATH="coverage/Trex-AI$mlp_trex.coverage" NAME="mlp_trex Coverage Results" MODIFIED="1480360169852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
-    <SUITE FILE_PATH="coverage/Trex-AI$wrapped_trex.coverage" NAME="wrapped_trex Coverage Results" MODIFIED="1480199705038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pygame" />
+    <SUITE FILE_PATH="coverage/Trex-AI$mlp_trex.coverage" NAME="mlp_trex Coverage Results" MODIFIED="1481432012281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
+    <SUITE FILE_PATH="coverage/Trex-AI$wrapped_trex.coverage" NAME="wrapped_trex Coverage Results" MODIFIED="1481429162551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pygame" />
     <SUITE FILE_PATH="coverage/Trex-AI$brain.coverage" NAME="brain Coverage Results" MODIFIED="1479578814750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/control" />
     <SUITE FILE_PATH="coverage/Trex-AI$mlp.coverage" NAME="mlp Coverage Results" MODIFIED="1480229666698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycontrol" />
   </component>
@@ -652,11 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mlp_trex.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mlp_trex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pycontrol/mlp_trex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.13746631">
+              <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -664,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wrapped_trex.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wrapped_trex.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pygame/wrapped_trex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.613066">
-              <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
+            <state vertical-scroll-proportion="-8.555555">
+              <caret line="164" column="65" selection-start-line="164" selection-start-column="60" selection-end-line="164" selection-end-column="65" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -710,24 +110,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="backend_brain.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/backend_brain.py">
+      <file leaf-file-name="deep_q_network.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pycontrol/deep_q_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+            <state vertical-scroll-proportion="-56.407406">
+              <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deep_q_network.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pycontrol/deep_q_network.py">
+      <file leaf-file-name="play_game.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pycontrol/play_game.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="44" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
-              <folding>
-                <element signature="e#22#45#0" expanded="true" />
-              </folding>
+              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -748,18 +156,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="81" column="69" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="69" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mlp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/mlp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -795,9 +191,9 @@
         <option value="$PROJECT_DIR$/pycontrol/keras_train.py" />
         <option value="$PROJECT_DIR$/pycontrol/mlp.py" />
         <option value="$PROJECT_DIR$/control/image_processor.py" />
-        <option value="$PROJECT_DIR$/pycontrol/mlp_trex.py" />
         <option value="$PROJECT_DIR$/pygame/wrapped_trex.py" />
         <option value="$PROJECT_DIR$/pycontrol/deep_q_network.py" />
+        <option value="$PROJECT_DIR$/pycontrol/mlp_trex.py" />
       </list>
     </option>
   </component>
@@ -836,6 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -931,32 +328,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../CS145/cs145-notebooks-2016/PS3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Python.deep_q_network (1)">
-    <configuration default="false" name="deep_q_network (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pycontrol" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Trex-AI" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pycontrol/deep_q_network.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.mlp_trex">
     <configuration default="false" name="wrapped_trex" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1025,6 +403,24 @@
       <module name="Trex-AI" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pycontrol/play_game.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="keras_train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pycontrol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Trex-AI" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pycontrol/keras_train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -1222,20 +618,39 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
+    <configuration default="false" name="deep_q_network (1)" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pycontrol" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Trex-AI" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pycontrol/deep_q_network.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.deep_q_network (1)" />
       <item index="1" class="java.lang.String" itemvalue="Python.wrapped_trex" />
       <item index="2" class="java.lang.String" itemvalue="Python.mlp_trex" />
       <item index="3" class="java.lang.String" itemvalue="Python.mlp" />
       <item index="4" class="java.lang.String" itemvalue="Python.play_game" />
+      <item index="5" class="java.lang.String" itemvalue="Python.keras_train" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.deep_q_network (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.mlp_trex" />
-        <item index="2" class="java.lang.String" itemvalue="Python.play_game" />
-        <item index="3" class="java.lang.String" itemvalue="Python.mlp" />
-        <item index="4" class="java.lang.String" itemvalue="Python.wrapped_trex" />
+        <item index="0" class="java.lang.String" itemvalue="Python.mlp_trex" />
+        <item index="1" class="java.lang.String" itemvalue="Python.keras_train" />
+        <item index="2" class="java.lang.String" itemvalue="Python.wrapped_trex" />
+        <item index="3" class="java.lang.String" itemvalue="Python.play_game" />
+        <item index="4" class="java.lang.String" itemvalue="Python.mlp" />
       </list>
     </recent_temporary>
   </component>
@@ -1254,7 +669,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="708" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1262,7 +677,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1354,9 +769,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#45#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1445,9 +858,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="205" column="26" selection-start-line="205" selection-start-column="24" selection-end-line="205" selection-end-column="26" />
-          <folding>
-            <element signature="e#22#45#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1593,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/brain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1628,13 +1032,6 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pycontrol/play_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1672,6 +1069,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pygame/wrapped_trex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.555555">
+          <caret line="164" column="65" selection-start-line="164" selection-start-column="60" selection-end-line="164" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pycontrol/deep_q_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-56.407406">
+          <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pycontrol/play_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pycontrol/mlp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1684,38 +1123,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pycontrol/mlp_trex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.13746631">
+          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pycontrol/deep_q_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="44" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
-          <folding>
-            <element signature="e#22#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/deep_q_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pygame/wrapped_trex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.613066">
-          <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

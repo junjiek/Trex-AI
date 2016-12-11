@@ -46,7 +46,7 @@ class GameState:
         'MAX_OBSTACLE_DUPLICATION': 2,
         'MAX_SPEED': 13,
         'MIN_JUMP_HEIGHT': 35,
-        'SPEED': 6,
+        'SPEED': 9,
         'SPEED_DROP_COEFFICIENT': 3
     }
     spriteDefinition = {
@@ -161,8 +161,8 @@ class GameState:
             collision = hasObstacles and checkForCollision(self.horizon.obstacles[0], self.tRex)
             if not collision:
                 self.distanceRan += self.currentSpeed * deltaTime / self.msPerFrame
-                if (self.currentSpeed < GameState.config['MAX_SPEED']):
-                    self.currentSpeed += GameState.config['ACCELERATION']
+                #if (self.currentSpeed < GameState.config['MAX_SPEED']):
+                    #self.currentSpeed += GameState.config['ACCELERATION']
             else:
                 self.gameOver()
         

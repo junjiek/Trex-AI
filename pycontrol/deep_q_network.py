@@ -115,7 +115,7 @@ def trainNetwork(s, readout, h_fc1, sess):
 
     # start training
     # epsilon = INITIAL_EPSILON
-    epsilon = 0
+    epsilon = 0.1
     t = 0
     scores = []
     while True:
@@ -140,13 +140,13 @@ def trainNetwork(s, readout, h_fc1, sess):
 
         # run the selected action and observe next state and reward
         x_t1_colored, r_t, terminal = game_state.frame_step(a_t)
-        if terminal and len(scores) < 20:
+        '''if terminal and len(scores) < 20:
             scores.append(game_state.lastScore)
             if len(scores) == 20:
                 score_file = open('./logs/score-' + model_name + ".txt", 'w')
                 score_file.write(', '.join(str(s) for s in scores) + '\n')
                 score_file.write(str(np.mean(scores)) + '\n')
-                sys.exit(0)
+                sys.exit(0)'''
 
         x_t1 = cv2.cvtColor(cv2.resize(x_t1_colored, (80, 80)), cv2.COLOR_BGR2GRAY)
         ret, x_t1 = cv2.threshold(x_t1, 230, 255, cv2.THRESH_BINARY)
