@@ -61,11 +61,11 @@ class NewGame(object):
                 #print 'fuckfuckfuckfucku'
 
                 self.NumCrash += 1
-                if self.NumCrash % 10000 == 0:
+                if self.NumCrash % 10 == 0:
                     model = self.nn.model
                     json_string = model.to_json()
-                    open('../control/data/my_model_architecture'+str(self.NumCrash)+'.json', 'w').write(json_string)
-                    model.save_weights('../control/data/my_model_weights'+str(self.NumCrash)+'.h5', overwrite=True)
+                    open('./mlp/my_model_architecture'+str(self.NumCrash)+'.json', 'w').write(json_string)
+                    model.save_weights('./mlp/my_model_weights'+str(self.NumCrash)+'.h5', overwrite=True)
                 print self.NumCrash
                 print 'neg and pos', self.nn.NumNeg, self.nn.NumPos
                 '''if self.LastParams[4] != 0:

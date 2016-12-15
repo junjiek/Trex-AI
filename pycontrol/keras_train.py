@@ -127,7 +127,8 @@ def trainNetwork(q_network):
         if t % 10000 == 0:
             q_network.model.save('keras_model.h5')
         if t%10000 < 50:
-            cv2.imwrite("/Users/yiweizhao/Desktop/SHOW/" + str(t) + ".png", x_t1)
+            #cv2.imwrite("/Users/yiweizhao/Desktop/SHOW/" + str(t) + ".png", x_t1)
+            pass
 
 def playGame():
     QNetwork = DeepQNN()
