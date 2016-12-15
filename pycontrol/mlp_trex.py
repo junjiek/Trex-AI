@@ -61,7 +61,7 @@ class NewGame(object):
                 #print 'fuckfuckfuckfucku'
 
                 self.NumCrash += 1
-                if self.NumCrash % 10 == 0:
+                if self.NumCrash % 100 == 0:
                     model = self.nn.model
                     json_string = model.to_json()
                     open('./mlp/my_model_architecture'+str(self.NumCrash)+'.json', 'w').write(json_string)
