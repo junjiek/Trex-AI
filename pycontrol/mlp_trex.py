@@ -64,7 +64,7 @@ class NewGame(object):
             if terminal:
 
                 self.NumCrash += 1
-                if self.NumCrash % 100 == 0:
+                if self.NumCrash % 10 == 0:
                     model = self.nn.model
                     json_string = model.to_json()
                     open('./1000newmlp/my_model_architecture'+str(self.NumCrash)+'.json', 'w').write(json_string)
