@@ -46,7 +46,7 @@ class GameState:
         'MAX_OBSTACLE_DUPLICATION': 2,
         'MAX_SPEED': 13,
         'MIN_JUMP_HEIGHT': 35,
-        'SPEED': 9,
+        'SPEED': 6,
         'SPEED_DROP_COEFFICIENT': 3
     }
     spriteDefinition = {
