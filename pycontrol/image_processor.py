@@ -93,7 +93,7 @@ class imageProcessor(object):
 			delta_time = 1000.0 / SMAPLE_FPS
 		img = cv2.cvtColor(cv2.resize(img.transpose(1,0,2), (1200, 300)), cv2.COLOR_RGB2GRAY)
 		ret, binary = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-		contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
+		_, contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  
 		# cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
 		objectRects = []
 		for contour in contours:
