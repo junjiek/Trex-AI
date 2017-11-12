@@ -3,3 +3,5 @@ ref/*
 cv*
 *.jpg
 *.png
+.idea
+.DS_Store
