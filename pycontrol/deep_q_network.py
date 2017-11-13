@@ -103,8 +103,9 @@ def trainNetwork(s, readout, h_fc1, sess):
 
     # saving and loading networks
     saver = tf.train.Saver(max_to_keep=10000)
-    sess.run(tf.initialize_all_variables())
-    checkpoint = tf.train.get_checkpoint_state("saved_networks")
+    #sess.run(tf.initialize_all_variables())
+    sess.run(tf.global_variables_initializer())
+    checkpoint = tf.train.get_checkpoint_state("saved_networks_backup")
     if checkpoint and checkpoint.model_checkpoint_path:
         saver.restore(sess, checkpoint.model_checkpoint_path)
         print("Successfully loaded:", checkpoint.model_checkpoint_path)
